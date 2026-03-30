@@ -1,0 +1,194 @@
+/* Editorial “Collections” grid — offset colour block + mosaic + italic serif titles */
+
+.collections {
+  background: #fff;
+  padding: var(--section-pad-y, clamp(1.35rem, 3.15vw, 2.35rem)) 0;
+  border-top: var(--divider, 1px solid #e8e6e1);
+}
+
+.collections__inner {
+  max-width: var(--layout-max, 1320px);
+  margin: 0 auto;
+  padding: 0 max(var(--layout-gutter, clamp(0.9375rem, 2.85vw, 1.875rem)), env(safe-area-inset-right, 0)) 0
+    max(var(--layout-gutter, clamp(0.9375rem, 2.85vw, 1.875rem)), env(safe-area-inset-left, 0));
+}
+
+.collections__title {
+  margin: 0 0 clamp(0.95rem, 2vw, 1.35rem);
+  padding-bottom: 0.65rem;
+  border-bottom: var(--divider-soft, 1px solid #e5e2dc);
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: clamp(1.85rem, 3.5vw, 2.35rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #1a1a1a;
+}
+
+.collections__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.95rem, 2.35vw, 1.6rem);
+  align-items: start;
+}
+
+@media (max-width: 1000px) {
+  .collections__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .collections__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.collection-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+.collection-card:hover .collection-card__arrow {
+  background: #c41e3a;
+  transform: scale(1.05);
+}
+
+.collection-card:focus-visible {
+  outline: 2px solid #c41e3a;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.collection-card:focus-visible .collection-card__arrow {
+  background: #c41e3a;
+}
+
+.collection-card__visual {
+  position: relative;
+  margin-bottom: clamp(0.8rem, 2vw, 1.1rem);
+}
+
+.collection-card__shadow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: var(--collection-accent, #5c3d8b);
+  transform: translate(11px, 11px);
+  z-index: 0;
+}
+
+.collection-card__plate {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 4 / 3;
+  border: 1px solid #0a0a0a;
+  background: #fff;
+  overflow: hidden;
+}
+
+.collection-card__mosaic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2px;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  background: #0a0a0a;
+}
+
+.collection-card__mosaic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.collection-card__body {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0 3.25rem 0.35rem 0;
+  box-sizing: border-box;
+}
+
+.collection-card__title {
+  margin: 0 0 var(--card-body-gap, 0.25rem);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.25;
+  color: #1a1a1a;
+  letter-spacing: 0.01em;
+  min-height: calc(3 * 1.25em);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.collection-card__desc {
+  margin: 0;
+  flex: 1 1 auto;
+  min-height: calc(3 * 1.5em);
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: #6f6b66;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.collection-card__arrow {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 50%;
+  background: #1a1a1a;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.collection-card__arrow svg {
+  display: block;
+  margin-left: 2px;
+}
+
+.collection-card__rule {
+  width: 2.75rem;
+  height: 1px;
+  margin-top: auto;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  flex-shrink: 0;
+  background: #c9c5bf;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collection-card:hover .collection-card__arrow,
+  .collection-card:focus-visible .collection-card__arrow {
+    transform: none;
+  }
+
+  .collection-card__arrow {
+    transition: none;
+  }
+}

@@ -1,0 +1,125 @@
+/* Quick category row — reference style: soft cool circles, slate-teal silhouettes */
+
+.quick-icons {
+  padding: var(--section-pad-y-sm, clamp(1.05rem, 2.45vw, 1.85rem)) var(--layout-gutter, clamp(0.9375rem, 2.85vw, 1.875rem));
+  color: #1f2933;
+  background: #fff;
+}
+
+.quick-icons__inner {
+  max-width: var(--layout-max, 1320px);
+  margin: 0 auto;
+}
+
+.quick-icons__title {
+  margin: 0 0 clamp(1rem, 2.2vw, 1.45rem);
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: clamp(1.2rem, 2.35vw, 1.5rem);
+  font-weight: 600;
+  font-style: italic;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #1a1a1a;
+}
+
+.quick-icons__grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(0.85rem, 2.2vw, 1.4rem);
+  align-items: start;
+  justify-items: center;
+}
+
+.quick-icon {
+  width: 100%;
+  max-width: 168px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s ease;
+}
+
+.quick-icon__circle {
+  --quick-icon-bg: #e8f0f4;
+  --quick-icon-ink: #2d5058;
+  /* Legacy SVG fills (stacked books, trophy, etc.) track the circle tone */
+  --quick-icon-paper: var(--quick-icon-bg);
+  width: clamp(76px, 9vw, 96px);
+  height: clamp(76px, 9vw, 96px);
+  border-radius: 999px;
+  background: var(--quick-icon-bg);
+  color: var(--quick-icon-ink);
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 0 1px rgba(45, 80, 88, 0.06);
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.quick-icon__circle svg {
+  width: clamp(44px, 5.5vw, 54px);
+  height: clamp(44px, 5.5vw, 54px);
+  flex-shrink: 0;
+  display: block;
+}
+
+.quick-icon__label {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #1f2933;
+  text-align: center;
+  line-height: 1.3;
+  max-width: 11rem;
+}
+
+.quick-icon:hover {
+  transform: translateY(-2px);
+}
+
+.quick-icon:hover .quick-icon__circle {
+  --quick-icon-bg: #dfe9ee;
+  --quick-icon-ink: #26444c;
+  box-shadow:
+    inset 0 0 0 1px rgba(45, 80, 88, 0.08),
+    0 8px 20px rgba(45, 80, 88, 0.1);
+}
+
+.quick-icon:focus-visible {
+  outline: 2px solid rgba(196, 30, 58, 0.45);
+  outline-offset: 6px;
+  border-radius: 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quick-icon {
+    transition: none;
+  }
+
+  .quick-icon:hover {
+    transform: none;
+  }
+
+  .quick-icon__circle {
+    transition: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .quick-icons__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 1.1rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .quick-icons__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

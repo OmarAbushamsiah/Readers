@@ -1,0 +1,144 @@
+/* Readers Bookshop — full-width promo strip (custom layout, not third-party artwork) */
+
+.readers-banner {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(105deg, #dff5ea 0%, #c8ead9 35%, #bfe3d4 100%);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.readers-banner__deco {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: min(12vw, 140px);
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+.readers-banner__deco--left {
+  left: 0;
+  background: repeating-linear-gradient(
+    -36deg,
+    transparent 0,
+    transparent 14px,
+    rgba(26, 26, 26, 0.55) 14px,
+    rgba(26, 26, 26, 0.55) 15px
+  );
+  mask-image: linear-gradient(90deg, #000 40%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, #000 40%, transparent 100%);
+}
+
+.readers-banner__deco--right {
+  right: 0;
+  background: repeating-linear-gradient(
+    36deg,
+    transparent 0,
+    transparent 14px,
+    rgba(26, 26, 26, 0.55) 14px,
+    rgba(26, 26, 26, 0.55) 15px
+  );
+  mask-image: linear-gradient(270deg, #000 40%, transparent 100%);
+  -webkit-mask-image: linear-gradient(270deg, #000 40%, transparent 100%);
+}
+
+.readers-banner__inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--layout-max, 1320px);
+  margin: 0 auto;
+  padding: var(--section-pad-y-sm, clamp(1.05rem, 2.45vw, 1.85rem))
+    max(var(--layout-gutter, clamp(0.9375rem, 2.85vw, 1.875rem)), env(safe-area-inset-right, 0))
+    var(--section-pad-y-sm, clamp(1.05rem, 2.45vw, 1.85rem))
+    max(var(--layout-gutter, clamp(0.9375rem, 2.85vw, 1.875rem)), env(safe-area-inset-left, 0));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(1.1rem, 2.85vw, 2.1rem);
+}
+
+.readers-banner__heading {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 0.92;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.readers-banner__line {
+  display: block;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.75rem, 5vw, 2.65rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  text-shadow:
+    1px 1px 0 rgba(0, 0, 0, 0.22),
+    2px 2px 0 rgba(0, 0, 0, 0.2),
+    3px 3px 0 rgba(0, 0, 0, 0.18),
+    4px 4px 0 rgba(0, 0, 0, 0.16),
+    5px 5px 0 rgba(0, 0, 0, 0.14),
+    6px 6px 0 rgba(0, 0, 0, 0.12),
+    7px 7px 0 rgba(0, 0, 0, 0.1),
+    8px 8px 0 rgba(0, 0, 0, 0.08),
+    9px 9px 14px rgba(0, 0, 0, 0.12);
+}
+
+.readers-banner__aside {
+  max-width: 22rem;
+  text-align: left;
+}
+
+.readers-banner__lede {
+  margin: 0 0 0.7rem;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: clamp(0.875rem, 2vw, 0.9375rem);
+  line-height: 1.5;
+  color: #2a2a2a;
+}
+
+.readers-banner__lede strong {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.readers-banner__cta {
+  display: inline-block;
+  padding: 0.55rem 1.15rem;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background: #1a1a1a;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.readers-banner__cta:hover {
+  background: #c41e3a;
+}
+
+.readers-banner__cta:focus-visible {
+  outline: 2px solid #c41e3a;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .readers-banner__cta {
+    transition: none;
+  }
+
+  .readers-banner__line {
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.15);
+  }
+}
