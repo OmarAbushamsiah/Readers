@@ -5,10 +5,12 @@
 
   const slides = track.querySelectorAll(".hero-slide");
   const dots = carousel.querySelectorAll(".hero-dot");
-  const prevBtn = document.getElementById("hero-prev");
-  const nextBtn = document.getElementById("hero-next");
+  const toggleBtn = document.getElementById("hero-toggle");
+
+  carousel.style.setProperty("--hero-slides", String(slides.length));
   let index = 0;
   let timer = null;
+  let isPlaying = true;
   const autoplayMs = 5500;
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -45,9 +47,21 @@
   function startAutoplay() {
     stopAutoplay();
     if (reducedMotion.matches) return;
+    if (!isPlaying) return;
     timer = window.setInterval(function () {
       goTo(index + 1);
     }, autoplayMs);
+  }
+
+  function setPlaying(nextPlaying) {
+    isPlaying = Boolean(nextPlaying);
+    if (toggleBtn) {
+      toggleBtn.setAttribute("aria-pressed", isPlaying ? "true" : "false");
+      const label = toggleBtn.querySelector(".hero-toggle__label");
+      if (label) label.textContent = isPlaying ? "Pause" : "Play";
+    }
+    if (isPlaying) startAutoplay();
+    else stopAutoplay();
   }
 
   dots.forEach(function (dot) {
@@ -55,33 +69,23 @@
       var i = Number(dot.getAttribute("data-index"));
       if (Number.isNaN(i)) return;
       goTo(i);
-      startAutoplay();
+      if (isPlaying) startAutoplay();
     });
   });
 
-  if (prevBtn) {
-    prevBtn.addEventListener("click", function () {
-      goTo(index - 1);
-      startAutoplay();
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", function () {
+      setPlaying(!isPlaying);
     });
   }
-
-  if (nextBtn) {
-    nextBtn.addEventListener("click", function () {
-      goTo(index + 1);
-      startAutoplay();
-    });
-  }
-
-  carousel.addEventListener("mouseenter", stopAutoplay);
-  carousel.addEventListener("mouseleave", startAutoplay);
 
   reducedMotion.addEventListener("change", function () {
     applyReducedMotion();
-    startAutoplay();
+    if (reducedMotion.matches) setPlaying(false);
+    else setPlaying(true);
   });
 
   applyReducedMotion();
   goTo(0);
-  startAutoplay();
+  setPlaying(!reducedMotion.matches);
 })();

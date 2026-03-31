@@ -4,6 +4,12 @@
   border-top: var(--divider, 1px solid #e8e6e1);
 }
 
+/* No top divider above these two sections (per design) */
+.bestsellers[aria-labelledby="bestsellers-heading"],
+.bestsellers[aria-labelledby="new-arrivals-heading"] {
+  border-top: none;
+}
+
 /* Tighter top when stacked after the quick-icons band (avoids double “air”) */
 .quick-icons + .bestsellers {
   padding-top: clamp(1.25rem, 3vw, 2rem);

@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="css/readers-banner.css" />
   <link rel="stylesheet" href="css/cards.css" />
   <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer" />
 </head>
 <body>
   <div class="utility-bar">
@@ -73,13 +74,11 @@
         </a>
         <div class="main-header__nav-panel" id="main-header-nav-panel">
           <nav class="primary-nav" aria-label="Primary">
-            <a href="index.html">Home</a>
             <a href="#">Books</a>
             <a href="#">Arabic Books</a>
             <a href="#">Gadgets &amp; Accessories</a>
-            <a href="#">Accessories</a>
-            <a href="#">Toys</a>
-            <a href="#">Special Offers</a>
+            <a href="#">Stationery</a>
+            <a href="#">Games&amp;puzzles</a>
           </nav>
         </div>
         <label class="search-field">
@@ -87,7 +86,7 @@
           <input type="search" name="search" placeholder="Search readers.jo products…" autocomplete="off" />
         </label>
         <div class="header-actions__cluster">
-          <a class="btn-cart" href="#">Cart</a>
+          <a class="btn-cart" href="#"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>Cart</a>
           <a class="btn-account" href="#">
             <svg class="btn-account__icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
@@ -115,6 +114,7 @@
         Free delivery JOD 50+ in Amman&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;New arrivals weekly&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Up to 30% off selected titles&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Members’ picks every Friday
       </p>
       <a href="#offers" class="announcement-bar__to-offers" aria-label="Go to offers section">
+        <span class="announcement-bar__to-offers-text" aria-hidden="true">Offers</span>
         <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
           <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
         </svg>
@@ -126,16 +126,6 @@
     <!-- Hero images: same three as readers.jo homepage nivo slider (March 2026) -->
     <section class="hero-section" aria-label="Featured">
       <div class="hero-carousel" id="hero-carousel">
-        <button type="button" class="hero-arrow hero-arrow--prev" id="hero-prev" aria-label="Previous slide">
-          <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false">
-            <path fill="currentColor" d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
-          </svg>
-        </button>
-        <button type="button" class="hero-arrow hero-arrow--next" id="hero-next" aria-label="Next slide">
-          <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false">
-            <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
-          </svg>
-        </button>
         <div class="hero-track" id="hero-track">
           <article class="hero-slide is-active" id="hero-slide-0" data-slide="0" aria-hidden="false">
             <div class="hero-slide__visual">
@@ -152,11 +142,35 @@
               <img src="assets/hero-3.jpg" alt="Featured banner 3" width="1920" height="599" decoding="async" />
             </div>
           </article>
+          <article class="hero-slide" id="hero-slide-3" data-slide="3" aria-hidden="true">
+            <div class="hero-slide__visual">
+              <img
+                src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1920&q=80"
+                alt="Featured banner 4"
+                width="1920"
+                height="599"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </article>
         </div>
-        <div class="hero-dots" role="tablist" aria-label="Slide navigation">
-          <button type="button" class="hero-dot is-active" role="tab" aria-selected="true" aria-controls="hero-slide-0" id="hero-tab-0" data-index="0"><span class="visually-hidden">Slide 1</span></button>
-          <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-controls="hero-slide-1" id="hero-tab-1" data-index="1"><span class="visually-hidden">Slide 2</span></button>
-          <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-controls="hero-slide-2" id="hero-tab-2" data-index="2"><span class="visually-hidden">Slide 3</span></button>
+        <div class="hero-controls" aria-label="Carousel controls">
+          <div class="hero-dots" role="tablist" aria-label="Slide navigation">
+            <button type="button" class="hero-dot is-active" role="tab" aria-selected="true" aria-controls="hero-slide-0" id="hero-tab-0" data-index="0"><span class="visually-hidden">Slide 1</span></button>
+            <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-controls="hero-slide-1" id="hero-tab-1" data-index="1"><span class="visually-hidden">Slide 2</span></button>
+            <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-controls="hero-slide-2" id="hero-tab-2" data-index="2"><span class="visually-hidden">Slide 3</span></button>
+            <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-controls="hero-slide-3" id="hero-tab-3" data-index="3"><span class="visually-hidden">Slide 4</span></button>
+          </div>
+          <button type="button" class="hero-toggle" id="hero-toggle" aria-pressed="true">
+            <span class="visually-hidden hero-toggle__label">Pause</span>
+            <svg class="hero-toggle__icon hero-toggle__icon--pause" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M6 5h4v14H6V5zm8 0h4v14h-4V5z" />
+            </svg>
+            <svg class="hero-toggle__icon hero-toggle__icon--play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M8 5v14l11-7L8 5z" />
+            </svg>
+          </button>
         </div>
       </div>
     </section>
@@ -165,160 +179,59 @@
 
     <section class="quick-icons" aria-label="Quick categories">
       <div class="quick-icons__inner">
-        <h2 class="quick-icons__title">You Might Be Looking For…</h2>
         <div class="quick-icons__grid">
-          <a class="quick-icon" href="#" aria-label="Best seller">
+          <a class="quick-icon quick-icon--fire" href="#" aria-label="Best seller">
             <span class="quick-icon__circle" aria-hidden="true">
-              <svg
-                viewBox="0 0 24 24"
-                width="40"
-                height="40"
-                aria-hidden="true"
-                focusable="false"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.15"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M 12 16.35 L 5.35 11.85 V 6.25 Q 5.35 5.45 6.15 5.45 H 12 M 12 5.45 H 17.85 Q 18.65 5.45 18.65 6.25 V 11.85 L 12 16.35" />
-                <path d="M 12 5.45 V 16.35" />
-                <path d="M 6.85 7.35 h 3.05 M 6.85 8.95 h 3.05 M 6.85 10.55 h 3.05" />
-                <path d="M 15.05 5.45 V 10.85 L 15.85 12.05 L 16.65 10.85 V 5.45" />
-              </svg>
+              <i class="fa-solid fa-fire" aria-hidden="true"></i>
             </span>
             <span class="quick-icon__label">Best seller</span>
           </a>
 
-          <a class="quick-icon" href="#" aria-label="New books">
+          <a class="quick-icon quick-icon--book" href="#" aria-label="New books">
             <span class="quick-icon__circle" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false">
-                <path fill="currentColor" d="M 2.9 17.35 V 19.85 L 5.15 18.95 V 16.45 Z" />
-                <path fill="currentColor" d="M 5.15 16.45 L 12.25 12.15 L 19.35 15.55 L 12.25 19.85 Z" />
-                <path fill="var(--quick-icon-paper)" d="M 5.9 16.85 L 11.55 13.45 L 17.1 16.35 L 11.55 19.75 Z" />
-                <path fill="currentColor" d="M 12.25 19.85 L 19.35 16.45 V 18.95 L 12.25 22.35 Z" />
-                <path fill="currentColor" d="M 7.35 11.05 L 14.85 7.15 L 21.1 10.25 L 13.6 14.15 Z" />
-                <path fill="var(--quick-icon-paper)" d="M 8.15 11.45 L 13.95 8.35 L 19.45 10.85 L 13.65 13.95 Z" />
-                <path fill="currentColor" d="M 7.35 11.05 V 13.35 L 9.35 12.55 V 10.25 Z" />
-                <path fill="currentColor" d="M 13.6 14.15 L 21.1 11.05 V 13.35 L 13.6 16.45 Z" />
-              </svg>
+              <i class="fa-solid fa-book-open" aria-hidden="true"></i>
             </span>
             <span class="quick-icon__label">New books</span>
           </a>
 
-          <a class="quick-icon" href="#" aria-label="Coming soon">
+          <a class="quick-icon quick-icon--pin" href="#" aria-label="Stationery">
             <span class="quick-icon__circle" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false">
-                <circle cx="9.75" cy="9.75" r="5.35" fill="none" stroke="currentColor" stroke-width="1.15" />
-                <g fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round">
-                  <path d="M9.75 5.15v.65M7.05 6.35l.45.45M5.85 9.75h.65M7.05 13.15l.45-.45M9.75 14.35v.65M12.45 13.15l-.45-.45M13.65 9.75h-.65M12.45 6.35l-.45.45" />
-                </g>
-                <circle cx="9.75" cy="9.75" r="0.55" fill="currentColor" />
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M9.75 7.35v2.65l1.75 1"
-                />
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.2"
-                  stroke-linecap="round"
-                  d="M5.35 6.9a6.1 6.1 0 0110.15-2.35"
-                />
-                <path fill="currentColor" d="M14.85 3.55l1.1 1.45-1.85.45.75-1.9z" />
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.25"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M16.85 13.4h3.35v1l-1.65 2.55 1.65 2.55v1h-3.35v-1l1.65-2.55-1.65-2.55v-1z"
-                />
-                <path fill="currentColor" d="M17.95 14.55h1.15v1.05l-.55.85-.55-.85v-1.05z" />
-                <path fill="currentColor" opacity="0.45" d="M17.35 17.35h2.35v1.15h-2.35v-1.15z" />
-              </svg>
+              <i class="fa-solid fa-thumbtack" aria-hidden="true"></i>
+            </span>
+            <span class="quick-icon__label">Stationery</span>
+          </a>
+
+          <a class="quick-icon quick-icon--puzzle" href="#" aria-label="Games and puzzles">
+            <span class="quick-icon__circle" aria-hidden="true">
+              <i class="fa-solid fa-puzzle-piece" aria-hidden="true"></i>
+            </span>
+            <span class="quick-icon__label">Games &amp; puzzles</span>
+          </a>
+
+          <a class="quick-icon quick-icon--clock" href="#" aria-label="Coming soon">
+            <span class="quick-icon__circle" aria-hidden="true">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
             </span>
             <span class="quick-icon__label">Coming soon</span>
           </a>
 
           <a class="quick-icon" href="#" aria-label="Little readers">
             <span class="quick-icon__circle" aria-hidden="true">
-              <svg
-                viewBox="0 0 24 24"
-                width="40"
-                height="40"
-                aria-hidden="true"
-                focusable="false"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M 7.1 3.9 L 7.35 2.65 M 9.2 3.35 L 9.65 2.2 M 12 2.5 V 1.35 M 14.8 3.35 L 14.35 2.2 M 16.9 3.9 L 16.65 2.65 M 5.85 5.5 L 4.85 4.85 M 18.15 5.5 L 19.15 4.85" />
-                <path
-                  d="M 12 4.35 Q 10.1 4.2 8.85 5.35 Q 7.85 6.25 8.05 7.65 Q 7.35 8.55 8.1 9.55 Q 8.85 10.55 10.35 10.85 Q 11.2 11.05 12 10.95 Q 12.85 11.05 13.65 10.85 Q 15.15 10.55 15.9 9.55 Q 16.65 8.55 15.95 7.65 Q 16.15 6.25 15.15 5.35 Q 13.9 4.2 12 4.35 Z"
-                />
-                <path d="M 9.5 6.8 Q 10.2 6.2 11 6.45 M 13 6.45 Q 13.8 6.2 14.5 6.8 M 10.2 8.1 Q 11.2 7.5 12 7.85 Q 12.8 7.5 13.8 8.1 M 11.1 9.35 Q 12 8.85 12.9 9.35" stroke-width="1.05" />
-                <path d="M 6.2 12.75 V 17.15 H 9.75 V 12.75 M 14.25 12.75 V 17.15 H 17.8 V 12.75" />
-                <path d="M 7.25 13.35 H 8.7 M 7.25 14.85 H 8.7 M 15.3 13.35 H 16.75 M 15.3 14.85 H 16.75" stroke-width="1" />
-                <path d="M 9.75 12.75 H 14.25 M 12 12.75 V 17.95" />
-                <path d="M 6.2 17.15 Q 12 19.25 17.8 17.15" />
-                <path d="M 10.75 17.95 H 13.25 V 19.4 Q 12 19.95 10.75 19.4 Z" />
-              </svg>
+              <i class="fa-solid fa-children" aria-hidden="true"></i>
             </span>
             <span class="quick-icon__label">Little readers</span>
           </a>
 
           <a class="quick-icon" href="#" aria-label="Teen and young adult">
             <span class="quick-icon__circle" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="36" height="36" aria-hidden="true" focusable="false">
-                <circle cx="12" cy="9" r="3.2" fill="currentColor" />
-                <path fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" d="M7.8 8.2a6.5 6.5 0 0 1 8.4 0" />
-                <path fill="currentColor" d="M4.5 9.8h2.2v5.2H4.5a1 1 0 0 1-1-1v-3.2a1 1 0 0 1 1-1z" />
-                <path fill="currentColor" d="M17.3 9.8h2.2a1 1 0 0 1 1 1v3.2a1 1 0 0 1-1 1h-2.2V9.8z" />
-                <path fill="currentColor" d="M9 14.5h6v5H9v-5zm1.2 1.3v2.4h3.6v-2.4h-3.6z" />
-              </svg>
+              <i class="fa-solid fa-book-open-reader" aria-hidden="true"></i>
             </span>
             <span class="quick-icon__label">Teen &amp; young</span>
           </a>
 
           <a class="quick-icon" href="#" aria-label="Adult and general classification">
             <span class="quick-icon__circle" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false">
-                <ellipse cx="12" cy="21.6" rx="5.2" ry="0.95" fill="currentColor" opacity="0.14" />
-                <circle cx="12" cy="5.35" r="1.55" fill="currentColor" />
-                <path fill="currentColor" d="M9.35 7.15h5.3v1.35a2.65 2.65 0 01-5.3 0V7.15z" />
-                <path fill="currentColor" d="M10.25 11.15h1.15v6.45h-1.15zM12.6 11.15h1.15v6.45H12.6z" />
-                <path
-                  fill="currentColor"
-                  d="M9.35 17.55h5.3v1.05a1.05 1.05 0 01-1.05 1.05h-3.2a1.05 1.05 0 01-1.05-1.05v-1.05z"
-                />
-                <path fill="currentColor" d="M10.4 7.4L7 4.35 5.85 5.95 9.25 8.95z" />
-                <path fill="currentColor" d="M13.6 7.4L17 4.35 18.15 5.95 14.75 8.95z" />
-                <g transform="translate(16.35 3.85) rotate(18)">
-                  <path
-                    fill="currentColor"
-                    d="M-1.35-2.65h2.7l.35 1.1h-3.4l.35-1.1zm-1 1.35h4.7l-.25 2.45a1.55 1.55 0 01-4.2 0l-.25-2.45zm1.35 3.95h2v1.15h-2v-1.15zm-.55 1.35h3.1v.85h-3.1v-.85z"
-                  />
-                  <path
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="0.55"
-                    stroke-linecap="round"
-                    d="M-1.5 0.35q-.45.35-.55.9M1.5 0.35q.45.35.55.9"
-                  />
-                </g>
-                <path
-                  fill="var(--quick-icon-paper)"
-                  d="M10.6 8.9 9.2 7.1 10.4 8.3 12 6.9 13.6 8.3 14.8 7.1 13.4 8.9 12 8.05z"
-                />
-                <circle cx="12" cy="10.85" r="1.4" fill="var(--quick-icon-paper)" />
-              </svg>
+              <i class="fa-solid fa-people-group" aria-hidden="true"></i>
             </span>
             <span class="quick-icon__label">Adult &amp; general</span>
           </a>

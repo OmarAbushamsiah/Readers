@@ -36,6 +36,12 @@ body {
   border-bottom: 1px solid #eee;
 }
 
+.site-header,
+.utility-bar {
+  /* Slightly wider than the main content container for a more premium desktop header */
+  --header-max: calc(var(--layout-max, 1320px) + 140px);
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -68,6 +74,9 @@ body {
 
 .utility-bar__inner {
   width: 100%;
+  max-width: var(--header-max, var(--layout-max, 1320px));
+  margin-left: auto;
+  margin-right: auto;
   padding: max(0.5rem, env(safe-area-inset-top, 0))
     max(var(--layout-gutter, clamp(0.9375rem, 2.85vw, 1.875rem)), env(safe-area-inset-right, 0))
     0.5rem
@@ -77,6 +86,17 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
+}
+
+/* Keep utility links on one line only on wide desktop */
+@media (min-width: 1101px) {
+  .utility-bar__inner {
+    flex-wrap: nowrap;
+  }
+
+  .utility-nav {
+    flex-wrap: nowrap;
+  }
 }
 
 .utility-nav {
@@ -231,13 +251,16 @@ body {
 
 .main-header__inner {
   width: 100%;
+  max-width: var(--header-max, var(--layout-max, 1320px));
+  margin-left: auto;
+  margin-right: auto;
   padding: 0.85rem var(--layout-gutter, clamp(0.9375rem, 2.85vw, 1.875rem)) 1rem;
-  padding-left: max(var(--layout-gutter, clamp(0.9375rem, 2.85vw, 1.875rem)), env(safe-area-inset-left));
-  padding-right: max(var(--layout-gutter, clamp(0.9375rem, 2.85vw, 1.875rem)), env(safe-area-inset-right));
+  padding-left: max(var(--layout-gutter, clamp(0.9375rem, 2.85vw, 1.875rem)), env(safe-area-inset-left, 0));
+  padding-right: max(var(--layout-gutter, clamp(0.9375rem, 2.85vw, 1.875rem)), env(safe-area-inset-right, 0));
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  gap: 1.25rem;
+  gap: clamp(0.65rem, 1.35vw, 1.25rem);
 }
 
 .main-header__menu-btn {
@@ -290,7 +313,7 @@ body {
 
 .brand__logo {
   height: auto;
-  width: min(200px, 38vw);
+  width: clamp(132px, 18vw, 200px);
   max-height: 52px;
   object-fit: contain;
   display: block;
@@ -307,9 +330,26 @@ body {
 .primary-nav a {
   color: #111;
   text-decoration: none;
-  font-size: 0.9375rem;
+  font-size: clamp(0.8125rem, 0.72rem + 0.28vw, 0.9375rem);
   font-weight: 700;
   white-space: nowrap;
+}
+
+@media (min-width: 1101px) and (max-width: 1280px) {
+  /* Tighter desktop header before we collapse to hamburger */
+  .primary-nav {
+    gap: clamp(0.35rem, 0.8vw, 0.9rem);
+  }
+
+  .btn-cart {
+    padding: 0.5rem 1.05rem;
+    font-size: 0.8125rem;
+  }
+
+  .btn-account {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.8125rem;
+  }
 }
 
 .primary-nav a:hover {
@@ -329,8 +369,8 @@ body {
 }
 
 .search-field input {
-  width: min(320px, 28vw);
-  min-width: 140px;
+  width: clamp(140px, 18vw, 300px);
+  min-width: 0;
   max-width: 100%;
   padding: 0.55rem 1.1rem;
   border: 1px solid #c5c5c5;
@@ -355,6 +395,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.45rem;
   padding: 0.55rem 1.35rem;
   border-radius: 999px;
   background: #e31e2f;
@@ -413,7 +454,8 @@ body {
 }
 
 /* Phone / small tablet: hamburger + full-width search + collapsible nav */
-@media (max-width: 768px) {
+/* Collapse earlier on smaller desktop/tablet to prevent header breaking */
+@media (max-width: 1100px) {
   .main-header__menu-btn {
     display: inline-flex;
     grid-column: 1;
@@ -523,38 +565,34 @@ body {
   }
 }
 
-@media (min-width: 769px) {
+/* Wide desktop: single professional row, no wrapping, no scrolling */
+@media (min-width: 1101px) {
   .main-header__nav-panel {
     display: contents;
   }
 
   .primary-nav {
     flex: 1 1 auto;
+    flex-wrap: nowrap;
     justify-content: center;
+    align-items: center;
     min-width: 0;
-  }
-}
-
-/* Tablet: drop nav to second row so search + actions fit */
-@media (min-width: 769px) and (max-width: 1100px) {
-  .main-header__inner {
-    flex-wrap: wrap;
-    row-gap: 0.65rem;
+    gap: clamp(0.45rem, 0.95vw, 1.1rem);
   }
 
-  .primary-nav {
-    flex: 1 1 100%;
-    order: 6;
-    justify-content: flex-start;
-    padding-top: 0.15rem;
+  .primary-nav a {
+    flex-shrink: 0;
   }
 
   .search-field {
-    margin-left: auto;
+    flex: 0 0 auto;
+    min-width: 0;
+    max-width: 300px;
   }
 
   .search-field input {
-    width: min(260px, 42vw);
+    width: clamp(180px, 16vw, 300px);
+    max-width: 100%;
   }
 }
 
