@@ -124,11 +124,23 @@ body {
   flex-shrink: 0;
 }
 
+.utility-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-shrink: 0;
+  --utility-pill-h: 30px;
+  --utility-pill-w: 88px;
+}
+
 .lang-switcher__toggle {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
   padding: 0.35rem 0.55rem 0.35rem 0.65rem;
+  min-height: var(--utility-pill-h);
+  min-width: var(--utility-pill-w);
+  justify-content: space-between;
   border: 1px solid #d5d5d5;
   border-radius: 999px;
   background: #fafafa;

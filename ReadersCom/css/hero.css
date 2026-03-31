@@ -1,10 +1,11 @@
 .hero-section {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: clip;
 }
 
 .hero-carousel {
@@ -33,15 +34,15 @@
   min-width: calc(100% / var(--hero-slides));
   display: flex;
   align-items: stretch;
-  min-height: min(36vw, 290px);
-  max-height: min(44vw, 400px);
+  min-height: min(42vw, 340px);
+  max-height: min(52vw, 500px);
   background: #ececec;
 }
 
 .hero-slide__visual {
   flex: 1;
   position: relative;
-  min-height: 270px;
+  min-height: 320px;
 }
 
 .hero-slide__visual img {
@@ -58,8 +59,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.65rem;
-  padding: 0.7rem max(var(--layout-gutter, clamp(0.9375rem, 2.85vw, 1.875rem)), env(safe-area-inset-right, 0))
-    0 max(var(--layout-gutter, clamp(0.9375rem, 2.85vw, 1.875rem)), env(safe-area-inset-left, 0));
+  padding: 1rem max(var(--layout-gutter, clamp(0.9375rem, 2.85vw, 1.875rem)), env(safe-area-inset-right, 0))
+    0.25rem max(var(--layout-gutter, clamp(0.9375rem, 2.85vw, 1.875rem)), env(safe-area-inset-left, 0));
   background: transparent;
 }
 
@@ -71,14 +72,14 @@
   justify-content: center;
   border: none;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);
+  background: transparent;
   color: #1a1a1a;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }
 
 .hero-toggle:hover {
-  background: #fff;
+  background: transparent;
   transform: translateY(-1px);
 }
 
@@ -112,7 +113,7 @@
   padding: 0;
   border: none;
   border-radius: 50%;
-  background: #000;
+  background: #d1d5db;
   cursor: pointer;
   transition: background 0.25s ease, transform 0.2s ease;
 }
@@ -133,12 +134,12 @@
 
 @media (max-width: 900px) {
   .hero-slide {
-    min-height: min(42vw, 220px);
-    max-height: min(52vw, 280px);
+    min-height: min(52vw, 260px);
+    max-height: min(62vw, 340px);
   }
 
   .hero-slide__visual {
-    min-height: 200px;
+    min-height: 240px;
   }
 
   .hero-toggle {
@@ -153,12 +154,12 @@
   }
 
   .hero-slide {
-    min-height: min(48vw, 200px);
-    max-height: min(58vw, 240px);
+    min-height: min(60vw, 240px);
+    max-height: min(70vw, 320px);
   }
 
   .hero-slide__visual {
-    min-height: 168px;
+    min-height: 220px;
   }
 
   .hero-controls {

@@ -12,6 +12,16 @@
   <link rel="stylesheet" href="css/product-page.css" />
   <link rel="stylesheet" href="css/cards.css" />
   <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/theme.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("readers_theme");
+        if (t === "dark") document.documentElement.dataset.theme = "dark";
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <div class="utility-bar">
@@ -22,28 +32,33 @@
         <a href="#">Sign In / Register</a>
         <a href="#">Contact Us</a>
       </nav>
-      <div class="lang-switcher">
-        <button
-          type="button"
-          class="lang-switcher__toggle"
-          id="lang-switcher-toggle"
-          aria-expanded="false"
-          aria-haspopup="listbox"
-          aria-controls="lang-switcher-menu"
-        >
-          <span class="lang-switcher__value" id="lang-switcher-label" lang="en">English</span>
-          <svg class="lang-switcher__chevron" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false">
-            <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
-          </svg>
+      <div class="utility-controls">
+        <div class="lang-switcher">
+          <button
+            type="button"
+            class="lang-switcher__toggle"
+            id="lang-switcher-toggle"
+            aria-expanded="false"
+            aria-haspopup="listbox"
+            aria-controls="lang-switcher-menu"
+          >
+            <span class="lang-switcher__value" id="lang-switcher-label" lang="en">English</span>
+            <svg class="lang-switcher__chevron" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+            </svg>
+          </button>
+          <ul class="lang-switcher__menu" id="lang-switcher-menu" role="listbox" aria-labelledby="lang-switcher-toggle" hidden>
+            <li role="presentation">
+              <button type="button" class="lang-switcher__option" role="option" data-lang="en" lang="en" aria-selected="true">English</button>
+            </li>
+            <li role="presentation">
+              <button type="button" class="lang-switcher__option" role="option" data-lang="ar" lang="ar" aria-selected="false">العربية</button>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="theme-toggle theme-toggle--day-night" id="theme-toggle" aria-pressed="false">
+          <span class="visually-hidden">Toggle dark mode</span>
         </button>
-        <ul class="lang-switcher__menu" id="lang-switcher-menu" role="listbox" aria-labelledby="lang-switcher-toggle" hidden>
-          <li role="presentation">
-            <button type="button" class="lang-switcher__option" role="option" data-lang="en" lang="en" aria-selected="true">English</button>
-          </li>
-          <li role="presentation">
-            <button type="button" class="lang-switcher__option" role="option" data-lang="ar" lang="ar" aria-selected="false">العربية</button>
-          </li>
-        </ul>
       </div>
     </div>
   </div>
@@ -102,6 +117,9 @@
   </main>
 
   <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__deco" aria-hidden="true">
+      <span class="site-footer__book"></span>
+    </div>
     <div class="site-footer__inner">
       <div class="site-footer__grid">
         <div class="site-footer__col">
@@ -124,14 +142,6 @@
           </ul>
         </div>
         <div class="site-footer__col">
-          <h2 class="site-footer__title">Extras</h2>
-          <ul class="site-footer__list">
-            <li><a href="#">Gift Certificates</a></li>
-            <li><a href="#">Specials</a></li>
-            <li><a href="#">My Account</a></li>
-          </ul>
-        </div>
-        <div class="site-footer__col">
           <h2 class="site-footer__title">Store information</h2>
           <p class="site-footer__text">Building 5, Issa An-Nouri St., 7th Circle,<br />Amman-Jordan</p>
           <p class="site-footer__text">
@@ -139,6 +149,14 @@
             <a href="tel:+96265828488">(+962) 6 582 8488</a>
           </p>
           <p class="site-footer__text">Email: <a href="mailto:support@readers.jo">support@readers.jo</a></p>
+        </div>
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">Newsletter</h2>
+          <form class="site-footer__newsletter" action="#" method="post">
+            <label class="visually-hidden" for="footer-newsletter-email">Email</label>
+            <input class="site-footer__newsletter-input" id="footer-newsletter-email" type="email" name="email" placeholder="Enter your email" autocomplete="email" />
+            <button class="site-footer__newsletter-btn" type="submit">Join us</button>
+          </form>
         </div>
       </div>
       <div class="site-footer__bottom">
@@ -154,5 +172,6 @@
 
   <script src="js/site-header.js" defer></script>
   <script src="js/product-static.js" defer></script>
+  <script src="js/theme.js" defer></script>
 </body>
 </html>

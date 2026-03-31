@@ -343,7 +343,8 @@
 .quick-icon__label {
   font-family: "DM Sans", system-ui, sans-serif;
   font-size: 0.8125rem;
-  font-weight: 500;
+  font-weight: 700;
+  font-style: normal;
   color: #1f2933;
   text-align: center;
   line-height: 1.3;

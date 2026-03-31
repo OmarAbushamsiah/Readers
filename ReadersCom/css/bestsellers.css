@@ -6,7 +6,8 @@
 
 /* No top divider above these two sections (per design) */
 .bestsellers[aria-labelledby="bestsellers-heading"],
-.bestsellers[aria-labelledby="new-arrivals-heading"] {
+.bestsellers[aria-labelledby="new-arrivals-heading"],
+.bestsellers[aria-labelledby="stationery-heading"] {
   border-top: none;
 }
 

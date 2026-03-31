@@ -3,7 +3,7 @@
 .collections {
   background: #fff;
   padding: var(--section-pad-y, clamp(1.35rem, 3.15vw, 2.35rem)) 0;
-  border-top: var(--divider, 1px solid #e8e6e1);
+  border-top: none;
 }
 
 .collections__inner {
@@ -19,7 +19,8 @@
   border-bottom: var(--divider-soft, 1px solid #e5e2dc);
   font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   font-size: clamp(1.85rem, 3.5vw, 2.35rem);
-  font-weight: 600;
+  font-weight: 700;
+  font-style: italic;
   letter-spacing: 0.02em;
   color: #1a1a1a;
 }
@@ -158,7 +159,7 @@
   width: 2.35rem;
   height: 2.35rem;
   border-radius: 50%;
-  background: #1a1a1a;
+  background: #8a8680;
   color: #fff;
   display: flex;
   align-items: center;
