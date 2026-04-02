@@ -376,7 +376,7 @@ html[data-theme="dark"] .site-footer__bubbles {
 .site-footer__newsletter {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: stretch;
   gap: 0.5rem;
 }
@@ -505,6 +505,22 @@ html[data-theme="dark"] .site-footer__bubbles {
     margin-left: 0;
     text-align: left;
     width: 100%;
+  }
+
+  .site-footer__newsletter-btn {
+    flex: 1 1 auto;
+    min-width: min(100%, 9rem);
+  }
+}
+
+@media (max-width: 420px) {
+  .site-footer__newsletter {
+    flex-direction: column;
+  }
+
+  .site-footer__newsletter-btn {
+    width: 100%;
+    min-width: 0;
   }
 }
 

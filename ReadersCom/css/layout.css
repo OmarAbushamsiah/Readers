@@ -13,7 +13,22 @@
 
 main {
   display: block;
+  min-width: 0;
+  width: 100%;
   padding-bottom: max(clamp(1.05rem, 2.35vw, 1.65rem), env(safe-area-inset-bottom, 0));
+}
+
+/* Responsive foundation — fluid media, no horizontal spill */
+body {
+  overflow-x: clip;
+  min-width: 0;
+}
+
+img,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {

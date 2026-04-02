@@ -166,3 +166,15 @@
     padding-top: 0.55rem;
   }
 }
+
+/* Short phones / narrow landscape */
+@media (max-width: 380px) {
+  .hero-slide {
+    min-height: min(58vw, 200px);
+    max-height: min(68vw, 280px);
+  }
+
+  .hero-slide__visual {
+    min-height: 180px;
+  }
+}
