@@ -1,4 +1,50 @@
 (function () {
+  function run() {
+  var fontRefreshQueue = [];
+  var fontRefreshFlushScheduled = false;
+
+  function scheduleFontRefresh(runApply) {
+    fontRefreshQueue.push(runApply);
+    if (fontRefreshFlushScheduled) return;
+    fontRefreshFlushScheduled = true;
+    function flush() {
+      fontRefreshFlushScheduled = false;
+      var q = fontRefreshQueue.splice(0);
+      if (!q.length) return;
+      requestAnimationFrame(function () {
+        q.forEach(function (fn) {
+          fn();
+        });
+      });
+    }
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(flush);
+    } else {
+      window.addEventListener("load", flush, { once: true });
+    }
+  }
+
+  var resizeHandlers = [];
+  var resizeRafId = 0;
+
+  function registerBestsellersResize(handler) {
+    resizeHandlers.push(handler);
+    if (resizeHandlers.length > 1) return;
+    window.addEventListener(
+      "resize",
+      function () {
+        if (resizeRafId) return;
+        resizeRafId = requestAnimationFrame(function () {
+          resizeRafId = 0;
+          resizeHandlers.forEach(function (h) {
+            h();
+          });
+        });
+      },
+      { passive: true }
+    );
+  }
+
   function gapPx(track) {
     var g = getComputedStyle(track).gap;
     if (!g || g === "normal") return 0;
@@ -18,10 +64,14 @@
   }
 
   function bindCarousel(carousel) {
+    if (carousel.dataset.readersBsBound === "1") return;
+
     var track = carousel.querySelector(".bestsellers__track");
     var prevBtn = carousel.querySelector(".bestsellers__nav--prev");
     var nextBtn = carousel.querySelector(".bestsellers__nav--next");
     if (!track || !prevBtn || !nextBtn) return;
+
+    carousel.dataset.readersBsBound = "1";
 
     var popOnTransitionEnd = null;
 
@@ -127,15 +177,11 @@
       apply(false);
     });
 
-    window.addEventListener(
-      "resize",
-      function () {
-        detachPopTransitionListener();
-        index = Math.min(index, maxIndex());
-        apply(true);
-      },
-      { passive: true }
-    );
+    registerBestsellersResize(function () {
+      detachPopTransitionListener();
+      index = Math.min(index, maxIndex());
+      apply(true);
+    });
 
     function runApply() {
       requestAnimationFrame(function () {
@@ -143,14 +189,53 @@
       });
     }
 
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(runApply);
-    } else {
-      window.addEventListener("load", runApply);
-    }
+    scheduleFontRefresh(runApply);
 
     runApply();
   }
 
-  document.querySelectorAll(".bestsellers__carousel").forEach(bindCarousel);
+  var list = Array.prototype.slice.call(
+    document.querySelectorAll(".bestsellers__carousel")
+  );
+  if (!list.length) return;
+
+  bindCarousel(list[0]);
+
+  if (list.length === 1) return;
+
+  var rest = list.slice(1);
+
+  if (typeof IntersectionObserver !== "function") {
+    rest.forEach(bindCarousel);
+  } else {
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          io.unobserve(entry.target);
+          bindCarousel(entry.target);
+        });
+      },
+      { root: null, rootMargin: "300px 0px 360px 0px", threshold: 0.01 }
+    );
+    rest.forEach(function (c) {
+      io.observe(c);
+    });
+    window.addEventListener(
+      "load",
+      function () {
+        rest.forEach(function (c) {
+          if (c.dataset.readersBsBound !== "1") bindCarousel(c);
+        });
+      },
+      { once: true }
+    );
+  }
+  }
+
+  if (typeof requestIdleCallback === "function") {
+    requestIdleCallback(run, { timeout: 220 });
+  } else {
+    setTimeout(run, 1);
+  }
 })();

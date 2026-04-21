@@ -7,7 +7,7 @@
       header.classList.toggle("site-header--scrolled", y > threshold);
     }
     window.addEventListener("scroll", syncScrollShadow, { passive: true });
-    syncScrollShadow();
+    requestAnimationFrame(syncScrollShadow);
   }
 
   var menuBtn = document.getElementById("main-header-menu-btn");
@@ -72,6 +72,15 @@
     });
   }
 
+  function closeAllAccountMenus() {
+    document.querySelectorAll(".account-menu").forEach(function (root) {
+      var menu = root.querySelector(".account-menu__dropdown");
+      var toggle = root.querySelector(".account-menu__toggle");
+      if (menu) menu.hidden = true;
+      if (toggle) toggle.setAttribute("aria-expanded", "false");
+    });
+  }
+
   document.querySelectorAll(".lang-switcher").forEach(function (root) {
     var btn = root.querySelector(".lang-switcher__toggle");
     var menu = root.querySelector(".lang-switcher__menu");
@@ -82,6 +91,7 @@
       e.stopPropagation();
       var wasClosed = menu.hidden;
       closeAllLangMenus();
+      closeAllAccountMenus();
       if (wasClosed) {
         menu.hidden = false;
         btn.setAttribute("aria-expanded", "true");
@@ -105,8 +115,38 @@
     });
   });
 
-  document.addEventListener("click", closeAllLangMenus);
+  document.querySelectorAll(".account-menu").forEach(function (root) {
+    var btn = root.querySelector(".account-menu__toggle");
+    var menu = root.querySelector(".account-menu__dropdown");
+    if (!btn || !menu) return;
+
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var wasClosed = menu.hidden;
+      closeAllLangMenus();
+      closeAllAccountMenus();
+      if (wasClosed) {
+        menu.hidden = false;
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
+
+    /* Delegation so dynamically rebuilt dropdown links still close the menu */
+    root.addEventListener("click", function (e) {
+      if (e.target.closest(".account-menu__dropdown a")) {
+        closeAllAccountMenus();
+      }
+    });
+  });
+
+  document.addEventListener("click", function () {
+    closeAllLangMenus();
+    closeAllAccountMenus();
+  });
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closeAllLangMenus();
+    if (e.key === "Escape") {
+      closeAllLangMenus();
+      closeAllAccountMenus();
+    }
   });
 })();

@@ -87,5 +87,7 @@
 
   applyReducedMotion();
   goTo(0);
-  setPlaying(!reducedMotion.matches);
+  requestAnimationFrame(function () {
+    setPlaying(!reducedMotion.matches);
+  });
 })();

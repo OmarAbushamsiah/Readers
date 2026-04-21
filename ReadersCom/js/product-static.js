@@ -656,6 +656,24 @@
       "</div></section>";
 
     bindCoverHoverZoom(mount);
+    var cartBtn = mount.querySelector(".product-actions__cart");
+    var qtyInput = mount.querySelector(".product-qty input");
+    if (cartBtn && window.ReadersCart) {
+      cartBtn.addEventListener("click", function () {
+        var q = parseInt(qtyInput && qtyInput.value, 10) || 1;
+        ReadersCart.add(
+          {
+            isbn: p.isbn,
+            title: p.title,
+            author: p.author,
+            price: p.price,
+            format: p.format,
+            img: p.img,
+          },
+          q
+        );
+      });
+    }
     window.scrollTo(0, 0);
   }
 

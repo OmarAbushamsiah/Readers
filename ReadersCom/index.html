@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Readers Bookshop — Prototype</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/header.css" />
   <link rel="stylesheet" href="css/announcement.css" />
@@ -18,7 +24,6 @@
   <link rel="stylesheet" href="css/readers-banner.css" />
   <link rel="stylesheet" href="css/cards.css" />
   <link rel="stylesheet" href="css/footer.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/welcome-panel.css" />
   <script>
@@ -30,12 +35,15 @@
     })();
   </script>
 </head>
+
 <body>
-  <div class="welcome-overlay" id="welcome-overlay" role="dialog" aria-modal="true" aria-label="Welcome" aria-hidden="false">
+  <div class="welcome-overlay" id="welcome-overlay" role="dialog" aria-modal="true" aria-label="Welcome"
+    aria-hidden="false">
     <div class="welcome-panel" role="document">
       <button type="button" class="welcome-panel__close" id="welcome-close" aria-label="Close welcome panel">
         <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
-          <path fill="currentColor" d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3l6.3 6.3 6.3-6.3 1.4 1.4z"/>
+          <path fill="currentColor"
+            d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3l6.3 6.3 6.3-6.3 1.4 1.4z" />
         </svg>
       </button>
       <div class="welcome-panel__frame">
@@ -44,11 +52,16 @@
           <div class="welcome-panel__content">
             <img class="welcome-panel__logo" src="assets/logo.png" alt="Readers Bookshop" width="240" height="70" />
             <h2 class="welcome-panel__headline">Welcome to Readers</h2>
-            <p class="welcome-panel__text">Readers aims to provide something for every reader in a welcoming and enjoyable environment.</p>
-            <p class="welcome-panel__text">We connect cultures and readers with captivating stories, irrespective of the language they choose to explore them in.</p>
-            <p class="welcome-panel__text welcome-panel__text--lead">At Readers, we believe in the power of books to inspire, educate, and entertain. Join us on our Newsletter of literary discovery, and let the pages of our books transport you to new worlds and perspectives.</p>
+            <p class="welcome-panel__text">Readers aims to provide something for every reader in a welcoming and
+              enjoyable environment.</p>
+            <p class="welcome-panel__text">We connect cultures and readers with captivating stories, irrespective of the
+              language they choose to explore them in.</p>
+            <p class="welcome-panel__text welcome-panel__text--lead">At Readers, we believe in the power of books to
+              inspire, educate, and entertain. Join us on our Newsletter of literary discovery, and let the pages of our
+              books transport you to new worlds and perspectives.</p>
             <form class="welcome-panel__form" action="#" method="post">
-              <input class="welcome-panel__input" id="welcome-email" type="email" name="email" placeholder="Enter your email" autocomplete="email" />
+              <input class="welcome-panel__input" id="welcome-email" type="email" name="email"
+                placeholder="Enter your email" autocomplete="email" />
               <button class="welcome-panel__btn" type="submit">Join us</button>
             </form>
             <div class="welcome-panel__stats" aria-label="Readers highlights">
@@ -68,32 +81,30 @@
   <div class="utility-bar">
     <div class="utility-bar__inner">
       <nav class="utility-nav" aria-label="Utility">
-        <a href="#">Gift Card</a>
-        <a href="#">Wish List</a>
-        <a href="#">Sign In / Register</a>
+        <a href="giftcard.html">Gift Card</a>
+        <a href="wishlist.html">Wish List</a>
+        <a href="login.html">Sign In / Register</a>
         <a href="#">Contact Us</a>
       </nav>
       <div class="utility-controls">
         <div class="lang-switcher">
-          <button
-            type="button"
-            class="lang-switcher__toggle"
-            id="lang-switcher-toggle"
-            aria-expanded="false"
-            aria-haspopup="listbox"
-            aria-controls="lang-switcher-menu"
-          >
+          <button type="button" class="lang-switcher__toggle" id="lang-switcher-toggle" aria-expanded="false"
+            aria-haspopup="listbox" aria-controls="lang-switcher-menu">
             <span class="lang-switcher__value" id="lang-switcher-label" lang="en">English</span>
-            <svg class="lang-switcher__chevron" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false">
+            <svg class="lang-switcher__chevron" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"
+              focusable="false">
               <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
             </svg>
           </button>
-          <ul class="lang-switcher__menu" id="lang-switcher-menu" role="listbox" aria-labelledby="lang-switcher-toggle" hidden>
+          <ul class="lang-switcher__menu" id="lang-switcher-menu" role="listbox" aria-labelledby="lang-switcher-toggle"
+            hidden>
             <li role="presentation">
-              <button type="button" class="lang-switcher__option" role="option" data-lang="en" lang="en" aria-selected="true">English</button>
+              <button type="button" class="lang-switcher__option" role="option" data-lang="en" lang="en"
+                aria-selected="true">English</button>
             </li>
             <li role="presentation">
-              <button type="button" class="lang-switcher__option" role="option" data-lang="ar" lang="ar" aria-selected="false">العربية</button>
+              <button type="button" class="lang-switcher__option" role="option" data-lang="ar" lang="ar"
+                aria-selected="false">العربية</button>
             </li>
           </ul>
         </div>
@@ -106,15 +117,10 @@
   <header class="site-header">
     <div class="main-header">
       <div class="main-header__inner">
-        <button
-          type="button"
-          class="main-header__menu-btn"
-          id="main-header-menu-btn"
-          aria-expanded="false"
-          aria-controls="main-header-nav-panel"
-          aria-label="Open navigation menu"
-        >
-          <svg class="main-header__menu-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+        <button type="button" class="main-header__menu-btn" id="main-header-menu-btn" aria-expanded="false"
+          aria-controls="main-header-nav-panel" aria-label="Open navigation menu">
+          <svg class="main-header__menu-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"
+            focusable="false">
             <path fill="currentColor" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" />
           </svg>
         </button>
@@ -123,7 +129,7 @@
         </a>
         <div class="main-header__nav-panel" id="main-header-nav-panel">
           <nav class="primary-nav" aria-label="Primary">
-            <a href="#">Books</a>
+            <a href="category.html#all">Books</a>
             <a href="#">Arabic Books</a>
             <a href="#">Gadgets &amp; Accessories</a>
             <a href="#">Stationery</a>
@@ -135,14 +141,27 @@
           <input type="search" name="search" placeholder="Search readers.jo products…" autocomplete="off" />
         </label>
         <div class="header-actions__cluster">
-          <a class="btn-cart" href="#"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>Cart</a>
-          <a class="btn-account" href="#">
-            <svg class="btn-account__icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-            <span class="btn-account__label">Account</span>
-          </a>
+          <a class="btn-cart" href="cart.html"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>Cart</a>
+          <div class="account-menu">
+            <button type="button" class="btn-account account-menu__toggle" id="account-menu-toggle"
+              aria-expanded="false" aria-haspopup="menu" aria-controls="account-menu-dropdown">
+              <svg class="btn-account__icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"
+                focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+              <span class="btn-account__label">Account</span>
+              <svg class="account-menu__chevron" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"
+                focusable="false">
+                <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+              </svg>
+            </button>
+            <ul class="account-menu__dropdown" id="account-menu-dropdown" role="menu" hidden>
+              <li role="none"><a role="menuitem" href="login.html" class="account-menu__link">Login</a></li>
+              <li role="none"><a role="menuitem" href="register.html" class="account-menu__link">Register</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -150,24 +169,40 @@
 
   <div class="announcement-bar" role="region" aria-label="News and offers">
     <p class="visually-hidden">
-      Offers: free delivery on orders over JOD 50 in Amman; new arrivals weekly; up to 30% off selected titles; members’ picks every Friday.
+      Offers: free delivery on orders over JOD 50 in Amman; new arrivals weekly; up to 30% off selected titles; members’
+      picks every Friday.
     </p>
     <div class="announcement-bar__inner">
       <div class="announcement-marquee" aria-hidden="true">
         <div class="announcement-marquee__track">
           <!-- Four identical segments, no space between tags = seamless infinite marquee -->
-          <span class="announcement-marquee__segment">Free delivery JOD 50+ in Amman&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;New arrivals weekly&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Up to 30% off selected titles&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Members’ picks every Friday&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="announcement-marquee__segment">Free delivery JOD 50+ in Amman&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;New arrivals weekly&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Up to 30% off selected titles&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Members’ picks every Friday&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="announcement-marquee__segment">Free delivery JOD 50+ in Amman&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;New arrivals weekly&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Up to 30% off selected titles&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Members’ picks every Friday&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="announcement-marquee__segment">Free delivery JOD 50+ in Amman&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;New arrivals weekly&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Up to 30% off selected titles&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Members’ picks every Friday&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <span class="announcement-marquee__segment">Free delivery JOD 50+ in
+            Amman&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;New arrivals
+            weekly&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Up to 30% off selected
+            titles&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Members’ picks every
+            Friday&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+            class="announcement-marquee__segment">Free delivery JOD 50+ in
+            Amman&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;New arrivals
+            weekly&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Up to 30% off selected
+            titles&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Members’ picks every
+            Friday&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+            class="announcement-marquee__segment">Free delivery JOD 50+ in
+            Amman&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;New arrivals
+            weekly&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Up to 30% off selected
+            titles&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Members’ picks every
+            Friday&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+            class="announcement-marquee__segment">Free delivery JOD 50+ in
+            Amman&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;New arrivals
+            weekly&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Up to 30% off selected
+            titles&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Members’ picks every
+            Friday&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;</span>
         </div>
       </div>
       <p class="announcement-bar__static-fallback">
-        Free delivery JOD 50+ in Amman&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;New arrivals weekly&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Up to 30% off selected titles&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Members’ picks every Friday
+        Free delivery JOD 50+ in Amman&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;New arrivals
+        weekly&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Up to 30% off selected
+        titles&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Members’ picks every Friday
       </p>
-      <a href="#offers" class="announcement-bar__to-offers" aria-label="Go to offers section">
-        <span class="announcement-bar__to-offers-text" aria-hidden="true">Offers</span>
-        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
-          <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
-        </svg>
-      </a>
     </div>
   </div>
 
@@ -178,7 +213,8 @@
         <div class="hero-track" id="hero-track">
           <article class="hero-slide is-active" id="hero-slide-0" data-slide="0" aria-hidden="false">
             <div class="hero-slide__visual">
-              <img src="assets/hero-1.jpeg" alt="Featured banner 1" width="1920" height="599" decoding="async" />
+              <img src="assets/hero-1.jpeg" alt="Featured banner 1" width="1920" height="599" decoding="async"
+                fetchpriority="high" />
             </div>
           </article>
           <article class="hero-slide" id="hero-slide-1" data-slide="1" aria-hidden="true">
@@ -193,30 +229,31 @@
           </article>
           <article class="hero-slide" id="hero-slide-3" data-slide="3" aria-hidden="true">
             <div class="hero-slide__visual">
-              <img
-                src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1920&q=80"
-                alt="Featured banner 4"
-                width="1920"
-                height="599"
-                loading="lazy"
-                decoding="async"
-              />
+              <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1920&q=80"
+                alt="Featured banner 4" width="1920" height="599" loading="lazy" decoding="async" />
             </div>
           </article>
         </div>
         <div class="hero-controls" aria-label="Carousel controls">
           <div class="hero-dots" role="tablist" aria-label="Slide navigation">
-            <button type="button" class="hero-dot is-active" role="tab" aria-selected="true" aria-controls="hero-slide-0" id="hero-tab-0" data-index="0"><span class="visually-hidden">Slide 1</span></button>
-            <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-controls="hero-slide-1" id="hero-tab-1" data-index="1"><span class="visually-hidden">Slide 2</span></button>
-            <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-controls="hero-slide-2" id="hero-tab-2" data-index="2"><span class="visually-hidden">Slide 3</span></button>
-            <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-controls="hero-slide-3" id="hero-tab-3" data-index="3"><span class="visually-hidden">Slide 4</span></button>
+            <button type="button" class="hero-dot is-active" role="tab" aria-selected="true"
+              aria-controls="hero-slide-0" id="hero-tab-0" data-index="0"><span class="visually-hidden">Slide
+                1</span></button>
+            <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-controls="hero-slide-1"
+              id="hero-tab-1" data-index="1"><span class="visually-hidden">Slide 2</span></button>
+            <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-controls="hero-slide-2"
+              id="hero-tab-2" data-index="2"><span class="visually-hidden">Slide 3</span></button>
+            <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-controls="hero-slide-3"
+              id="hero-tab-3" data-index="3"><span class="visually-hidden">Slide 4</span></button>
           </div>
           <button type="button" class="hero-toggle" id="hero-toggle" aria-pressed="true">
             <span class="visually-hidden hero-toggle__label">Pause</span>
-            <svg class="hero-toggle__icon hero-toggle__icon--pause" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+            <svg class="hero-toggle__icon hero-toggle__icon--pause" viewBox="0 0 24 24" width="16" height="16"
+              aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M6 5h4v14H6V5zm8 0h4v14h-4V5z" />
             </svg>
-            <svg class="hero-toggle__icon hero-toggle__icon--play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+            <svg class="hero-toggle__icon hero-toggle__icon--play" viewBox="0 0 24 24" width="16" height="16"
+              aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M8 5v14l11-7L8 5z" />
             </svg>
           </button>
@@ -298,207 +335,269 @@
         </header>
 
         <div class="bestsellers__carousel" aria-label="Bestsellers carousel">
-          <button
-            type="button"
-            class="bestsellers__nav bestsellers__nav--prev"
-            id="bestsellers-prev"
-            aria-controls="bestsellers-track"
-            aria-label="Show previous bestseller"
-          >
+          <button type="button" class="bestsellers__nav bestsellers__nav--prev" id="bestsellers-prev"
+            aria-controls="bestsellers-track" aria-label="Show previous bestseller">
             <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
             </svg>
           </button>
           <div class="bestsellers__viewport" aria-live="polite">
             <div class="bestsellers__track" id="bestsellers-track">
-          <article class="book-card">
-            <a href="product.html#9781529964332" class="book-card__link"><span class="visually-hidden">View product page</span></a>
-            <div class="book-card__cover">
-              <img src="https://readers.jo/image/cache/catalog/product/9781529964332-600x770.jpg" alt="Cover: Zorg" width="600" height="770" loading="lazy" decoding="async" />
-              <div class="book-card__overlay">
-                <button type="button" class="book-card__cta">Add to cart</button>
-              </div>
-            </div>
-            <div class="book-card__body">
-              <h3 class="book-card__title">Zorg: A Tale of Greed, Murder and the Abolition of…</h3>
-              <p class="book-card__author">Siddharth Kara</p>
-              <p class="book-card__price"><span class="book-card__currency">JOD</span> 19.00</p>
-            </div>
-          </article>
+              <article class="book-card">
+                <a href="product.html#9781529964332" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
+                <div class="book-card__cover">
+                  <img src="https://readers.jo/image/cache/catalog/product/9781529964332-600x770.jpg" alt="Cover: Zorg"
+                    width="600" height="770" loading="lazy" decoding="async" />
+                  <div class="book-card__overlay">
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="book-card__body">
+                  <h3 class="book-card__title">Zorg: A Tale of Greed, Murder and the Abolition of…</h3>
+                  <p class="book-card__author">Siddharth Kara</p>
+                  <p class="book-card__price"><span class="book-card__currency">JOD</span> 19.00</p>
+                </div>
+              </article>
 
-          <article class="book-card">
-            <a href="product.html#9781035011438" class="book-card__link"><span class="visually-hidden">View product page</span></a>
-            <div class="book-card__cover">
-              <img src="https://readers.jo/image/cache/catalog/product/9781035011438-600x770.jpg" alt="Cover: Girl Dinner" width="600" height="770" loading="lazy" decoding="async" />
-              <div class="book-card__overlay">
-                <button type="button" class="book-card__cta">Add to cart</button>
-              </div>
-            </div>
-            <div class="book-card__body">
-              <h3 class="book-card__title">Girl Dinner</h3>
-              <p class="book-card__author">Olivie Blake</p>
-              <p class="book-card__price"><span class="book-card__currency">JOD</span> 16.50</p>
-            </div>
-          </article>
+              <article class="book-card">
+                <a href="product.html#9781035011438" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
+                <div class="book-card__cover">
+                  <img src="https://readers.jo/image/cache/catalog/product/9781035011438-600x770.jpg"
+                    alt="Cover: Girl Dinner" width="600" height="770" loading="lazy" decoding="async" />
+                  <div class="book-card__overlay">
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="book-card__body">
+                  <h3 class="book-card__title">Girl Dinner</h3>
+                  <p class="book-card__author">Olivie Blake</p>
+                  <p class="book-card__price"><span class="book-card__currency">JOD</span> 16.50</p>
+                </div>
+              </article>
 
-          <article class="book-card">
-            <a href="product.html#9781529155419" class="book-card__link"><span class="visually-hidden">View product page</span></a>
-            <div class="book-card__cover">
-              <img src="https://readers.jo/image/cache/catalog/product/9781529155419-600x770.jpg" alt="Cover: Land of Sweet Forever" width="600" height="770" loading="lazy" decoding="async" />
-              <div class="book-card__overlay">
-                <button type="button" class="book-card__cta">Add to cart</button>
-              </div>
-            </div>
-            <div class="book-card__body">
-              <h3 class="book-card__title">Land of Sweet Forever</h3>
-              <p class="book-card__author">Harper Lee</p>
-              <p class="book-card__price"><span class="book-card__currency">JOD</span> 24.50</p>
-            </div>
-          </article>
+              <article class="book-card">
+                <a href="product.html#9781529155419" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
+                <div class="book-card__cover">
+                  <img src="https://readers.jo/image/cache/catalog/product/9781529155419-600x770.jpg"
+                    alt="Cover: Land of Sweet Forever" width="600" height="770" loading="lazy" decoding="async" />
+                  <div class="book-card__overlay">
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="book-card__body">
+                  <h3 class="book-card__title">Land of Sweet Forever</h3>
+                  <p class="book-card__author">Harper Lee</p>
+                  <p class="book-card__price"><span class="book-card__currency">JOD</span> 24.50</p>
+                </div>
+              </article>
 
-          <article class="book-card">
-            <a href="product.html#9780008701840" class="book-card__link"><span class="visually-hidden">View product page</span></a>
-            <div class="book-card__cover">
-              <img src="https://readers.jo/image/cache/catalog/product/9780008701840-600x770.jpg" alt="Cover: Birthing" width="600" height="770" loading="lazy" decoding="async" />
-              <div class="book-card__overlay">
-                <button type="button" class="book-card__cta">Add to cart</button>
-              </div>
-            </div>
-            <div class="book-card__body">
-              <h3 class="book-card__title">Birthing</h3>
-              <p class="book-card__author">Davina McCall</p>
-              <p class="book-card__price"><span class="book-card__currency">JOD</span> 24.50</p>
-            </div>
-          </article>
+              <article class="book-card">
+                <a href="product.html#9780008701840" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
+                <div class="book-card__cover">
+                  <img src="https://readers.jo/image/cache/catalog/product/9780008701840-600x770.jpg"
+                    alt="Cover: Birthing" width="600" height="770" loading="lazy" decoding="async" />
+                  <div class="book-card__overlay">
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="book-card__body">
+                  <h3 class="book-card__title">Birthing</h3>
+                  <p class="book-card__author">Davina McCall</p>
+                  <p class="book-card__price"><span class="book-card__currency">JOD</span> 24.50</p>
+                </div>
+              </article>
 
-          <article class="book-card">
-            <a href="product.html#9781787334656" class="book-card__link"><span class="visually-hidden">View product page</span></a>
-            <div class="book-card__cover">
-              <img src="https://readers.jo/image/cache/catalog/product/9781787334656-600x770.jpg" alt="Cover: Ferment" width="600" height="770" loading="lazy" decoding="async" />
-              <div class="book-card__overlay">
-                <button type="button" class="book-card__cta">Add to cart</button>
-              </div>
-            </div>
-            <div class="book-card__body">
-              <h3 class="book-card__title">Ferment: The Life-Changing Power of Microbes</h3>
-              <p class="book-card__author">Tim Spector</p>
-              <p class="book-card__price"><span class="book-card__currency">JOD</span> 27.50</p>
-            </div>
-          </article>
+              <article class="book-card">
+                <a href="product.html#9781787334656" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
+                <div class="book-card__cover">
+                  <img src="https://readers.jo/image/cache/catalog/product/9781787334656-600x770.jpg"
+                    alt="Cover: Ferment" width="600" height="770" loading="lazy" decoding="async" />
+                  <div class="book-card__overlay">
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="book-card__body">
+                  <h3 class="book-card__title">Ferment: The Life-Changing Power of Microbes</h3>
+                  <p class="book-card__author">Tim Spector</p>
+                  <p class="book-card__price"><span class="book-card__currency">JOD</span> 27.50</p>
+                </div>
+              </article>
 
-          <article class="book-card">
-            <a href="product.html#9781529146844" class="book-card__link"><span class="visually-hidden">View product page</span></a>
-            <div class="book-card__cover">
-              <img src="https://readers.jo/image/cache/catalog/product/9781529146844-600x770.jpg" alt="Cover: Digital Exhaustion" width="600" height="770" loading="lazy" decoding="async" />
-              <div class="book-card__overlay">
-                <button type="button" class="book-card__cta">Add to cart</button>
-              </div>
-            </div>
-            <div class="book-card__body">
-              <h3 class="book-card__title">Digital Exhaustion: Simple Rules for Reclaiming Yo…</h3>
-              <p class="book-card__author">Paul Leonardi</p>
-              <p class="book-card__price"><span class="book-card__currency">JOD</span> 19.00</p>
-            </div>
-          </article>
+              <article class="book-card">
+                <a href="product.html#9781529146844" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
+                <div class="book-card__cover">
+                  <img src="https://readers.jo/image/cache/catalog/product/9781529146844-600x770.jpg"
+                    alt="Cover: Digital Exhaustion" width="600" height="770" loading="lazy" decoding="async" />
+                  <div class="book-card__overlay">
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="book-card__body">
+                  <h3 class="book-card__title">Digital Exhaustion: Simple Rules for Reclaiming Yo…</h3>
+                  <p class="book-card__author">Paul Leonardi</p>
+                  <p class="book-card__price"><span class="book-card__currency">JOD</span> 19.00</p>
+                </div>
+              </article>
 
-          <article class="book-card">
-            <a href="product.html#9781408783276" class="book-card__link"><span class="visually-hidden">View product page</span></a>
-            <div class="book-card__cover">
-              <img src="https://readers.jo/image/cache/catalog/product/9781408783276-600x770.jpg" alt="Cover: Keeping Your Brain in Shape" width="600" height="770" loading="lazy" decoding="async" />
-              <div class="book-card__overlay">
-                <button type="button" class="book-card__cta">Add to cart</button>
-              </div>
-            </div>
-            <div class="book-card__body">
-              <h3 class="book-card__title">Keeping Your Brain in Shape</h3>
-              <p class="book-card__author">Mark Avery</p>
-              <p class="book-card__price"><span class="book-card__currency">JOD</span> 18.00</p>
-            </div>
-          </article>
+              <article class="book-card">
+                <a href="product.html#9781408783276" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
+                <div class="book-card__cover">
+                  <img src="https://readers.jo/image/cache/catalog/product/9781408783276-600x770.jpg"
+                    alt="Cover: Keeping Your Brain in Shape" width="600" height="770" loading="lazy" decoding="async" />
+                  <div class="book-card__overlay">
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="book-card__body">
+                  <h3 class="book-card__title">Keeping Your Brain in Shape</h3>
+                  <p class="book-card__author">Mark Avery</p>
+                  <p class="book-card__price"><span class="book-card__currency">JOD</span> 18.00</p>
+                </div>
+              </article>
 
-          <article class="book-card">
-            <a href="product.html#9781399825788" class="book-card__link"><span class="visually-hidden">View product page</span></a>
-            <div class="book-card__cover">
-              <img src="https://readers.jo/image/cache/catalog/product/9781399825788-600x770.jpg" alt="Cover: Finding Grace" width="600" height="770" loading="lazy" decoding="async" />
-              <div class="book-card__overlay">
-                <button type="button" class="book-card__cta">Add to cart</button>
-              </div>
-            </div>
-            <div class="book-card__body">
-              <h3 class="book-card__title">Finding Grace</h3>
-              <p class="book-card__author">Loretta Rothschild</p>
-              <p class="book-card__price"><span class="book-card__currency">JOD</span> 17.50</p>
-            </div>
-          </article>
+              <article class="book-card">
+                <a href="product.html#9781399825788" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
+                <div class="book-card__cover">
+                  <img src="https://readers.jo/image/cache/catalog/product/9781399825788-600x770.jpg"
+                    alt="Cover: Finding Grace" width="600" height="770" loading="lazy" decoding="async" />
+                  <div class="book-card__overlay">
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="book-card__body">
+                  <h3 class="book-card__title">Finding Grace</h3>
+                  <p class="book-card__author">Loretta Rothschild</p>
+                  <p class="book-card__price"><span class="book-card__currency">JOD</span> 17.50</p>
+                </div>
+              </article>
 
-          <article class="book-card">
-            <a href="product.html#9781035064656" class="book-card__link"><span class="visually-hidden">View product page</span></a>
-            <div class="book-card__cover">
-              <img src="https://readers.jo/image/cache/catalog/product/9781035064656-600x770.jpg" alt="Cover: Bury Our Bones" width="600" height="770" loading="lazy" decoding="async" />
-              <div class="book-card__overlay">
-                <button type="button" class="book-card__cta">Add to cart</button>
-              </div>
-            </div>
-            <div class="book-card__body">
-              <h3 class="book-card__title">Bury Our Bones in the Shallow Ground</h3>
-              <p class="book-card__author">V.E. Schwab</p>
-              <p class="book-card__price"><span class="book-card__currency">JOD</span> 22.00</p>
-            </div>
-          </article>
+              <article class="book-card">
+                <a href="product.html#9781035064656" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
+                <div class="book-card__cover">
+                  <img src="https://readers.jo/image/cache/catalog/product/9781035064656-600x770.jpg"
+                    alt="Cover: Bury Our Bones" width="600" height="770" loading="lazy" decoding="async" />
+                  <div class="book-card__overlay">
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="book-card__body">
+                  <h3 class="book-card__title">Bury Our Bones in the Shallow Ground</h3>
+                  <p class="book-card__author">V.E. Schwab</p>
+                  <p class="book-card__price"><span class="book-card__currency">JOD</span> 22.00</p>
+                </div>
+              </article>
 
-          <article class="book-card">
-            <a href="product.html#9780008640217" class="book-card__link"><span class="visually-hidden">View product page</span></a>
-            <div class="book-card__cover">
-              <img src="https://readers.jo/image/cache/catalog/product/9780008640217-600x770.jpg" alt="Cover: End Game" width="600" height="770" loading="lazy" decoding="async" />
-              <div class="book-card__overlay">
-                <button type="button" class="book-card__cta">Add to cart</button>
-              </div>
-            </div>
-            <div class="book-card__body">
-              <h3 class="book-card__title">End Game</h3>
-              <p class="book-card__author">Jeffrey Archer</p>
-              <p class="book-card__price"><span class="book-card__currency">JOD</span> 16.00</p>
-            </div>
-          </article>
+              <article class="book-card">
+                <a href="product.html#9780008640217" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
+                <div class="book-card__cover">
+                  <img src="https://readers.jo/image/cache/catalog/product/9780008640217-600x770.jpg"
+                    alt="Cover: End Game" width="600" height="770" loading="lazy" decoding="async" />
+                  <div class="book-card__overlay">
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="book-card__body">
+                  <h3 class="book-card__title">End Game</h3>
+                  <p class="book-card__author">Jeffrey Archer</p>
+                  <p class="book-card__price"><span class="book-card__currency">JOD</span> 16.00</p>
+                </div>
+              </article>
 
-          <article class="book-card">
-            <a href="product.html#9780008466817" class="book-card__link"><span class="visually-hidden">View product page</span></a>
-            <div class="book-card__cover">
-              <img src="https://readers.jo/image/cache/catalog/product/9780008466817-600x770.jpg" alt="Cover: Shattered Lands" width="600" height="770" loading="lazy" decoding="async" />
-              <div class="book-card__overlay">
-                <button type="button" class="book-card__cta">Add to cart</button>
-              </div>
-            </div>
-            <div class="book-card__body">
-              <h3 class="book-card__title">Shattered Lands</h3>
-              <p class="book-card__author">Sam Dalrymple</p>
-              <p class="book-card__price"><span class="book-card__currency">JOD</span> 21.50</p>
-            </div>
-          </article>
+              <article class="book-card">
+                <a href="product.html#9780008466817" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
+                <div class="book-card__cover">
+                  <img src="https://readers.jo/image/cache/catalog/product/9780008466817-600x770.jpg"
+                    alt="Cover: Shattered Lands" width="600" height="770" loading="lazy" decoding="async" />
+                  <div class="book-card__overlay">
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="book-card__body">
+                  <h3 class="book-card__title">Shattered Lands</h3>
+                  <p class="book-card__author">Sam Dalrymple</p>
+                  <p class="book-card__price"><span class="book-card__currency">JOD</span> 21.50</p>
+                </div>
+              </article>
 
-          <article class="book-card">
-            <a href="product.html#9780008710002" class="book-card__link"><span class="visually-hidden">View product page</span></a>
-            <div class="book-card__cover">
-              <img src="https://readers.jo/image/cache/catalog/product/9780008710002-600x770.jpg" alt="Cover: Last Death of the Year" width="600" height="770" loading="lazy" decoding="async" />
-              <div class="book-card__overlay">
-                <button type="button" class="book-card__cta">Add to cart</button>
-              </div>
-            </div>
-            <div class="book-card__body">
-              <h3 class="book-card__title">Last Death of the Year</h3>
-              <p class="book-card__author">Sophie Hannah</p>
-              <p class="book-card__price"><span class="book-card__currency">JOD</span> 19.50</p>
-            </div>
-          </article>
+              <article class="book-card">
+                <a href="product.html#9780008710002" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
+                <div class="book-card__cover">
+                  <img src="https://readers.jo/image/cache/catalog/product/9780008710002-600x770.jpg"
+                    alt="Cover: Last Death of the Year" width="600" height="770" loading="lazy" decoding="async" />
+                  <div class="book-card__overlay">
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="book-card__body">
+                  <h3 class="book-card__title">Last Death of the Year</h3>
+                  <p class="book-card__author">Sophie Hannah</p>
+                  <p class="book-card__price"><span class="book-card__currency">JOD</span> 19.50</p>
+                </div>
+              </article>
             </div>
           </div>
-          <button
-            type="button"
-            class="bestsellers__nav bestsellers__nav--next"
-            id="bestsellers-next"
-            aria-controls="bestsellers-track"
-            aria-label="Show next bestseller"
-          >
+          <button type="button" class="bestsellers__nav bestsellers__nav--next" id="bestsellers-next"
+            aria-controls="bestsellers-track" aria-label="Show next bestseller">
             <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
             </svg>
@@ -510,14 +609,10 @@
     <section class="posters" aria-label="Featured posters">
       <div class="posters__inner">
         <div class="posters__carousel" aria-label="Promotional posters carousel">
-          <button
-            type="button"
-            class="posters__nav posters__nav--prev"
-            id="posters-prev"
-            aria-controls="posters-track"
-            aria-label="Show previous posters"
-          >
-            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <button type="button" class="posters__nav posters__nav--prev" id="posters-prev" aria-controls="posters-track"
+            aria-label="Show previous posters">
+            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false" fill="none"
+              stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <path d="M15 6l-6 6 6 6" />
             </svg>
           </button>
@@ -537,14 +632,8 @@
               <article class="poster-card poster-card--preorder">
                 <div class="poster-card__inner">
                   <div class="poster-preorder__visual">
-                    <img
-                      src="https://readers.jo/image/cache/catalog/product/9781529964332-600x770.jpg"
-                      alt=""
-                      width="600"
-                      height="770"
-                      loading="lazy"
-                      decoding="async"
-                    />
+                    <img src="https://readers.jo/image/cache/catalog/product/9781529964332-600x770.jpg" alt=""
+                      width="600" height="770" loading="lazy" decoding="async" />
                     <span class="poster-preorder__badge">50% off RRP</span>
                   </div>
                   <div class="poster-preorder__copy">
@@ -558,14 +647,8 @@
               <article class="poster-card poster-card--exclusive">
                 <div class="poster-card__inner">
                   <div class="poster-exclusive__visual">
-                    <img
-                      src="https://readers.jo/image/cache/catalog/product/9781035011438-600x770.jpg"
-                      alt=""
-                      width="600"
-                      height="770"
-                      loading="lazy"
-                      decoding="async"
-                    />
+                    <img src="https://readers.jo/image/cache/catalog/product/9781035011438-600x770.jpg" alt=""
+                      width="600" height="770" loading="lazy" decoding="async" />
                     <span class="poster-exclusive__badge">
                       <span class="poster-exclusive__badge-w" aria-hidden="true">R</span>
                       <span class="poster-exclusive__badge-lines">Exclusive<br />edition</span>
@@ -583,14 +666,10 @@
               </article>
             </div>
           </div>
-          <button
-            type="button"
-            class="posters__nav posters__nav--next"
-            id="posters-next"
-            aria-controls="posters-track"
-            aria-label="Show next posters"
-          >
-            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <button type="button" class="posters__nav posters__nav--next" id="posters-next" aria-controls="posters-track"
+            aria-label="Show next posters">
+            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false" fill="none"
+              stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <path d="M9 6l6 6-6 6" />
             </svg>
           </button>
@@ -608,13 +687,8 @@
         </header>
 
         <div class="bestsellers__carousel" aria-label="New Arrivals carousel">
-          <button
-            type="button"
-            class="bestsellers__nav bestsellers__nav--prev"
-            id="new-arrivals-prev"
-            aria-controls="new-arrivals-track"
-            aria-label="Show previous new arrival"
-          >
+          <button type="button" class="bestsellers__nav bestsellers__nav--prev" id="new-arrivals-prev"
+            aria-controls="new-arrivals-track" aria-label="Show previous new arrival">
             <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
             </svg>
@@ -622,11 +696,17 @@
           <div class="bestsellers__viewport" aria-live="polite">
             <div class="bestsellers__track" id="new-arrivals-track">
               <article class="book-card">
-                <a href="product.html#9781804290446" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9781804290446" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781804290446-600x770.jpg" alt="Cover: A Philosophy of Walking" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781804290446-600x770.jpg"
+                    alt="Cover: A Philosophy of Walking" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">Add to cart</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -636,11 +716,17 @@
                 </div>
               </article>
               <article class="book-card">
-                <a href="product.html#9780753554142" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9780753554142" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9780753554142-600x770.jpg" alt="Cover: A Short Philosophy of Birds" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9780753554142-600x770.jpg"
+                    alt="Cover: A Short Philosophy of Birds" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">Add to cart</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -650,11 +736,17 @@
                 </div>
               </article>
               <article class="book-card">
-                <a href="product.html#9781847740670" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9781847740670" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781847740670-600x770.jpg" alt="Cover: A Treasury of Hadith" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781847740670-600x770.jpg"
+                    alt="Cover: A Treasury of Hadith" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">Add to cart</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -664,11 +756,17 @@
                 </div>
               </article>
               <article class="book-card">
-                <a href="product.html#9780140432442" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9780140432442" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9780140432442-600x770.jpg" alt="Cover: A Treatise of Human Nature" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9780140432442-600x770.jpg"
+                    alt="Cover: A Treatise of Human Nature" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">Add to cart</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -678,11 +776,17 @@
                 </div>
               </article>
               <article class="book-card">
-                <a href="product.html#9781760632717" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9781760632717" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781760632717-600x770.jpg" alt="Cover: Advice for the Dying" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781760632717-600x770.jpg"
+                    alt="Cover: Advice for the Dying" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">Add to cart</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -692,11 +796,18 @@
                 </div>
               </article>
               <article class="book-card">
-                <a href="product.html#9781906949334" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9781906949334" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/special/9781906949334-600x770.jpg" alt="Cover: A Thinking Person's Guide To Islam" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/special/9781906949334-600x770.jpg"
+                    alt="Cover: A Thinking Person's Guide To Islam" width="600" height="770" loading="lazy"
+                    decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">Add to cart</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -707,13 +818,8 @@
               </article>
             </div>
           </div>
-          <button
-            type="button"
-            class="bestsellers__nav bestsellers__nav--next"
-            id="new-arrivals-next"
-            aria-controls="new-arrivals-track"
-            aria-label="Show next new arrival"
-          >
+          <button type="button" class="bestsellers__nav bestsellers__nav--next" id="new-arrivals-next"
+            aria-controls="new-arrivals-track" aria-label="Show next new arrival">
             <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
             </svg>
@@ -732,13 +838,8 @@
         </header>
 
         <div class="bestsellers__carousel" aria-label="Coming Soon carousel">
-          <button
-            type="button"
-            class="bestsellers__nav bestsellers__nav--prev"
-            id="coming-soon-prev"
-            aria-controls="coming-soon-track"
-            aria-label="Show previous coming soon title"
-          >
+          <button type="button" class="bestsellers__nav bestsellers__nav--prev" id="coming-soon-prev"
+            aria-controls="coming-soon-track" aria-label="Show previous coming soon title">
             <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
             </svg>
@@ -746,11 +847,17 @@
           <div class="bestsellers__viewport" aria-live="polite">
             <div class="bestsellers__track" id="coming-soon-track">
               <article class="book-card">
-                <a href="product.html#9781529964332" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9781529964332" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781529964332-600x770.jpg" alt="Cover: Zorg" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781529964332-600x770.jpg" alt="Cover: Zorg"
+                    width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">PreOrder</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Pre-Order</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -761,11 +868,17 @@
               </article>
 
               <article class="book-card">
-                <a href="product.html#9781035011438" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9781035011438" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781035011438-600x770.jpg" alt="Cover: Girl Dinner" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781035011438-600x770.jpg"
+                    alt="Cover: Girl Dinner" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">PreOrder</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Pre-Order</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -776,11 +889,17 @@
               </article>
 
               <article class="book-card">
-                <a href="product.html#9781529155419" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9781529155419" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781529155419-600x770.jpg" alt="Cover: Land of Sweet Forever" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781529155419-600x770.jpg"
+                    alt="Cover: Land of Sweet Forever" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">PreOrder</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Pre-Order</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -791,11 +910,17 @@
               </article>
 
               <article class="book-card">
-                <a href="product.html#9780008701840" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9780008701840" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9780008701840-600x770.jpg" alt="Cover: Birthing" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9780008701840-600x770.jpg"
+                    alt="Cover: Birthing" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">PreOrder</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Pre-Order</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -806,11 +931,17 @@
               </article>
 
               <article class="book-card">
-                <a href="product.html#9781787334656" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9781787334656" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781787334656-600x770.jpg" alt="Cover: Ferment" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781787334656-600x770.jpg"
+                    alt="Cover: Ferment" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">PreOrder</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Pre-Order</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -821,11 +952,17 @@
               </article>
 
               <article class="book-card">
-                <a href="product.html#9781529146844" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9781529146844" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781529146844-600x770.jpg" alt="Cover: Digital Exhaustion" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781529146844-600x770.jpg"
+                    alt="Cover: Digital Exhaustion" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">PreOrder</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Pre-Order</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -836,11 +973,17 @@
               </article>
 
               <article class="book-card">
-                <a href="product.html#9781408783276" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9781408783276" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781408783276-600x770.jpg" alt="Cover: Keeping Your Brain in Shape" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781408783276-600x770.jpg"
+                    alt="Cover: Keeping Your Brain in Shape" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">PreOrder</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Pre-Order</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -851,11 +994,17 @@
               </article>
 
               <article class="book-card">
-                <a href="product.html#9781399825788" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9781399825788" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781399825788-600x770.jpg" alt="Cover: Finding Grace" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781399825788-600x770.jpg"
+                    alt="Cover: Finding Grace" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">PreOrder</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Pre-Order</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -866,13 +1015,8 @@
               </article>
             </div>
           </div>
-          <button
-            type="button"
-            class="bestsellers__nav bestsellers__nav--next"
-            id="coming-soon-next"
-            aria-controls="coming-soon-track"
-            aria-label="Show next coming soon title"
-          >
+          <button type="button" class="bestsellers__nav bestsellers__nav--next" id="coming-soon-next"
+            aria-controls="coming-soon-track" aria-label="Show next coming soon title">
             <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
             </svg>
@@ -909,13 +1053,8 @@
         </header>
 
         <div class="bestsellers__carousel" aria-label="Books to Change Your Mind carousel">
-          <button
-            type="button"
-            class="bestsellers__nav bestsellers__nav--prev"
-            id="mind-books-prev"
-            aria-controls="mind-books-track"
-            aria-label="Show previous title"
-          >
+          <button type="button" class="bestsellers__nav bestsellers__nav--prev" id="mind-books-prev"
+            aria-controls="mind-books-track" aria-label="Show previous title">
             <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
             </svg>
@@ -923,11 +1062,18 @@
           <div class="bestsellers__viewport" aria-live="polite">
             <div class="bestsellers__track" id="mind-books-track">
               <article class="book-card">
-                <a href="product.html#9781784296124" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9781784296124" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781784296124-600x770.jpg" alt="Cover: 50 Islam Ideas You Really Need to Know" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781784296124-600x770.jpg"
+                    alt="Cover: 50 Islam Ideas You Really Need to Know" width="600" height="770" loading="lazy"
+                    decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">Add to cart</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -937,11 +1083,17 @@
                 </div>
               </article>
               <article class="book-card">
-                <a href="product.html#9780674273559" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9780674273559" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9780674273559-600x770.png" alt="Cover: A Brief History Of Equality" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9780674273559-600x770.png"
+                    alt="Cover: A Brief History Of Equality" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">Add to cart</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -951,11 +1103,17 @@
                 </div>
               </article>
               <article class="book-card">
-                <a href="product.html#9780140444391" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9780140444391" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9780140444391-600x770.jpg" alt="Cover: A Discourse on Inequality" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9780140444391-600x770.jpg"
+                    alt="Cover: A Discourse on Inequality" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">Add to cart</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -965,11 +1123,18 @@
                 </div>
               </article>
               <article class="book-card">
-                <a href="product.html#9781847742599" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9781847742599" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781847742599-600x770.jpg" alt="Cover: A Du’a Away: A Companion Journal" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781847742599-600x770.jpg"
+                    alt="Cover: A Du’a Away: A Companion Journal" width="600" height="770" loading="lazy"
+                    decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">Add to cart</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -979,11 +1144,18 @@
                 </div>
               </article>
               <article class="book-card">
-                <a href="product.html#9781838049218" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9781838049218" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781838049218-600x770.jpg" alt="Cover: A Handbook of Spiritual Medicine" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781838049218-600x770.jpg"
+                    alt="Cover: A Handbook of Spiritual Medicine" width="600" height="770" loading="lazy"
+                    decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">Add to cart</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -993,11 +1165,17 @@
                 </div>
               </article>
               <article class="book-card">
-                <a href="product.html#9780345384560" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9780345384560" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9780345384560-600x770.jpg" alt="Cover: A History of God" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9780345384560-600x770.jpg"
+                    alt="Cover: A History of God" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">Add to cart</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -1008,13 +1186,8 @@
               </article>
             </div>
           </div>
-          <button
-            type="button"
-            class="bestsellers__nav bestsellers__nav--next"
-            id="mind-books-next"
-            aria-controls="mind-books-track"
-            aria-label="Show next title"
-          >
+          <button type="button" class="bestsellers__nav bestsellers__nav--next" id="mind-books-next"
+            aria-controls="mind-books-track" aria-label="Show next title">
             <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
             </svg>
@@ -1033,13 +1206,8 @@
         </header>
 
         <div class="bestsellers__carousel" aria-label="Best Stationery carousel">
-          <button
-            type="button"
-            class="bestsellers__nav bestsellers__nav--prev"
-            id="stationery-prev"
-            aria-controls="stationery-track"
-            aria-label="Show previous item"
-          >
+          <button type="button" class="bestsellers__nav bestsellers__nav--prev" id="stationery-prev"
+            aria-controls="stationery-track" aria-label="Show previous item">
             <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
             </svg>
@@ -1047,11 +1215,17 @@
           <div class="bestsellers__viewport" aria-live="polite">
             <div class="bestsellers__track" id="stationery-track">
               <article class="book-card">
-                <a href="product.html#9781523524907" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9781523524907" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781523524907-600x770.jpg" alt="Cover: 1,000 Places Picture-A-Day" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781523524907-600x770.jpg"
+                    alt="Cover: 1,000 Places Picture-A-Day" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">Add to cart</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -1061,11 +1235,17 @@
                 </div>
               </article>
               <article class="book-card">
-                <a href="product.html#8437015566894" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#8437015566894" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/8437015566894-600x770.jpg" alt="Cover: 100 Places poster" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/8437015566894-600x770.jpg"
+                    alt="Cover: 100 Places poster" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">Add to cart</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -1075,11 +1255,17 @@
                 </div>
               </article>
               <article class="book-card">
-                <a href="product.html#8437015566924" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#8437015566924" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/8437015566924-600x770.jpg" alt="Cover: 100 Things poster" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/8437015566924-600x770.jpg"
+                    alt="Cover: 100 Things poster" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">Add to cart</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -1089,11 +1275,17 @@
                 </div>
               </article>
               <article class="book-card">
-                <a href="product.html#9781523524846" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9781523524846" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781523524846-600x770.jpg" alt="Cover: 365 Days in Italy calendar" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781523524846-600x770.jpg"
+                    alt="Cover: 365 Days in Italy calendar" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">Add to cart</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -1103,11 +1295,17 @@
                 </div>
               </article>
               <article class="book-card">
-                <a href="product.html#9781523524693" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9781523524693" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781523524693-600x770.jpg" alt="Cover: 365 Days of Shoes calendar" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781523524693-600x770.jpg"
+                    alt="Cover: 365 Days of Shoes calendar" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">Add to cart</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -1117,11 +1315,17 @@
                 </div>
               </article>
               <article class="book-card">
-                <a href="product.html#9781523525218" class="book-card__link"><span class="visually-hidden">View product page</span></a>
+                <a href="product.html#9781523525218" class="book-card__link"><span class="visually-hidden">View product
+                    page</span></a>
                 <div class="book-card__cover">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781523525218-600x770.jpg" alt="Cover: 365 Kittens calendar" width="600" height="770" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781523525218-600x770.jpg"
+                    alt="Cover: 365 Kittens calendar" width="600" height="770" loading="lazy" decoding="async" />
                   <div class="book-card__overlay">
-                    <button type="button" class="book-card__cta">Add to cart</button>
+                    <div class="book-card__actions">
+                      <button type="button" class="book-card__cta">Add to cart</button>
+                      <button type="button" class="book-card__wish" aria-label="Add to wish list"
+                        aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
                   </div>
                 </div>
                 <div class="book-card__body">
@@ -1132,13 +1336,8 @@
               </article>
             </div>
           </div>
-          <button
-            type="button"
-            class="bestsellers__nav bestsellers__nav--next"
-            id="stationery-next"
-            aria-controls="stationery-track"
-            aria-label="Show next item"
-          >
+          <button type="button" class="bestsellers__nav bestsellers__nav--next" id="stationery-next"
+            aria-controls="stationery-track" aria-label="Show next item">
             <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
             </svg>
@@ -1156,18 +1355,25 @@
               <div class="collection-card__shadow" aria-hidden="true"></div>
               <div class="collection-card__plate">
                 <div class="collection-card__mosaic">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781529964332-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9781035011438-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9781529155419-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9780008701840-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9781787334656-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9781529146844-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781529964332-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781035011438-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781529155419-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9780008701840-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781787334656-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781529146844-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
                 </div>
               </div>
             </div>
             <div class="collection-card__body">
               <h3 class="collection-card__title">The Fiction You Need to Read in 2026</h3>
-              <p class="collection-card__desc">New voices, page-turners, and literary standouts chosen for your shelf.</p>
+              <p class="collection-card__desc">New voices, page-turners, and literary standouts chosen for your shelf.
+              </p>
               <span class="collection-card__arrow" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="14" height="14" focusable="false">
                   <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z" />
@@ -1182,18 +1388,25 @@
               <div class="collection-card__shadow" aria-hidden="true"></div>
               <div class="collection-card__plate">
                 <div class="collection-card__mosaic">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781408783276-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9781399825788-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9781035064656-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9780008640217-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9780008466817-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9780008710002-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781408783276-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781399825788-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781035064656-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9780008640217-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9780008466817-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9780008710002-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
                 </div>
               </div>
             </div>
             <div class="collection-card__body">
               <h3 class="collection-card__title">Thrillers &amp; Stories That Stay With You</h3>
-              <p class="collection-card__desc">Plot-driven picks and unforgettable characters for late-night reading.</p>
+              <p class="collection-card__desc">Plot-driven picks and unforgettable characters for late-night reading.
+              </p>
               <span class="collection-card__arrow" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="14" height="14" focusable="false">
                   <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z" />
@@ -1208,12 +1421,18 @@
               <div class="collection-card__shadow" aria-hidden="true"></div>
               <div class="collection-card__plate">
                 <div class="collection-card__mosaic">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781784296124-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9780674273559-600x770.png" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9780140444391-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9781847742599-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9781838049218-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9780345384560-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781784296124-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9780674273559-600x770.png" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9780140444391-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781847742599-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781838049218-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9780345384560-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
                 </div>
               </div>
             </div>
@@ -1234,12 +1453,18 @@
               <div class="collection-card__shadow" aria-hidden="true"></div>
               <div class="collection-card__plate">
                 <div class="collection-card__mosaic">
-                  <img src="https://readers.jo/image/cache/catalog/product/9781804290446-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9780753554142-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9781847740670-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9780140432442-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/9781760632717-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
-                  <img src="https://readers.jo/image/cache/catalog/product/special/9781906949334-600x770.jpg" alt="" width="200" height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781804290446-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9780753554142-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781847740670-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9780140432442-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/9781760632717-600x770.jpg" alt="" width="200"
+                    height="257" loading="lazy" decoding="async" />
+                  <img src="https://readers.jo/image/cache/catalog/product/special/9781906949334-600x770.jpg" alt=""
+                    width="200" height="257" loading="lazy" decoding="async" />
                 </div>
               </div>
             </div>
@@ -1262,10 +1487,6 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__deco" aria-hidden="true">
       <div class="site-footer__day-stars" aria-hidden="true"></div>
-      <div class="site-footer__bubbles" role="presentation" aria-hidden="true">
-        <div class="site-footer__bubble site-footer__bubble--left"></div>
-        <div class="site-footer__bubble site-footer__bubble--right"></div>
-      </div>
     </div>
     <div class="site-footer__inner">
       <div class="site-footer__grid">
@@ -1301,7 +1522,8 @@
           <h2 class="site-footer__title">Newsletter</h2>
           <form class="site-footer__newsletter" action="#" method="post">
             <label class="visually-hidden" for="footer-newsletter-email">Email</label>
-            <input class="site-footer__newsletter-input" id="footer-newsletter-email" type="email" name="email" placeholder="Enter your email" autocomplete="email" />
+            <input class="site-footer__newsletter-input" id="footer-newsletter-email" type="email" name="email"
+              placeholder="Enter your email" autocomplete="email" />
             <button class="site-footer__newsletter-btn" type="submit">Join us</button>
           </form>
         </div>
@@ -1316,12 +1538,17 @@
     </div>
   </footer>
 
+  <script src="js/cart-store.js" defer></script>
+  <script src="js/cart-header.js" defer></script>
   <script src="js/site-header.js" defer></script>
+  <script src="js/account-session.js" defer></script>
   <script src="js/hero-slider.js" defer></script>
-  <script src="js/bestsellers-carousel.js" defer></script>
-  <script src="js/posters-carousel.js" defer></script>
   <script src="js/theme.js" defer></script>
+  <script src="js/bestsellers-carousel.js" defer></script>
+  <script src="js/book-card-wishlist.js" defer></script>
+  <script src="js/posters-carousel.js" defer></script>
   <script src="js/footer-stars.js" defer></script>
   <script src="js/welcome-panel.js" defer></script>
 </body>
+
 </html>

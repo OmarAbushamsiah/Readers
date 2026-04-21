@@ -293,10 +293,23 @@
   transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.book-card__actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0.45rem;
+  width: 100%;
+  pointer-events: auto;
+}
+
 .book-card__cta {
   position: relative;
   z-index: 1;
-  width: 100%;
+  flex: 1 1 auto;
+  min-width: 0;
+  width: auto;
   padding: 0.55rem 0.75rem;
   border: none;
   border-radius: 2px;
@@ -317,6 +330,52 @@
     background 0.25s ease,
     box-shadow 0.25s ease;
   box-shadow: 0 4px 14px rgba(196, 30, 58, 0.35);
+}
+
+.book-card__wish {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  width: 2.5rem;
+  margin: 0;
+  padding: 0;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #c41e3a;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: auto;
+  transform: translateY(10px);
+  opacity: 0;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.book-card__wish:hover {
+  background: #fff;
+  color: #a9182e;
+}
+
+.book-card__wish:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.book-card__wish[aria-pressed="true"] {
+  background: #fff;
+  color: #c41e3a;
 }
 
 .book-card__cta:hover {
@@ -347,7 +406,9 @@
 }
 
 .book-card:hover .book-card__cta,
-.book-card:focus-within .book-card__cta {
+.book-card:focus-within .book-card__cta,
+.book-card:hover .book-card__wish,
+.book-card:focus-within .book-card__wish {
   opacity: 1;
   transform: translateY(0);
 }
@@ -418,7 +479,8 @@
   .book-card__cover,
   .book-card__cover img,
   .book-card__overlay,
-  .book-card__cta {
+  .book-card__cta,
+  .book-card__wish {
     transition-duration: 0.01ms;
   }
 

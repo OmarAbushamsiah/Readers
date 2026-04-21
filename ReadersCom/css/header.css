@@ -404,6 +404,7 @@ body {
 }
 
 .btn-cart {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -419,8 +420,38 @@ body {
   white-space: nowrap;
 }
 
+.btn-cart__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.15rem;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
 .btn-cart:hover {
   background: #c91828;
+}
+
+.account-menu {
+  position: relative;
+  flex-shrink: 0;
+}
+
+button.btn-account {
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .btn-account {
@@ -445,6 +476,69 @@ body {
     background 0.2s ease;
 }
 
+.account-menu__chevron {
+  display: block;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin-left: 0.1rem;
+  color: #666;
+  transition: transform 0.2s ease;
+}
+
+.btn-account[aria-expanded="true"] .account-menu__chevron {
+  transform: rotate(180deg);
+  color: #c41e3a;
+}
+
+.btn-account[aria-expanded="true"] {
+  border-color: #c41e3a;
+  color: #c41e3a;
+  background: #fffaf9;
+}
+
+.account-menu__dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 11.5rem;
+  margin: 0;
+  padding: 0.35rem 0;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #e5e2dc;
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgba(26, 26, 26, 0.12);
+  z-index: 120;
+}
+
+.account-menu__dropdown a {
+  display: block;
+  width: 100%;
+  padding: 0.55rem 0.9rem;
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-align: left;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.account-menu__dropdown a:hover {
+  background: #f4f2ef;
+  color: #1a1a1a;
+}
+
+.account-menu__dropdown a:focus-visible {
+  outline: none;
+  background: #fff5f5;
+  box-shadow: inset 0 0 0 2px rgba(196, 30, 58, 0.35);
+}
+
 .btn-account:hover {
   border-color: #c41e3a;
   color: #c41e3a;
@@ -463,6 +557,11 @@ body {
 
 .btn-account__label {
   line-height: 1;
+  min-width: 0;
+  max-width: 6.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Phone / small tablet: hamburger + full-width search + collapsible nav */

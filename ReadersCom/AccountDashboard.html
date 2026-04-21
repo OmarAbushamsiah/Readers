@@ -4,21 +4,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Product — Readers Bookshop</title>
+  <title>Account Dashboard — Readers Bookshop</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/header.css" />
   <link rel="stylesheet" href="css/product-page.css" />
-  <link rel="stylesheet" href="css/cards.css" />
   <link rel="stylesheet" href="css/footer.css" />
   <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/account-dashboard.css" />
   <script>
     (function () {
       try {
@@ -29,7 +29,7 @@
   </script>
 </head>
 
-<body>
+<body class="account-dashboard-page">
   <div class="utility-bar">
     <div class="utility-bar__inner">
       <nav class="utility-nav" aria-label="Utility">
@@ -120,12 +120,59 @@
   </header>
 
   <main class="product-page">
-    <div class="product-page__inner">
-      <div class="product-page__main-col">
-        <p class="visually-hidden">
-          Static product preview for approval — no checkout or account actions are connected.
-        </p>
-        <div id="product-static-mount"></div>
+    <div class="product-page__inner account-dashboard__inner-layout">
+      <div class="account-dashboard__layout-row">
+        <div class="account-dashboard__primary">
+          <section class="account-dashboard" aria-labelledby="account-dashboard-title">
+            <h1 class="account-dashboard__title" id="account-dashboard-title">Account Dashboard</h1>
+            <h2 class="account-dashboard__greeting" id="account-dashboard-greeting">Hi, welcome to your account
+              dashboard</h2>
+
+            <div class="account-dashboard__grid">
+              <a class="account-dash__tile" href="profile.html">
+                <span class="account-dash__tile__icon" aria-hidden="true"><i class="fa-solid fa-user"></i></span>
+                <span class="account-dash__tile__label">My Profile</span>
+                <span class="account-dash__tile__desc">Edit your personal info</span>
+              </a>
+              <a class="account-dash__tile" href="orders.html">
+                <span class="account-dash__tile__icon" aria-hidden="true"><i class="fa-solid fa-truck"></i></span>
+                <span class="account-dash__tile__label">Orders</span>
+                <span class="account-dash__tile__desc">Track &amp; view orders</span>
+              </a>
+              <a class="account-dash__tile" href="giftcard.html">
+                <span class="account-dash__tile__icon" aria-hidden="true"><i class="fa-solid fa-credit-card"></i></span>
+                <span class="account-dash__tile__label">Gift Cards</span>
+                <span class="account-dash__tile__desc">Manage gift cards</span>
+              </a>
+              <a class="account-dash__tile" href="wishlist.html">
+                <span class="account-dash__tile__icon" aria-hidden="true"><i class="fa-solid fa-heart"></i></span>
+                <span class="account-dash__tile__label">Wish Lists</span>
+                <span class="account-dash__tile__desc">Your saved books</span>
+              </a>
+              <a class="account-dash__tile account-dash__tile--loyalty" href="#">
+                <span class="account-dash__tile__icon" aria-hidden="true"><i class="fa-solid fa-id-card"></i></span>
+                <span class="account-dash__tile__label">Loyalty Card</span>
+                <span class="account-dash__tile__desc">Points &amp; rewards</span>
+              </a>
+              <a class="account-dash__tile" href="#">
+                <span class="account-dash__tile__icon" aria-hidden="true"><i class="fa-solid fa-wallet"></i></span>
+                <span class="account-dash__tile__label">Payment</span>
+                <span class="account-dash__tile__desc">Saved payment methods</span>
+              </a>
+              <a class="account-dash__tile" href="#">
+                <span class="account-dash__tile__icon" aria-hidden="true"><i
+                    class="fa-solid fa-address-book"></i></span>
+                <span class="account-dash__tile__label">Address Book</span>
+                <span class="account-dash__tile__desc">Manage addresses</span>
+              </a>
+              <a class="account-dash__tile" href="#">
+                <span class="account-dash__tile__icon" aria-hidden="true"><i class="fa-solid fa-signature"></i></span>
+                <span class="account-dash__tile__label">Nicknames</span>
+                <span class="account-dash__tile__desc">Your pen names</span>
+              </a>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   </main>
@@ -188,7 +235,6 @@
   <script src="js/cart-header.js" defer></script>
   <script src="js/site-header.js" defer></script>
   <script src="js/account-session.js" defer></script>
-  <script src="js/product-static.js" defer></script>
   <script src="js/theme.js" defer></script>
   <script src="js/footer-stars.js" defer></script>
 </body>
