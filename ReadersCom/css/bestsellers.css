@@ -185,6 +185,8 @@
   width: max-content;
   transition: transform var(--bs-slide-duration) cubic-bezier(0.33, 1, 0.3, 1);
   will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Skip motion when snapping layout (resize, first measure) — arrow clicks use transition above */
@@ -229,6 +231,8 @@
   flex-direction: column;
   min-width: 0;
   height: 100%;
+  contain: layout style;
+  isolation: isolate;
 }
 
 .book-card.book-card--pop {
@@ -239,6 +243,9 @@
   transform-origin: bottom center;
   transition: none;
   animation: book-card-cover-pop 0.62s cubic-bezier(0.33, 1.1, 0.45, 1) both;
+  will-change: transform, filter;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .book-card__link {

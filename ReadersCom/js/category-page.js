@@ -220,80 +220,73 @@
     /* ── Books ─────────────────────────────────────── */
     { type: "split",  label: "Books", href: L + "all", icon: "fa-solid fa-book-open", open: true, children: [
 
-      { type: "link", label: "BookTok",              href: L + "booktok",              icon: "fa-brands fa-tiktok" },
-      { type: "link", label: "New Titles",           href: L + "new-titles",           icon: "fa-solid fa-star" },
-      { type: "link", label: "Readers Recommends",   href: L + "readers-recommends",   icon: "fa-solid fa-thumbs-up" },
-      { type: "link", label: "Reading Is Resistance",href: L + "reading-is-resistance",icon: "fa-solid fa-fist-raised" },
-
-      { type: "divider" },
-
       /* Little Readers */
       { type: "toggle", label: "Little Readers", icon: "fa-solid fa-child-reaching", open: false, children: [
-        { type: "link", label: "Children's Books 0–3",    href: L + "books-0-3" },
-        { type: "link", label: "Picture Books",            href: L + "picture-books" },
-        { type: "link", label: "Children's Fiction 6–8",  href: L + "fiction-6-8" },
-        { type: "link", label: "Children's Fiction 8–10", href: L + "fiction-8-10" },
-        { type: "link", label: "Children's Fiction 10–12",href: L + "fiction-10-12" },
-        { type: "link", label: "Children's Fiction 12–14",href: L + "fiction-12-14" },
-        { type: "link", label: "Poetry & Classics",       href: L + "poetry-classics" },
-        { type: "link", label: "Character & Series",      href: L + "character-series" },
-        { type: "link", label: "Activity Books",          href: L + "activity-books" },
-        { type: "link", label: "Children's Reference",    href: L + "childrens-reference" },
-        { type: "link", label: "Workbooks & Study Guides",href: L + "workbooks-study" },
+        { type: "link", label: "Children's Books 0–3",    href: L + "books-0-3",          icon: "fa-solid fa-baby" },
+        { type: "link", label: "Picture Books",            href: L + "picture-books",       icon: "fa-solid fa-palette" },
+        { type: "link", label: "Children's Fiction 6–8",  href: L + "fiction-6-8",         icon: "fa-solid fa-dragon" },
+        { type: "link", label: "Children's Fiction 8–10", href: L + "fiction-8-10",        icon: "fa-solid fa-hat-wizard" },
+        { type: "link", label: "Children's Fiction 10–12",href: L + "fiction-10-12",       icon: "fa-solid fa-wand-sparkles" },
+        { type: "link", label: "Children's Fiction 12–14",href: L + "fiction-12-14",       icon: "fa-solid fa-star" },
+        { type: "link", label: "Poetry & Classics",       href: L + "poetry-classics",     icon: "fa-solid fa-scroll" },
+        { type: "link", label: "Character & Series",      href: L + "character-series",    icon: "fa-solid fa-masks-theater" },
+        { type: "link", label: "Activity Books",          href: L + "activity-books",      icon: "fa-solid fa-paintbrush" },
+        { type: "link", label: "Children's Reference",    href: L + "childrens-reference", icon: "fa-solid fa-magnifying-glass" },
+        { type: "link", label: "Workbooks & Study Guides",href: L + "workbooks-study",     icon: "fa-solid fa-graduation-cap" },
       ]},
 
       /* Teen & Young Adult */
       { type: "toggle", label: "Teen & Young Adult", icon: "fa-solid fa-person", open: false, children: [
-        { type: "link", label: "Young Adult Fiction",   href: L + "ya-fiction" },
-        { type: "link", label: "Young Adult Reference", href: L + "ya-reference" },
+        { type: "link", label: "Young Adult Fiction",   href: L + "ya-fiction",    icon: "fa-solid fa-book-open-reader" },
+        { type: "link", label: "Young Adult Reference", href: L + "ya-reference",  icon: "fa-solid fa-book-atlas" },
       ]},
 
       /* Adults & General Classification */
       { type: "toggle", label: "Adults & General", icon: "fa-solid fa-person-half-dress", open: false, children: [
-        { type: "link", label: "Arts & Photography",       href: L + "arts-photography" },
-        { type: "link", label: "Coffee Table",             href: L + "coffee-table" },
-        { type: "link", label: "Cookbooks",                href: L + "cookbooks" },
-        { type: "link", label: "Politics & Social Sciences",href: L + "politics-social" },
-        { type: "link", label: "Biographies & Memoirs",   href: L + "biographies-memoirs" },
-        { type: "link", label: "History",                  href: L + "history",            icon: "fa-solid fa-landmark" },
-        { type: "link", label: "Science",                  href: L + "science" },
-        { type: "link", label: "Philosophy & Religion",    href: L + "philosophy-religion",icon: "fa-solid fa-yin-yang" },
-        { type: "link", label: "Health, Fitness & Dieting",href: L + "health-fitness",    icon: "fa-solid fa-heart-pulse" },
-        { type: "link", label: "Spirituality",             href: L + "spirituality" },
-        { type: "link", label: "Self-Help",                href: L + "self-help" },
-        { type: "link", label: "Family",                   href: L + "family" },
-        { type: "link", label: "Reference",                href: L + "reference" },
-        { type: "link", label: "Business, Finance & Economy",href: L + "business-finance",icon: "fa-solid fa-briefcase" },
-        { type: "link", label: "Graphic Novels & Comics",  href: L + "graphic-novels" },
-        { type: "link", label: "Literature & Fiction",     href: L + "literature-fiction", icon: "fa-solid fa-feather-pointed" },
-        { type: "link", label: "Mystery, Thriller & Suspense",href: L + "mystery-thriller",icon: "fa-solid fa-magnifying-glass" },
-        { type: "link", label: "Science Fiction & Fantasy",href: L + "sci-fi-fantasy",     icon: "fa-solid fa-rocket" },
-        { type: "link", label: "Historical Fiction",       href: L + "historical-fiction" },
-        { type: "link", label: "Romance",                  href: L + "romance" },
+        { type: "link", label: "Arts & Photography",       href: L + "arts-photography",    icon: "fa-solid fa-camera" },
+        { type: "link", label: "Coffee Table",             href: L + "coffee-table",        icon: "fa-solid fa-mug-hot" },
+        { type: "link", label: "Cookbooks",                href: L + "cookbooks",           icon: "fa-solid fa-utensils" },
+        { type: "link", label: "Politics & Social Sciences",href: L + "politics-social",   icon: "fa-solid fa-scale-balanced" },
+        { type: "link", label: "Biographies & Memoirs",   href: L + "biographies-memoirs",  icon: "fa-solid fa-user-pen" },
+        { type: "link", label: "History",                  href: L + "history",             icon: "fa-solid fa-landmark" },
+        { type: "link", label: "Science",                  href: L + "science",             icon: "fa-solid fa-flask" },
+        { type: "link", label: "Philosophy & Religion",    href: L + "philosophy-religion", icon: "fa-solid fa-yin-yang" },
+        { type: "link", label: "Health, Fitness & Dieting",href: L + "health-fitness",     icon: "fa-solid fa-heart-pulse" },
+        { type: "link", label: "Spirituality",             href: L + "spirituality",        icon: "fa-solid fa-hands-praying" },
+        { type: "link", label: "Self-Help",                href: L + "self-help",           icon: "fa-solid fa-seedling" },
+        { type: "link", label: "Family",                   href: L + "family",              icon: "fa-solid fa-people-roof" },
+        { type: "link", label: "Reference",                href: L + "reference",           icon: "fa-solid fa-book-bookmark" },
+        { type: "link", label: "Business, Finance & Economy",href: L + "business-finance", icon: "fa-solid fa-briefcase" },
+        { type: "link", label: "Graphic Novels & Comics",  href: L + "graphic-novels",      icon: "fa-solid fa-mask" },
+        { type: "link", label: "Literature & Fiction",     href: L + "literature-fiction",  icon: "fa-solid fa-feather-pointed" },
+        { type: "link", label: "Mystery, Thriller & Suspense",href: L + "mystery-thriller", icon: "fa-solid fa-magnifying-glass" },
+        { type: "link", label: "Science Fiction & Fantasy",href: L + "sci-fi-fantasy",      icon: "fa-solid fa-rocket" },
+        { type: "link", label: "Historical Fiction",       href: L + "historical-fiction",  icon: "fa-solid fa-scroll" },
+        { type: "link", label: "Romance",                  href: L + "romance",             icon: "fa-solid fa-heart" },
       ]},
 
       /* Arabic Books */
-      { type: "toggle", label: "Arabic Books", icon: "fa-solid fa-language", open: false, children: [
-        { type: "link", label: "قصص أطفال",     href: L + "ar-childrens-stories" },
-        { type: "link", label: "مراجع أطفال",    href: L + "ar-childrens-reference" },
-        { type: "link", label: "شعر وأدب",      href: L + "ar-poetry-literature" },
-        { type: "link", label: "قصص عربية",     href: L + "ar-arabic-stories" },
-        { type: "link", label: "أعمال مترجمة",  href: L + "ar-translated" },
-        { type: "link", label: "طبخ",           href: L + "ar-cooking" },
-        { type: "link", label: "السيرة الذاتية", href: L + "ar-biography" },
-        { type: "link", label: "تاريخ ومراجع",  href: L + "ar-history-reference" },
-        { type: "link", label: "سياسة",         href: L + "ar-politics" },
-        { type: "link", label: "فكر وفلسفة",    href: L + "ar-philosophy" },
-        { type: "link", label: "دين",           href: L + "ar-religion" },
-        { type: "link", label: "ادارة اعمال",   href: L + "ar-business" },
-        { type: "link", label: "مساعدة الذات",  href: L + "ar-self-help" },
+      { type: "split",  label: "Arabic Books", href: L + "arabic-books", icon: "fa-solid fa-language", open: false, children: [
+        { type: "link", label: "قصص أطفال",     href: L + "ar-childrens-stories",   icon: "fa-solid fa-child" },
+        { type: "link", label: "مراجع أطفال",    href: L + "ar-childrens-reference", icon: "fa-solid fa-book" },
+        { type: "link", label: "شعر وأدب",      href: L + "ar-poetry-literature",   icon: "fa-solid fa-feather" },
+        { type: "link", label: "قصص عربية",     href: L + "ar-arabic-stories",      icon: "fa-solid fa-book-open" },
+        { type: "link", label: "أعمال مترجمة",  href: L + "ar-translated",          icon: "fa-solid fa-language" },
+        { type: "link", label: "طبخ",           href: L + "ar-cooking",             icon: "fa-solid fa-utensils" },
+        { type: "link", label: "السيرة الذاتية", href: L + "ar-biography",           icon: "fa-solid fa-user-pen" },
+        { type: "link", label: "تاريخ ومراجع",  href: L + "ar-history-reference",   icon: "fa-solid fa-landmark" },
+        { type: "link", label: "سياسة",         href: L + "ar-politics",            icon: "fa-solid fa-scale-balanced" },
+        { type: "link", label: "فكر وفلسفة",    href: L + "ar-philosophy",          icon: "fa-solid fa-yin-yang" },
+        { type: "link", label: "دين",           href: L + "ar-religion",            icon: "fa-solid fa-mosque" },
+        { type: "link", label: "ادارة اعمال",   href: L + "ar-business",            icon: "fa-solid fa-briefcase" },
+        { type: "link", label: "مساعدة الذات",  href: L + "ar-self-help",           icon: "fa-solid fa-seedling" },
       ]},
     ]},
 
     { type: "divider" },
 
     /* ── Gadgets & Accessories ──────────────────────── */
-    { type: "toggle", label: "Gadgets & Accessories", icon: "fa-solid fa-headphones", open: false, children: [
+    { type: "split",  label: "Gadgets & Accessories", href: L + "gadgets-accessories", icon: "fa-solid fa-headphones", open: false, children: [
       { type: "toggle", label: "Book Accessories", icon: "fa-solid fa-bookmark", open: false, children: [
         { type: "link", label: "Book Lights & Lamps",        href: L + "book-lights-lamps" },
         { type: "link", label: "Bookmarks",                  href: L + "bookmarks" },
@@ -314,7 +307,7 @@
     ]},
 
     /* ── Toys ───────────────────────────────────────── */
-    { type: "toggle", label: "Toys", icon: "fa-solid fa-puzzle-piece", open: false, children: [
+    { type: "split",  label: "Toys", href: L + "toys", icon: "fa-solid fa-puzzle-piece", open: false, children: [
       { type: "link", label: "Toys",             href: L + "toys-general" },
       { type: "link", label: "Board Games",      href: L + "board-games" },
       { type: "link", label: "Puzzles",          href: L + "puzzles" },

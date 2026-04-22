@@ -200,6 +200,11 @@
   border-left: none;
 }
 
+/* Top-level split rows get the same 1rem left padding as link/toggle items */
+.cat-sidenav__list > li > .cat-sidenav__split-row {
+  padding-left: 1rem;
+}
+
 /* Override depth padding so the link text aligns with the row indent */
 .cat-sidenav__list > li > .cat-sidenav__split-row .cat-sidenav__link {
   padding-left: 0;
@@ -253,11 +258,26 @@
   color: #bbb;
 }
 
-/* ── Divider ─────────────────────────────────────── */
+/* ── Divider (top-level list separator) ─────────── */
 .cat-sidenav__divider {
   height: 1px;
-  background: #ede9e4;
-  margin: 0.4rem 0.75rem;
+  background: linear-gradient(to right, transparent, #d8d0c8 30%, #d8d0c8 70%, transparent);
+  margin: 0.55rem 0.5rem;
+}
+
+/* ── Sublist item separators ─────────────────────── */
+/* First-level sublist: very faint dotted rule */
+.cat-sidenav__sublist > li + li {
+  border-top: 1px dotted #ede9e4;
+}
+
+/* Second-level sublist (leaf items): even lighter, indented */
+.cat-sidenav__sublist .cat-sidenav__sublist > li + li {
+  border-top: 1px solid transparent;
+  background-image: linear-gradient(to right, transparent 1.5rem, #f0ece8 1.5rem, #f0ece8 calc(100% - 0.75rem), transparent calc(100% - 0.75rem));
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  background-position: top;
 }
 
 /* ── Breadcrumb ──────────────────────────────────── */
@@ -470,7 +490,15 @@
 }
 
 [data-theme="dark"] .cat-sidenav__divider {
-  background: #2a2d33;
+  background: linear-gradient(to right, transparent, #2a2d33 30%, #2a2d33 70%, transparent);
+}
+
+[data-theme="dark"] .cat-sidenav__sublist > li + li {
+  border-top-color: #252830;
+}
+
+[data-theme="dark"] .cat-sidenav__sublist .cat-sidenav__sublist > li + li {
+  background-image: linear-gradient(to right, transparent 1.5rem, #232629 1.5rem, #232629 calc(100% - 0.75rem), transparent calc(100% - 0.75rem));
 }
 
 [data-theme="dark"] .cat-sidenav__section-label {

@@ -55,6 +55,8 @@
       expiry: "",
       cvv: "",
       promoCode: "",
+      shipmentType: "standard",
+      addressMode: "default",
     };
     try {
       var raw = localStorage.getItem(PAYMENT_STORAGE_KEY);
@@ -62,7 +64,7 @@
       var o = JSON.parse(raw);
       if (!o || typeof o !== "object") return Object.assign({}, defaults);
       var merged = Object.assign({}, defaults, o);
-      if (["pickup", "cash", "card"].indexOf(merged.method) === -1) {
+      if (["pickup", "cash", "visa", "card"].indexOf(merged.method) === -1) {
         merged.method = defaults.method;
       }
       return merged;
@@ -388,43 +390,54 @@
       { id: "basket", label: "Basket" },
       { id: "payment", label: "Payment" },
     ];
-    var items = steps
-      .map(function (s) {
-        var isActive = s.id === activeStep;
-        return (
-          '<li class="cart-steps__item' +
-          (isActive ? " is-active" : "") +
-          '">' +
-          '<button type="button" class="cart-steps__btn" id="cart-tab-' +
-          s.id +
-          '" role="tab" aria-selected="' +
-          (isActive ? "true" : "false") +
-          '" data-cart-step="' +
-          s.id +
-          '">' +
-          escapeHtml(s.label) +
-          "</button></li>"
+    var activeIdx = 0;
+    steps.forEach(function (s, i) {
+      if (s.id === activeStep) activeIdx = i;
+    });
+
+    var parts = [];
+    steps.forEach(function (s, i) {
+      var isActive = s.id === activeStep;
+      var isDone = i < activeIdx;
+      var cls = "cart-steps__item";
+      if (isActive) cls += " is-active";
+      if (isDone) cls += " is-done";
+
+      var numContent = isDone
+        ? '<i class="fa-solid fa-check" aria-hidden="true"></i>'
+        : String(i + 1);
+
+      parts.push(
+        '<li class="' + cls + '" role="presentation">' +
+        '<button type="button" class="cart-steps__btn" id="cart-tab-' + s.id + '"' +
+        ' role="tab" aria-selected="' + (isActive ? "true" : "false") + '"' +
+        ' data-cart-step="' + s.id + '">' +
+        '<span class="cart-steps__num" aria-hidden="true">' + numContent + '</span>' +
+        '<span class="cart-steps__label">' + escapeHtml(s.label) + '</span>' +
+        '</button></li>'
+      );
+
+      if (i < steps.length - 1) {
+        var connCls = "cart-steps__connector" + (isDone ? " is-done" : "");
+        parts.push(
+          '<li class="' + connCls + '" role="presentation" aria-hidden="true">' +
+          '<span class="cart-steps__connector-fill"></span>' +
+          '</li>'
         );
-      })
-      .join("");
+      }
+    });
+
     return (
       '<nav class="cart-steps" aria-label="Checkout progress">' +
       '<ol class="cart-steps__list" role="tablist">' +
-      items +
+      parts.join("") +
       "</ol></nav>"
     );
   }
 
   function deliveryFieldRow(id, name, label, type, value, placeholder, autocomplete) {
     type = type || "text";
-    return (
-      '<div class="cart-field-line">' +
-      '<label class="cart-field-line__label" for="' +
-      id +
-      '">' +
-      escapeHtml(label) +
-      "</label>" +
-      '<div class="cart-field-line__control">' +
+    var inputHtml =
       '<input class="cart-field-line__input" type="' +
       type +
       '" id="' +
@@ -437,7 +450,49 @@
       escapeHtml(placeholder) +
       '" autocomplete="' +
       escapeHtml(autocomplete || "on") +
-      '" />' +
+      '" />';
+    if (type === "tel") {
+      inputHtml =
+        '<div class="phone-field">' +
+          '<div class="phone-prefix">' +
+            '<button type="button" class="phone-prefix__btn" aria-expanded="false" aria-haspopup="listbox">' +
+              '<span class="phone-prefix__flag fi fi-jo" aria-hidden="true"></span>' +
+              '<span class="phone-prefix__code">+962</span>' +
+              '<svg class="phone-prefix__chevron" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false">' +
+                '<path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>' +
+              '</svg>' +
+            '</button>' +
+            '<ul class="phone-prefix__menu" role="listbox" hidden>' +
+              '<li role="presentation">' +
+                '<button type="button" class="phone-prefix__option" role="option" aria-selected="true" data-idx="0">' +
+                  '<span class="fi fi-jo" aria-hidden="true"></span> Jordan +962' +
+                '</button>' +
+              '</li>' +
+              '<li role="presentation">' +
+                '<button type="button" class="phone-prefix__option" role="option" aria-selected="false" data-idx="1">' +
+                  '<span class="fi fi-sa" aria-hidden="true"></span> Saudi Arabia +966' +
+                '</button>' +
+              '</li>' +
+            '</ul>' +
+          '</div>' +
+          '<input class="cart-field-line__input" type="tel" id="' +
+          id +
+          '" name="' +
+          escapeHtml(name) +
+          '" value="' +
+          escapeHtml(value) +
+          '" placeholder="7X XXX XXXX" autocomplete="tel" />' +
+        '</div>';
+    }
+    return (
+      '<div class="cart-field-line">' +
+      '<label class="cart-field-line__label" for="' +
+      id +
+      '">' +
+      escapeHtml(label) +
+      "</label>" +
+      '<div class="cart-field-line__control">' +
+      inputHtml +
       "</div></div>"
     );
   }
@@ -500,14 +555,111 @@
   }
 
   function pickupLocationHtml() {
-    var line =
-      "Readers Jo : Issa An-Nouri St. , 7th Circle , Amman-Jordan";
+    var line = "Readers Jo : Issa An-Nouri St. , 7th Circle , Amman-Jordan";
     return (
       '<div class="cart-pickup-location" id="cart-pickup-location" role="region" aria-labelledby="cart-pickup-location-title">' +
       '<p class="cart-pickup-location__title" id="cart-pickup-location-title">Pick up location</p>' +
-      '<p class="cart-pickup-location__address">' +
-      escapeHtml(line) +
-      "</p></div>"
+      '<p class="cart-pickup-location__address">' + escapeHtml(line) + "</p>" +
+      '<div class="cart-pickup-reminder" role="note">' +
+      '<i class="fa-solid fa-clock" aria-hidden="true"></i>' +
+      '<p class="cart-pickup-reminder__text">You have to pickup your order within <strong>1 week</strong> of receiving the &ldquo;Ready for Pickup&rdquo; notification.</p>' +
+      '</div>' +
+      "</div>"
+    );
+  }
+
+  function loadDefaultAddress() {
+    try {
+      var raw = localStorage.getItem("readers_address_book_v1");
+      if (!raw) return null;
+      var data = JSON.parse(raw);
+      if (!data || !Array.isArray(data.addresses) || !data.addresses.length) return null;
+      var found = null;
+      if (data.defaultId) {
+        data.addresses.forEach(function (a) {
+          if (String(a.id) === String(data.defaultId)) found = a;
+        });
+      }
+      return found || data.addresses[0];
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function expressShipmentHtml(p) {
+    var type = (p && p.shipmentType) || "standard";
+    return (
+      '<div class="cart-express" id="cart-express-section" role="group" aria-labelledby="cart-express-title">' +
+      '<p class="cart-express__title" id="cart-express-title">Shipment speed</p>' +
+      '<div class="cart-express__options">' +
+      '<label class="cart-express__option' + (type === "standard" ? " is-selected" : "") + '" for="cart-express-standard">' +
+      '<input type="radio" name="cart-shipment-type" id="cart-express-standard" value="standard"' + (type === "standard" ? " checked" : "") + ' />' +
+      '<span class="cart-express__icon" aria-hidden="true"><i class="fa-solid fa-truck"></i></span>' +
+      '<span class="cart-express__info">' +
+      '<span class="cart-express__name">Standard</span>' +
+      '<span class="cart-express__detail">3 – 5 business days</span>' +
+      '</span>' +
+      '<span class="cart-express__price">Free</span>' +
+      '</label>' +
+      '<label class="cart-express__option' + (type === "express" ? " is-selected" : "") + '" for="cart-express-express">' +
+      '<input type="radio" name="cart-shipment-type" id="cart-express-express" value="express"' + (type === "express" ? " checked" : "") + ' />' +
+      '<span class="cart-express__icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></span>' +
+      '<span class="cart-express__info">' +
+      '<span class="cart-express__name">Express</span>' +
+      '<span class="cart-express__detail">Next business day</span>' +
+      '</span>' +
+      '<span class="cart-express__price">+ JOD 2.50</span>' +
+      '</label>' +
+      '</div>' +
+      '</div>'
+    );
+  }
+
+  function addressSectionHtml(p) {
+    var mode = (p && p.addressMode) || "default";
+    var defAddr = loadDefaultAddress();
+    var defaultContent = "";
+    if (mode === "default") {
+      if (defAddr) {
+        var parts = [];
+        if (defAddr.type) parts.push(escapeHtml(String(defAddr.type)));
+        if (defAddr.buildingNumber) parts.push("Building " + escapeHtml(String(defAddr.buildingNumber)));
+        if (defAddr.buildingName) parts.push(escapeHtml(String(defAddr.buildingName)));
+        if (defAddr.street) parts.push(escapeHtml(String(defAddr.street)));
+        if (defAddr.area) parts.push(escapeHtml(String(defAddr.area)));
+        if (defAddr.city) parts.push(escapeHtml(String(defAddr.city)));
+        var addrText = parts.join(", ") || "Saved address";
+        defaultContent =
+          '<div class="cart-default-addr">' +
+          '<i class="fa-solid fa-location-dot cart-default-addr__icon" aria-hidden="true"></i>' +
+          '<p class="cart-default-addr__text">' + addrText + '</p>' +
+          '<a href="addressbook.html" class="cart-default-addr__edit">Edit</a>' +
+          '</div>';
+      } else {
+        defaultContent =
+          '<div class="cart-default-addr cart-default-addr--empty">' +
+          '<i class="fa-solid fa-location-dot cart-default-addr__icon" aria-hidden="true"></i>' +
+          '<p class="cart-default-addr__text">No default address saved. <a href="addressbook.html">Add one</a> or select &ldquo;New address&rdquo; to enter details below.</p>' +
+          '</div>';
+      }
+    }
+    return (
+      '<div class="cart-address-section" id="cart-address-section" role="group" aria-labelledby="cart-address-section-title">' +
+      '<p class="cart-address-section__title" id="cart-address-section-title">Delivery address</p>' +
+      '<div class="cart-address-modes">' +
+      '<label class="cart-address-mode' + (mode === "default" ? " is-selected" : "") + '" for="cart-addr-mode-default">' +
+      '<input type="radio" name="cart-address-mode" id="cart-addr-mode-default" value="default"' + (mode === "default" ? " checked" : "") + ' />' +
+      '<i class="fa-solid fa-bookmark" aria-hidden="true"></i>' +
+      '<span>Default</span>' +
+      '</label>' +
+      '<label class="cart-address-mode' + (mode === "new" ? " is-selected" : "") + '" for="cart-addr-mode-new">' +
+      '<input type="radio" name="cart-address-mode" id="cart-addr-mode-new" value="new"' + (mode === "new" ? " checked" : "") + ' />' +
+      '<i class="fa-solid fa-plus" aria-hidden="true"></i>' +
+      '<span>New address</span>' +
+      '</label>' +
+      '</div>' +
+      defaultContent +
+      '</div>'
     );
   }
 
@@ -624,6 +776,16 @@
     var showCard = method === "card";
     var showCash = method === "cash";
     var showPickup = method === "pickup";
+    var showVisa = method === "visa";
+
+    /* Express section for all delivery methods + pickup */
+    var showExpress = showPickup || showCash || showVisa || showCard;
+    /* Address toggle (default vs new) for all delivery methods */
+    var showAddressSection = showCash || showVisa || showCard;
+    var addressMode = (p && p.addressMode) || "default";
+    /* Delivery details only when "new address" is chosen (all delivery methods) */
+    var showDeliveryDetails = (showCash || showVisa || showCard) && addressMode === "new";
+
     return (
       '<div class="cart-step-panel" id="cart-panel-payment" role="tabpanel" aria-labelledby="cart-tab-payment">' +
       '<div class="cart-payment">' +
@@ -631,10 +793,13 @@
       '<div class="cart-payment-methods" role="radiogroup" aria-label="Payment method">' +
       paymentRadio("pickup", "Pick up From Store", method) +
       paymentRadio("cash", "Cash on Delivery", method) +
+      paymentRadio("visa", "Visa on Delivery", method) +
       paymentRadio("card", "Credit/Debit Card", method) +
       "</div>" +
       (showPickup ? pickupLocationHtml() : "") +
-      (showCash || showCard ? cashDeliverySectionHtml() : "") +
+      (showExpress ? expressShipmentHtml(p) : "") +
+      (showAddressSection ? addressSectionHtml(p) : "") +
+      (showDeliveryDetails ? cashDeliverySectionHtml() : "") +
       (showCard ? cardFormHtml(p) : "") +
       "</div></div>"
     );
@@ -758,6 +923,30 @@
         }
       });
     });
+
+    /* Shipment type — update is-selected classes without a full re-render */
+    mount.querySelectorAll('input[name="cart-shipment-type"]').forEach(function (radio) {
+      radio.addEventListener("change", function () {
+        if (radio.checked) {
+          savePaymentPatch({ shipmentType: radio.value });
+          mount.querySelectorAll(".cart-express__option").forEach(function (lbl) {
+            var inp = lbl.querySelector("input[type='radio']");
+            lbl.classList.toggle("is-selected", !!(inp && inp.checked));
+          });
+        }
+      });
+    });
+
+    /* Address mode — re-render to show / hide the delivery details form */
+    mount.querySelectorAll('input[name="cart-address-mode"]').forEach(function (radio) {
+      radio.addEventListener("change", function () {
+        if (radio.checked) {
+          savePaymentPatch({ addressMode: radio.value });
+          render();
+        }
+      });
+    });
+
     mount.querySelectorAll(".cart-pay-input").forEach(function (el) {
       var key = el.getAttribute("data-payment-field");
       if (!key) return;

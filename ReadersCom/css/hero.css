@@ -23,6 +23,8 @@
   width: calc(var(--hero-slides) * 100%);
   transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .hero-carousel[data-reduced-motion="true"] .hero-track {
@@ -37,6 +39,9 @@
   min-height: min(42vw, 340px);
   max-height: min(52vw, 500px);
   background: #ececec;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .hero-slide__visual {

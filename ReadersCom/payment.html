@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Payment Methods — Readers Bookshop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/profile-page.css" />
+  <link rel="stylesheet" href="css/payment-page.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("readers_theme");
+        if (t === "dark") document.documentElement.dataset.theme = "dark";
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body class="profile-page payment-page">
+
+  <!-- ── Utility bar ───────────────────────────────── -->
+  <div class="utility-bar">
+    <div class="utility-bar__inner">
+      <nav class="utility-nav" aria-label="Utility">
+        <a href="giftcard.html">Gift Card</a>
+        <a href="wishlist.html">Wish List</a>
+        <a href="login.html">Sign In / Register</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+      <div class="utility-controls">
+        <div class="lang-switcher">
+          <button type="button" class="lang-switcher__toggle" id="lang-switcher-toggle"
+            aria-expanded="false" aria-haspopup="listbox" aria-controls="lang-switcher-menu">
+            <span class="lang-switcher__value" id="lang-switcher-label" lang="en">English</span>
+            <svg class="lang-switcher__chevron" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+            </svg>
+          </button>
+          <ul class="lang-switcher__menu" id="lang-switcher-menu" role="listbox" aria-labelledby="lang-switcher-toggle" hidden>
+            <li role="presentation">
+              <button type="button" class="lang-switcher__option" role="option" data-lang="en" lang="en" aria-selected="true">English</button>
+            </li>
+            <li role="presentation">
+              <button type="button" class="lang-switcher__option" role="option" data-lang="ar" lang="ar" aria-selected="false">العربية</button>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="theme-toggle theme-toggle--day-night" id="theme-toggle" aria-pressed="false">
+          <span class="visually-hidden">Toggle dark mode</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Site header ───────────────────────────────── -->
+  <header class="site-header">
+    <div class="main-header">
+      <div class="main-header__inner">
+        <button type="button" class="main-header__menu-btn" id="main-header-menu-btn"
+          aria-expanded="false" aria-controls="main-header-nav-panel" aria-label="Open navigation menu">
+          <svg class="main-header__menu-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" />
+          </svg>
+        </button>
+        <a class="brand" href="index.html">
+          <img src="assets/logo.png" width="200" height="56" alt="Readers Bookshop" class="brand__logo" />
+        </a>
+        <div class="main-header__nav-panel" id="main-header-nav-panel">
+          <nav class="primary-nav" aria-label="Primary">
+            <a href="index.html">Home</a>
+            <a href="category.html#all">Books</a>
+            <a href="category.html#arabic-books">Arabic Books</a>
+            <a href="category.html#gadgets-accessories">Gadgets &amp; Accessories</a>
+            <a href="category.html#all">Special Offers</a>
+          </nav>
+        </div>
+        <label class="search-field">
+          <span class="visually-hidden">Search</span>
+          <input type="search" name="search" placeholder="Search readers.jo products…" autocomplete="off" />
+        </label>
+        <div class="header-actions__cluster">
+          <a class="btn-cart" href="cart.html"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>Cart</a>
+          <div class="account-menu">
+            <button type="button" class="btn-account account-menu__toggle" id="account-menu-toggle"
+              aria-expanded="false" aria-haspopup="menu" aria-controls="account-menu-dropdown">
+              <svg class="btn-account__icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"
+                focusable="false" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+              <span class="btn-account__label">Account</span>
+              <svg class="account-menu__chevron" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+              </svg>
+            </button>
+            <ul class="account-menu__dropdown" id="account-menu-dropdown" role="menu" hidden>
+              <li role="none"><a role="menuitem" href="login.html" class="account-menu__link">Login</a></li>
+              <li role="none"><a role="menuitem" href="register.html" class="account-menu__link">Register</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Main ──────────────────────────────────────── -->
+  <main id="main-content">
+
+    <!-- Hero -->
+    <div class="profile-hero">
+      <div class="profile-hero__inner">
+        <div style="width:100%;">
+          <a href="AccountDashboard.html" class="profile-hero__back">
+            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to dashboard
+          </a>
+          <div style="display:flex;align-items:center;gap:clamp(1rem,3vw,1.75rem);flex-wrap:wrap;">
+            <div class="profile-hero__avatar" aria-hidden="true">
+              <i class="fa-solid fa-wallet" style="font-size:1.4rem;"></i>
+            </div>
+            <div class="profile-hero__info">
+              <h1 class="profile-hero__name">Payment Methods</h1>
+              <div class="profile-hero__meta">
+                <span class="profile-hero__tag">
+                  <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>Secure
+                </span>
+                <span class="profile-hero__member">Manage your saved cards</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layout -->
+    <div class="profile-layout">
+
+      <!-- Sidebar nav (Payment active) -->
+      <nav class="profile-nav" aria-label="Account navigation">
+        <p class="profile-nav__heading">My Account</p>
+        <ul class="profile-nav__list">
+          <li class="profile-nav__item">
+            <a href="profile.html" class="profile-nav__link">
+              <i class="fa-solid fa-user" aria-hidden="true"></i>
+              My Profile
+            </a>
+          </li>
+          <li class="profile-nav__item">
+            <a href="orders.html" class="profile-nav__link">
+              <i class="fa-solid fa-box" aria-hidden="true"></i>
+              Orders
+            </a>
+          </li>
+          <li class="profile-nav__item">
+            <a href="wishlist.html" class="profile-nav__link">
+              <i class="fa-solid fa-heart" aria-hidden="true"></i>
+              Wish Lists
+            </a>
+          </li>
+          <li class="profile-nav__item">
+            <a href="giftcard.html" class="profile-nav__link">
+              <i class="fa-solid fa-gift" aria-hidden="true"></i>
+              Gift Cards
+            </a>
+          </li>
+          <li class="profile-nav__item">
+            <a href="loyalty.html" class="profile-nav__link">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              Loyalty Card
+            </a>
+          </li>
+          <li class="profile-nav__item">
+            <a href="payment.html" class="profile-nav__link is-active" aria-current="page">
+              <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+              Payment
+            </a>
+          </li>
+          <li class="profile-nav__item">
+            <a href="addressbook.html" class="profile-nav__link">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              Address Book
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main content -->
+      <div class="profile-main">
+
+        <!-- Saved cards section -->
+        <div class="pay-section">
+          <div class="pay-section__head">
+            <div class="pay-section__title-group">
+              <h2 class="pay-section__title">Saved Cards</h2>
+              <span class="pay-section__count" id="pay-cards-count" aria-live="polite">0 cards saved</span>
+            </div>
+            <button type="button" class="pay-add-btn" id="pay-add-btn" aria-expanded="false" aria-controls="pay-form-section">
+              <i class="fa-solid fa-plus" aria-hidden="true"></i> Add New Card
+            </button>
+          </div>
+
+          <!-- Cards rendered by JS -->
+          <div class="pay-cards-grid" id="pay-cards-grid" aria-label="Saved payment cards"></div>
+        </div>
+
+        <!-- Add card form (hidden by default) -->
+        <div class="pay-form-section" id="pay-form-section" hidden>
+          <div class="pay-form-card">
+            <div class="pay-form-card__header">
+              <span class="pay-form-card__icon" aria-hidden="true">
+                <i class="fa-solid fa-credit-card"></i>
+              </span>
+              <div class="pay-form-card__titles">
+                <h3 class="pay-form-card__title">Add New Card</h3>
+                <p class="pay-form-card__subtitle">Details are stored locally in this browser only</p>
+              </div>
+            </div>
+
+            <form id="pay-card-form" novalidate>
+              <div class="pay-form-card__body">
+                <div class="pay-form-grid">
+
+                  <!-- Name on card -->
+                  <div class="pay-form-field pay-form-field--full">
+                    <label for="pay-name">Name on card <span class="req" aria-hidden="true">*</span></label>
+                    <input type="text" id="pay-name" class="pay-form-input"
+                      placeholder="e.g. Ahmad Al-Rashid"
+                      autocomplete="cc-name" />
+                    <span class="pay-form-field__error" id="pay-name-err" role="alert"></span>
+                  </div>
+
+                  <!-- Card number -->
+                  <div class="pay-form-field pay-form-field--full">
+                    <label for="pay-num">Card number <span class="req" aria-hidden="true">*</span></label>
+                    <div class="pay-form-number-wrap">
+                      <input type="text" id="pay-num" class="pay-form-input has-brand-badge"
+                        placeholder="1234 5678 9012 3456"
+                        autocomplete="cc-number" inputmode="numeric" maxlength="19" />
+                      <span class="pay-form-brand-badge" id="pay-brand-badge" aria-hidden="true"></span>
+                    </div>
+                    <span class="pay-form-field__error" id="pay-num-err" role="alert"></span>
+                  </div>
+
+                  <!-- Expiry -->
+                  <div class="pay-form-field">
+                    <label for="pay-expiry">Expiry date <span class="req" aria-hidden="true">*</span></label>
+                    <input type="text" id="pay-expiry" class="pay-form-input"
+                      placeholder="MM/YY"
+                      autocomplete="cc-exp" inputmode="numeric" maxlength="5" />
+                    <span class="pay-form-field__error" id="pay-expiry-err" role="alert"></span>
+                  </div>
+
+                  <!-- CVV -->
+                  <div class="pay-form-field">
+                    <label for="pay-cvv">Security code (CVV) <span class="req" aria-hidden="true">*</span></label>
+                    <input type="text" id="pay-cvv" class="pay-form-input"
+                      placeholder="•••"
+                      autocomplete="cc-csc" inputmode="numeric" maxlength="4" />
+                    <span class="pay-form-field__error" id="pay-cvv-err" role="alert"></span>
+                    <span class="pay-form-field__hint">3 digits on back of card (4 for Amex)</span>
+                  </div>
+
+                  <!-- Set as default -->
+                  <div class="pay-form-field pay-form-field--full">
+                    <div class="pay-form-default-row">
+                      <input type="checkbox" id="pay-default" name="setDefault" />
+                      <label for="pay-default">Set as my default payment card</label>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Security notice -->
+                <div class="pay-demo-notice" role="note">
+                  <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                  <p><strong>Demo only</strong> — card data is stored locally in your browser and is never transmitted. Full card numbers are not saved; only the last 4 digits are kept for display.</p>
+                </div>
+              </div>
+
+              <div class="pay-form-footer">
+                <button type="button" class="pay-form-btn pay-form-btn--cancel" id="pay-form-cancel">
+                  <i class="fa-solid fa-xmark" aria-hidden="true"></i> Cancel
+                </button>
+                <button type="submit" class="pay-form-btn pay-form-btn--save">
+                  <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> Save Card
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div><!-- /.profile-main -->
+    </div><!-- /.profile-layout -->
+  </main>
+
+  <!-- Toast -->
+  <div class="pay-toast" id="pay-toast" role="status" aria-live="polite">
+    <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+    <span id="pay-toast-msg"></span>
+  </div>
+
+  <!-- ── Footer ────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__deco" aria-hidden="true">
+      <div class="site-footer__day-stars" aria-hidden="true"></div>
+    </div>
+    <div class="site-footer__inner">
+      <div class="site-footer__grid">
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">Information</h2>
+          <ul class="site-footer__list">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#">Security and Privacy</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+            <li><a href="giftcard.html">Gift Card</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">Customer service</h2>
+          <ul class="site-footer__list">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Site Map</a></li>
+            <li><a href="#">Order History</a></li>
+            <li><a href="wishlist.html">Wish List</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">Store information</h2>
+          <p class="site-footer__text">Building 5, Issa An-Nouri St., 7th Circle,<br />Amman-Jordan</p>
+          <p class="site-footer__text">
+            <strong>Call us now:</strong>
+            <a href="tel:+96265828488">(+962) 6 582 8488</a>
+          </p>
+          <p class="site-footer__text">Email: <a href="mailto:support@readers.jo">support@readers.jo</a></p>
+        </div>
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">Newsletter</h2>
+          <form class="site-footer__newsletter" action="#" method="post">
+            <label class="visually-hidden" for="footer-newsletter-email">Email</label>
+            <input class="site-footer__newsletter-input" id="footer-newsletter-email" type="email"
+              name="email" placeholder="Enter your email" autocomplete="email" />
+            <button class="site-footer__newsletter-btn" type="submit">Join us</button>
+          </form>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p class="site-footer__copyright">Copyright &copy; 2026 Readers Bookshop. All Right Reserved.</p>
+        <p class="site-footer__credit">
+          Designed &amp; developed by
+          <a href="https://josequal.com/" target="_blank" rel="noopener noreferrer">JoSequal</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/cart-store.js" defer></script>
+  <script src="js/cart-header.js" defer></script>
+  <script src="js/site-header.js" defer></script>
+  <script src="js/account-session.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/footer-stars.js" defer></script>
+  <script src="js/payment-page.js" defer></script>
+</body>
+</html>

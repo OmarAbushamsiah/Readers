@@ -1,0 +1,923 @@
+/* Loyalty Card page — Readers Bookshop */
+
+/* ── Canvas ──────────────────────────────────────────── */
+.loyalty-page {
+  background: #f0ede8;
+  min-height: 100vh;
+}
+
+/* ── Hero ────────────────────────────────────────────── */
+.lc-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2.25rem, 5vw, 4rem) var(--layout-gutter, clamp(0.9375rem, 2.85vw, 1.875rem));
+  text-align: center;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(196, 30, 58, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 50% at 0% 100%, rgba(21, 34, 56, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 45% at 100% 80%, rgba(230, 195, 74, 0.08) 0%, transparent 45%),
+    linear-gradient(180deg, #edeae4 0%, #f0ede8 100%);
+}
+
+.lc-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ccircle cx='1' cy='1' r='0.65' fill='%231a1a1a' fill-opacity='0.033'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.lc-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--layout-max, 1320px);
+  margin: 0 auto;
+}
+
+.lc-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(196, 30, 58, 0.09);
+  border: 1px solid rgba(196, 30, 58, 0.18);
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #c41e3a;
+}
+
+.lc-hero__title {
+  margin: 0 0 0.6rem;
+  font-family: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.85rem, 1.2rem + 2.4vw, 2.75rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+}
+
+.lc-hero__title em {
+  font-style: italic;
+  color: #c41e3a;
+}
+
+.lc-hero__sub {
+  max-width: 44ch;
+  margin: 0 auto;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: clamp(0.875rem, 0.82rem + 0.25vw, 1rem);
+  font-weight: 400;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* ── Layout ──────────────────────────────────────────── */
+.lc-body {
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0 3rem;
+}
+
+/* ── Empty state — card picker ───────────────────────── */
+.lc-empty__header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.lc-empty__title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.6rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 0.4rem;
+}
+
+.lc-empty__sub {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.9rem;
+  color: #777;
+  margin: 0;
+}
+
+/* ── Card type picker ────────────────────────────────── */
+.lc-picker {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 300px));
+  gap: 1.25rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.lc-picker__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.lc-picker__label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  cursor: pointer;
+}
+
+.lc-picker__card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.586;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.13), 0 1px 4px rgba(0,0,0,0.08);
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s;
+  outline: 3px solid transparent;
+  outline-offset: 4px;
+}
+
+.lc-picker__input:checked + .lc-picker__label .lc-picker__card {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.10);
+  outline-color: #c41e3a;
+}
+
+/* Gold card gradient */
+.lc-picker__card--gold {
+  background: linear-gradient(135deg, #a07414 0%, #c9951f 35%, #e6c34a 60%, #c9951f 80%, #a07414 100%);
+}
+
+/* Blue card gradient */
+.lc-picker__card--blue {
+  background: linear-gradient(135deg, #0e1a2e 0%, #152238 40%, #1e3a6e 70%, #152238 100%);
+}
+
+/* Shimmer overlay */
+.lc-picker__card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 50%, rgba(255,255,255,0.06) 100%);
+  pointer-events: none;
+}
+
+/* Dot pattern */
+.lc-picker__card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='1' cy='1' r='0.6' fill='%23ffffff' fill-opacity='0.06'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.lc-picker__card-inner {
+  position: absolute;
+  inset: 0;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.lc-picker__card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.lc-picker__card-brand {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(0.7rem, 0.6rem + 0.4vw, 0.85rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.lc-picker__card--gold .lc-picker__card-brand { color: rgba(40, 20, 0, 0.85); }
+.lc-picker__card--blue .lc-picker__card-brand { color: rgba(255,255,255,0.9); }
+
+.lc-picker__card-tier-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lc-picker__card--gold .lc-picker__card-tier-badge {
+  background: rgba(30, 15, 0, 0.25);
+  color: rgba(30, 15, 0, 0.9);
+}
+
+.lc-picker__card--blue .lc-picker__card-tier-badge {
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+}
+
+.lc-picker__card-mid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lc-picker__card-icon {
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  opacity: 0.5;
+}
+
+.lc-picker__card--gold .lc-picker__card-icon { color: rgba(30,15,0,0.6); }
+.lc-picker__card--blue .lc-picker__card-icon { color: rgba(255,255,255,0.45); }
+
+.lc-picker__card-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.lc-picker__card-chip {
+  width: 1.6rem;
+  height: 1.2rem;
+  border-radius: 3px;
+  border: 1.5px solid;
+  position: relative;
+  overflow: hidden;
+}
+
+.lc-picker__card--gold .lc-picker__card-chip {
+  border-color: rgba(30,15,0,0.35);
+  background: linear-gradient(135deg, rgba(30,15,0,0.15), rgba(30,15,0,0.05));
+}
+
+.lc-picker__card--blue .lc-picker__card-chip {
+  border-color: rgba(255,255,255,0.3);
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+}
+
+.lc-picker__card-points-label {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.lc-picker__card--gold .lc-picker__card-points-label { color: rgba(30,15,0,0.8); }
+.lc-picker__card--blue .lc-picker__card-points-label { color: rgba(255,255,255,0.8); }
+
+/* check badge on selected */
+.lc-picker__check {
+  display: none;
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  background: #c41e3a;
+  color: #fff;
+  font-size: 0.65rem;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(196,30,58,0.4);
+}
+
+.lc-picker__input:checked + .lc-picker__label .lc-picker__check {
+  display: flex;
+}
+
+.lc-picker__card-name {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+.lc-picker__card-desc {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.775rem;
+  color: #888;
+  text-align: center;
+  margin-top: 0.2rem;
+}
+
+/* ── Registration form ───────────────────────────────── */
+.lc-form-wrap {
+  background: #fff;
+  border: 1px solid #e8e4dd;
+  border-radius: 14px;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  max-width: 560px;
+  margin: 0 auto;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+.lc-form-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 0.3rem;
+}
+
+.lc-form-sub {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.8125rem;
+  color: #888;
+  margin: 0 0 1.5rem;
+}
+
+.lc-form-divider {
+  height: 1px;
+  background: #ede9e4;
+  margin: 1.25rem 0;
+}
+
+.lc-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.875rem;
+}
+
+.lc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.lc-field--full {
+  grid-column: 1 / -1;
+}
+
+.lc-field label {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.lc-field label span[aria-hidden] {
+  color: #c41e3a;
+  margin-left: 0.15em;
+}
+
+.lc-field input,
+.lc-field select {
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border: 1.5px solid #ddd9d2;
+  border-radius: 8px;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.875rem;
+  color: #1a1a1a;
+  background: #faf9f7;
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.lc-field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='16' height='16'%3E%3Cpath fill='%23999' d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.6rem center;
+  padding-right: 2rem;
+  cursor: pointer;
+}
+
+.lc-field input:focus,
+.lc-field select:focus {
+  border-color: #c41e3a;
+  box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.10);
+  background: #fff;
+}
+
+.lc-field__error {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.75rem;
+  color: #c41e3a;
+  display: none;
+}
+
+.lc-field.has-error input,
+.lc-field.has-error select {
+  border-color: #c41e3a;
+}
+
+.lc-field.has-error .lc-field__error {
+  display: block;
+}
+
+/* ── Buttons ─────────────────────────────────────────── */
+.lc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0 1.5rem;
+  height: 2.75rem;
+  border-radius: 8px;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: background 0.18s, transform 0.15s, box-shadow 0.18s;
+  text-decoration: none;
+}
+
+.lc-btn--primary {
+  background: #c41e3a;
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(196, 30, 58, 0.28);
+  width: 100%;
+  height: 3rem;
+  font-size: 0.9375rem;
+  margin-top: 0.25rem;
+}
+
+.lc-btn--primary:hover {
+  background: #a8182f;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(196, 30, 58, 0.34);
+}
+
+.lc-btn--primary:active {
+  transform: translateY(0);
+}
+
+/* ── Alert ───────────────────────────────────────────── */
+.lc-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.8375rem;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+
+.lc-alert--error {
+  background: rgba(196, 30, 58, 0.07);
+  border: 1px solid rgba(196, 30, 58, 0.2);
+  color: #9e1530;
+}
+
+/* ── Active state — cards grid ───────────────────────── */
+.lc-active-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.lc-active-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.1rem, 0.9rem + 0.8vw, 1.45rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.lc-add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  border: 1.5px solid #c41e3a;
+  background: transparent;
+  color: #c41e3a;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+
+.lc-add-btn:hover {
+  background: #c41e3a;
+  color: #fff;
+}
+
+.lc-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 360px));
+  gap: 2rem;
+}
+
+/* ── Flippable card ──────────────────────────────────── */
+.lc-card-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.lc-card {
+  perspective: 1000px;
+  cursor: pointer;
+  aspect-ratio: 1.586;
+  width: 100%;
+}
+
+.lc-card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lc-card.is-flipped .lc-card__inner {
+  transform: rotateY(180deg);
+}
+
+.lc-card__front,
+.lc-card__back {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.16), 0 2px 8px rgba(0,0,0,0.09);
+}
+
+.lc-card__back {
+  transform: rotateY(180deg);
+}
+
+/* Gold card theme */
+.lc-card--gold .lc-card__front,
+.lc-card--gold .lc-card__back {
+  background: linear-gradient(135deg, #a07414 0%, #c9951f 35%, #e6c34a 60%, #c9951f 80%, #a07414 100%);
+}
+
+/* Blue card theme */
+.lc-card--blue .lc-card__front,
+.lc-card--blue .lc-card__back {
+  background: linear-gradient(135deg, #0e1a2e 0%, #152238 40%, #1e3a6e 70%, #152238 100%);
+}
+
+/* Shimmer overlay */
+.lc-card__front::before,
+.lc-card__back::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, transparent 50%, rgba(255,255,255,0.07) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Dot pattern */
+.lc-card__front::after,
+.lc-card__back::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='1' cy='1' r='0.6' fill='%23ffffff' fill-opacity='0.055'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lc-card__front-inner,
+.lc-card__back-inner {
+  position: absolute;
+  inset: 0;
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+/* Front face */
+.lc-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.lc-card__brand {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(0.7rem, 0.6rem + 0.3vw, 0.85rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.lc-card--gold .lc-card__brand { color: rgba(30,15,0,0.85); }
+.lc-card--blue .lc-card__brand { color: rgba(255,255,255,0.9); }
+
+.lc-card__tier {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lc-card--gold .lc-card__tier {
+  background: rgba(30,15,0,0.22);
+  color: rgba(25,12,0,0.9);
+}
+
+.lc-card--blue .lc-card__tier {
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.92);
+}
+
+.lc-card__mid {
+  text-align: center;
+}
+
+.lc-card__number-preview {
+  font-family: "DM Sans", monospace, sans-serif;
+  font-size: clamp(0.6rem, 0.5rem + 0.4vw, 0.75rem);
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  opacity: 0.55;
+}
+
+.lc-card--gold .lc-card__number-preview { color: rgba(30,15,0,0.9); }
+.lc-card--blue .lc-card__number-preview { color: rgba(255,255,255,0.9); }
+
+.lc-card__bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.lc-card__holder-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.lc-card__holder-label {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.lc-card--gold .lc-card__holder-label { color: rgba(30,15,0,0.9); }
+.lc-card--blue .lc-card__holder-label { color: rgba(255,255,255,0.9); }
+
+.lc-card__holder-name {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: clamp(0.65rem, 0.55rem + 0.3vw, 0.78rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.lc-card--gold .lc-card__holder-name { color: rgba(25,12,0,0.88); }
+.lc-card--blue .lc-card__holder-name { color: rgba(255,255,255,0.95); }
+
+.lc-card__chip {
+  width: 1.75rem;
+  height: 1.3rem;
+  border-radius: 3px;
+  border: 1.5px solid;
+}
+
+.lc-card--gold .lc-card__chip {
+  border-color: rgba(30,15,0,0.3);
+  background: linear-gradient(135deg, rgba(30,15,0,0.12), rgba(30,15,0,0.04));
+}
+
+.lc-card--blue .lc-card__chip {
+  border-color: rgba(255,255,255,0.28);
+  background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+}
+
+/* Flip hint */
+.lc-card__flip-hint {
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  opacity: 0.45;
+  z-index: 2;
+}
+
+.lc-card--gold .lc-card__flip-hint { color: rgba(30,15,0,0.9); }
+.lc-card--blue .lc-card__flip-hint { color: rgba(255,255,255,0.9); }
+
+/* Back face */
+.lc-card__back-inner {
+  justify-content: flex-start;
+  gap: 0.6rem;
+}
+
+.lc-card__stripe {
+  height: 2.2rem;
+  border-radius: 4px;
+  margin: 0 -1.25rem;
+}
+
+.lc-card--gold .lc-card__stripe { background: rgba(30,15,0,0.35); }
+.lc-card--blue .lc-card__stripe { background: rgba(0,0,0,0.45); }
+
+.lc-card__back-detail-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.lc-card__back-label {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.lc-card--gold .lc-card__back-label { color: rgba(30,15,0,0.9); }
+.lc-card--blue .lc-card__back-label { color: rgba(255,255,255,0.85); }
+
+.lc-card__back-value {
+  font-family: "DM Sans", monospace, sans-serif;
+  font-size: clamp(0.65rem, 0.55rem + 0.25vw, 0.75rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.lc-card--gold .lc-card__back-value { color: rgba(25,12,0,0.9); }
+.lc-card--blue .lc-card__back-value { color: rgba(255,255,255,0.95); }
+
+.lc-card__back-row-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: 0.1rem;
+}
+
+.lc-card__points-highlight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  margin-top: 0.2rem;
+}
+
+.lc-card__points-value {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1rem, 0.85rem + 0.5vw, 1.25rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.lc-card--gold .lc-card__points-value { color: rgba(25,12,0,0.88); }
+.lc-card--blue .lc-card__points-value { color: rgba(255,255,255,0.95); }
+
+/* ── Card info tile (below the card) ─────────────────── */
+.lc-card-info {
+  background: #fff;
+  border: 1px solid #e8e4dd;
+  border-radius: 10px;
+  padding: 0.875rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.lc-card-info__left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.lc-card-info__tier {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.lc-card-info__tier--gold { color: #b8860b; }
+.lc-card-info__tier--blue { color: #152238; }
+
+.lc-card-info__name {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.lc-card-info__points {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #c41e3a;
+}
+
+/* ── Card detail modal ───────────────────────────────── */
+/* (flip handles detail; no separate modal needed) */
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 540px) {
+  .lc-picker {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .lc-field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .lc-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Dark theme ──────────────────────────────────────── */
+[data-theme="dark"] .loyalty-page {
+  background: #141619;
+}
+
+[data-theme="dark"] .lc-hero {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(196, 30, 58, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 50% at 0% 100%, rgba(21, 34, 56, 0.15) 0%, transparent 50%),
+    linear-gradient(180deg, #1a1d22 0%, #141619 100%);
+}
+
+[data-theme="dark"] .lc-hero__title,
+[data-theme="dark"] .lc-empty__title,
+[data-theme="dark"] .lc-form-title,
+[data-theme="dark"] .lc-active-title { color: #f0ede8; }
+
+[data-theme="dark"] .lc-hero__sub,
+[data-theme="dark"] .lc-empty__sub,
+[data-theme="dark"] .lc-form-sub { color: #888; }
+
+[data-theme="dark"] .lc-picker__card-name { color: #e8e4de; }
+[data-theme="dark"] .lc-picker__card-desc { color: #666; }
+
+[data-theme="dark"] .lc-form-wrap {
+  background: #1e2126;
+  border-color: #2a2d33;
+}
+
+[data-theme="dark"] .lc-form-divider { background: #2a2d33; }
+
+[data-theme="dark"] .lc-field label { color: #b8b4ae; }
+
+[data-theme="dark"] .lc-field input,
+[data-theme="dark"] .lc-field select {
+  background: #252830;
+  border-color: #333740;
+  color: #e8e4de;
+}
+
+[data-theme="dark"] .lc-field input:focus,
+[data-theme="dark"] .lc-field select:focus {
+  border-color: #c41e3a;
+  background: #2a2d33;
+}
+
+[data-theme="dark"] .lc-card-info {
+  background: #1e2126;
+  border-color: #2a2d33;
+}
+
+[data-theme="dark"] .lc-card-info__name { color: #e8e4de; }
+
+[data-theme="dark"] .lc-alert--error {
+  background: rgba(196, 30, 58, 0.12);
+  border-color: rgba(196, 30, 58, 0.25);
+}

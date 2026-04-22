@@ -45,7 +45,7 @@ body {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1100;
   width: 100%;
   padding-top: env(safe-area-inset-top, 0);
   background: #fff;
@@ -710,5 +710,253 @@ button.btn-account {
 @media (max-width: 600px) {
   .utility-nav {
     gap: 0.5rem 1rem;
+  }
+}
+
+/* ── Country flag toggle (utility bar) ──────────────── */
+.country-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.55rem;
+  min-height: var(--utility-pill-h, 30px);
+  border: 1px solid #d5d5d5;
+  border-radius: 999px;
+  background: #fafafa;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #333;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.country-toggle:hover {
+  border-color: #b8b8b8;
+  background: #fff;
+}
+
+.country-toggle:focus-visible {
+  outline: 2px solid rgba(196, 30, 58, 0.45);
+  outline-offset: 2px;
+}
+
+.country-toggle__flag {
+  display: inline-block;
+  width: 1.25em;
+  height: 0.95em;
+  vertical-align: middle;
+  border-radius: 2px;
+}
+
+.country-toggle__arrow {
+  display: block;
+  width: 10px;
+  height: 10px;
+  color: #777;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+/* ── Phone prefix selector ───────────────────────────── */
+.phone-field {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid #c5c5c5;
+  border-radius: 8px;
+  background: #fff;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+.phone-field:focus-within {
+  border-color: #c41e3a;
+  outline: 2px solid rgba(196, 30, 58, 0.35);
+  outline-offset: 1px;
+}
+
+.phone-prefix {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.phone-prefix__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.55rem 0.65rem 0.55rem 0.75rem;
+  height: 100%;
+  min-height: 44px;
+  border: none;
+  border-right: 1px solid #d5d5d5;
+  border-radius: 7px 0 0 7px;
+  background: #fafafa;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #333;
+  transition: background 0.15s ease;
+  white-space: nowrap;
+}
+
+.phone-prefix__btn:hover {
+  background: #f0eeeb;
+}
+
+.phone-prefix__btn:focus-visible {
+  outline: 2px solid rgba(196, 30, 58, 0.45);
+  outline-offset: -2px;
+}
+
+.phone-prefix__flag {
+  display: inline-block;
+  width: 1.4em;
+  height: 1em;
+  vertical-align: middle;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.phone-prefix__option .fi {
+  display: inline-block;
+  width: 1.4em;
+  height: 1em;
+  vertical-align: middle;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.phone-prefix__code {
+  font-size: 0.8125rem;
+  letter-spacing: 0.01em;
+}
+
+.phone-prefix__chevron {
+  display: block;
+  width: 12px;
+  height: 12px;
+  color: #777;
+  transition: transform 0.2s ease;
+}
+
+.phone-prefix__btn[aria-expanded="true"] .phone-prefix__chevron {
+  transform: rotate(180deg);
+}
+
+.phone-prefix__menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 13rem;
+  margin: 0;
+  padding: 0.3rem 0;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #e5e2dc;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(26, 26, 26, 0.12);
+  z-index: 130;
+}
+
+.phone-prefix__option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem 0.9rem;
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  text-align: left;
+}
+
+.phone-prefix__option:hover {
+  background: #f4f2ef;
+  color: #1a1a1a;
+}
+
+.phone-prefix__option[aria-selected="true"] {
+  color: #c41e3a;
+  font-weight: 700;
+}
+
+.phone-prefix__option:focus-visible {
+  outline: none;
+  background: #fff5f5;
+}
+
+.phone-field input[type="tel"] {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0.55rem 0.85rem;
+  border: none;
+  border-radius: 0 7px 7px 0;
+  background: transparent;
+  font: inherit;
+  font-size: 0.875rem;
+  color: #333;
+  min-height: 44px;
+}
+
+.phone-field input[type="tel"]:focus {
+  outline: none;
+}
+
+/* Context overrides: auth forms */
+.auth-field .phone-field {
+  width: 100%;
+  min-height: 48px;
+}
+
+.auth-field .phone-field .phone-prefix__btn {
+  min-height: 46px;
+}
+
+.auth-field .phone-field input[type="tel"] {
+  min-height: 46px;
+  padding: 0.65rem 0.85rem;
+}
+
+/* Context overrides: profile form */
+.pf-input-wrap .phone-field {
+  flex: 1;
+  border: none;
+  border-radius: 0;
+  outline: none !important;
+}
+
+.pf-input-wrap .phone-field:focus-within {
+  border: none;
+  outline: none;
+}
+
+/* Context overrides: cart delivery form */
+.cart-field-line__control .phone-field {
+  max-width: 28rem;
+}
+
+.cart-field-line__control .phone-field input[type="tel"] {
+  min-height: 38px;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.cart-field-line__control .phone-field .phone-prefix__btn {
+  min-height: 36px;
+  padding: 0.4rem 0.6rem 0.4rem 0.7rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .country-toggle,
+  .phone-prefix__btn,
+  .phone-prefix__chevron {
+    transition: none;
   }
 }

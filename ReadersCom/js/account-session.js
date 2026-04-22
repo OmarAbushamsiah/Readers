@@ -35,7 +35,7 @@
 
   function userMenuHtml() {
     return (
-      '<li role="none"><a role="menuitem" href="AccountDashboard.html" class="account-menu__link">My Account</a></li>' +
+      '<li role="none"><a role="menuitem" href="profile.html" class="account-menu__link">My Account</a></li>' +
       '<li role="none"><a role="menuitem" href="orders.html" class="account-menu__link">Orders</a></li>' +
       '<li role="none"><a role="menuitem" href="wishlist.html" class="account-menu__link">Wish List</a></li>' +
       '<li role="none"><a role="menuitem" href="#" class="account-menu__link" data-readers-sign-out>Sign Out</a></li>'
