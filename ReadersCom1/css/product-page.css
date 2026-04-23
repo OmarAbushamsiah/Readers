@@ -1,0 +1,344 @@
+/* Static product page — layout echoing readers.jo OpenCart product view */
+
+body {
+  background: #f7f6f3;
+}
+
+.product-page {
+  padding: var(--section-pad-y-sm, clamp(1.05rem, 2.45vw, 1.85rem)) 0 var(--section-pad-y, clamp(1.35rem, 3.15vw, 2.35rem));
+}
+
+.product-page__inner {
+  max-width: var(--layout-max, 1320px);
+  margin: 0 auto;
+  padding: 0 max(var(--layout-gutter, clamp(0.9375rem, 2.85vw, 1.875rem)), env(safe-area-inset-right, 0)) 0
+    max(var(--layout-gutter, clamp(0.9375rem, 2.85vw, 1.875rem)), env(safe-area-inset-left, 0));
+}
+
+.product-page__missing {
+  background: #fff;
+  padding: 2rem;
+  border: 1px solid #e8e6e1;
+  text-align: center;
+}
+
+.breadcrumb {
+  margin-bottom: 1.25rem;
+}
+
+.breadcrumb__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.65rem;
+  font-size: 0.8125rem;
+  color: #555;
+}
+
+.breadcrumb__list a {
+  color: #c41e3a;
+  text-decoration: none;
+}
+
+.breadcrumb__list a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb__list li:not(:last-child)::after {
+  content: "›";
+  margin-left: 0.65rem;
+  color: #999;
+}
+
+.product-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: clamp(1.15rem, 3.25vw, 2rem);
+  align-items: start;
+  background: #fff;
+  padding: clamp(1.05rem, 2.65vw, 1.65rem);
+  border: 1px solid #e8e6e1;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .product-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+.product-main__media {
+  background: #faf9f7;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Single cover: clip + scale on hover (origin follows pointer via --zoom-x / --zoom-y) */
+.product-cover-zoom {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #f0eeeb;
+  border-radius: 2px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
+}
+
+.product-main__image {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+  transform-origin: var(--zoom-x, 50%) var(--zoom-y, 50%);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .product-cover-zoom--interactive:hover .product-main__image {
+    transform: scale(1.7);
+  }
+
+  .product-cover-zoom--interactive {
+    cursor: zoom-in;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-main__image {
+    transition: none;
+    transform: none !important;
+  }
+
+  .product-cover-zoom--interactive {
+    cursor: default;
+  }
+}
+
+.product-main__title {
+  margin: 0 0 1rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.65rem, 3.5vw, 2.15rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: #1a1a1a;
+}
+
+.product-meta {
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.product-meta__label {
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-right: 0.25rem;
+}
+
+.product-price {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #c41e3a;
+}
+
+.product-price__label {
+  font-weight: 600;
+  color: #555;
+  margin-right: 0.35rem;
+}
+
+.product-facts {
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: #444;
+}
+
+.product-facts li span:first-child {
+  font-weight: 600;
+  color: #333;
+  margin-right: 0.35rem;
+}
+
+.product-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 0.85rem;
+}
+
+.product-qty input {
+  width: 3.5rem;
+  padding: 0.5rem 0.45rem;
+  border: 1px solid #c5c5c5;
+  border-radius: 2px;
+  font: inherit;
+  font-size: 0.875rem;
+}
+
+.product-actions__cart {
+  padding: 0.6rem 1.35rem;
+  border: none;
+  border-radius: 2px;
+  background: #e31e2f;
+  color: #fff;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.product-actions__cart:hover {
+  background: #c91828;
+}
+
+.product-actions__ghost {
+  padding: 0.55rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  background: #fff;
+  color: #333;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.product-actions__ghost:hover {
+  border-color: #999;
+}
+
+.product-tabs {
+  background: #fff;
+  border: 1px solid #e8e6e1;
+  margin-bottom: 1.5rem;
+}
+
+.product-tabs__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-bottom: 1px solid #e8e6e1;
+}
+
+.product-tabs__tab {
+  padding: 0.85rem 1.25rem;
+  border: none;
+  background: #f4f2ef;
+  color: #555;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-right: 1px solid #e8e6e1;
+}
+
+.product-tabs__tab.is-active {
+  background: #fff;
+  color: #1a1a1a;
+  margin-bottom: -1px;
+  padding-bottom: calc(0.85rem + 1px);
+}
+
+.product-tabs__tab:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.product-tabs__panel {
+  padding: clamp(0.85rem, 2.15vw, 1.25rem);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: #333;
+  max-width: 85ch;
+}
+
+.related-wrap {
+  background: #fff;
+  border: 1px solid #e8e6e1;
+  padding: clamp(1.05rem, 2.65vw, 1.45rem);
+}
+
+.related-wrap__title {
+  margin: 0 0 1rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(0.6rem, 1.65vw, 1.05rem);
+}
+
+@media (max-width: 1000px) {
+  .related-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .related-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.related-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.related-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 600 / 770;
+  object-fit: cover;
+  background: #f0eeeb;
+  margin-bottom: 0.5rem;
+}
+
+.related-card__title {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #1a1a1a;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.related-card__price {
+  margin: 0.35rem 0 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #c41e3a;
+}
+
+.related-card:hover .related-card__title {
+  color: #c41e3a;
+}
+
+.product-page__main-col {
+  min-width: 0;
+}
+

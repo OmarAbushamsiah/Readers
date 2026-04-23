@@ -1,0 +1,47 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="334.000000pt" height="422.000000pt" viewBox="0 0 334.000000 422.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<defs>
+  <!-- One traced path for hair + skin + shirt: vertical blend to match peek-character.png -->
+  <linearGradient id="peekCharacterFill" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#723E33"/>
+    <stop offset="0.24" stop-color="#723E33"/>
+    <stop offset="0.33" stop-color="#F3A694"/>
+    <stop offset="0.42" stop-color="#E08575"/>
+    <stop offset="0.50" stop-color="#F3A694"/>
+    <stop offset="0.72" stop-color="#F3A694"/>
+    <stop offset="0.82" stop-color="#EDC9BE"/>
+    <stop offset="0.90" stop-color="#FDF1E2"/>
+    <stop offset="1" stop-color="#FDF1E2"/>
+  </linearGradient>
+</defs>
+
+<g transform="translate(0.000000,422.000000) scale(0.100000,-0.100000)"
+stroke="none">
+<path fill="#2F7D5B" d="M0 2144 c0 -1404 3 -2082 10 -2095 15 -27 63 -49 110 -49 l40 0 0
+1568 0 1568 -42 10 c-50 11 -73 40 -44 56 17 10 17 11 -5 22 -31 15 -36 51
+-10 68 19 12 19 13 3 31 -16 18 -16 20 3 33 10 8 24 14 31 14 7 0 9 10 6 25
+-4 21 1 27 27 36 l31 11 0 389 0 389 -80 0 -80 0 0 -2076z"/>
+<path fill="url(#peekCharacterFill)" d="M787 3351 c-30 -15 -45 -17 -70 -10 -47 13 -94 1 -121 -32 -15 -18
+-34 -29 -50 -29 -39 0 -76 -18 -76 -36 0 -10 -23 -41 -51 -71 -27 -29 -62 -78
+-76 -110 -23 -50 -25 -60 -14 -87 7 -17 19 -65 27 -106 22 -118 57 -260 65
+-260 17 0 19 42 4 87 -22 63 -13 125 21 152 65 51 99 32 100 -57 0 -44 3 -56
+15 -54 21 4 55 49 69 93 17 51 39 70 95 80 25 5 62 16 81 25 41 20 76 9 120
+-37 15 -16 38 -29 51 -29 26 0 63 -32 63 -55 0 -18 57 -55 85 -55 11 1 28 7
+38 14 16 13 16 14 -7 30 -14 9 -41 16 -60 16 -25 0 -38 6 -46 20 -15 27 20 48
+104 62 64 11 66 12 72 45 10 55 -3 141 -30 197 -26 54 -91 106 -131 106 -13 0
+-27 12 -38 33 -10 17 -34 44 -54 60 -45 34 -128 38 -186 8z"/>
+<path fill="#FFFFFF" d="M711 2806 c-17 -20 4 -31 79 -44 67 -10 87 -5 77 22 -12 30 -134 48
+-156 22z"/>
+<path fill="#FFFFFF" d="M1040 2740 c-24 -15 7 -38 55 -42 37 -3 40 -1 43 25 3 26 1 27 -40
+27 -24 0 -50 -5 -58 -10z"/>
+<path fill="#723E33" d="M760 2701 c0 -18 17 -38 25 -30 12 14 8 44 -7 47 -13 2 -18 -3 -18
+-17z"/>
+<path fill="#723E33" d="M1042 2623 c4 -21 33 -25 33 -3 0 8 -8 16 -18 18 -14 3 -18 -1 -15
+-15z"/>
+</g>
+</svg>

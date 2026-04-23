@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>My Orders — Readers Bookshop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/orders-page.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("readers_theme");
+        if (t === "dark") document.documentElement.dataset.theme = "dark";
+      } catch (e) {}
+    })();
+  </script>
+</head>
+
+<body class="orders-page">
+
+  <!-- ── Utility bar ───────────────────────────────── -->
+  <div class="utility-bar">
+    <div class="utility-bar__inner">
+      <nav class="utility-nav" aria-label="Utility">
+        <a href="giftcard.html">Gift Card</a>
+        <a href="wishlist.html">Wish List</a>
+        <a href="login.html">Sign In / Register</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+      <div class="utility-controls">
+        <div class="lang-switcher">
+          <button type="button" class="lang-switcher__toggle" id="lang-switcher-toggle" aria-expanded="false"
+            aria-haspopup="listbox" aria-controls="lang-switcher-menu">
+            <span class="lang-switcher__value" id="lang-switcher-label" lang="en">English</span>
+            <svg class="lang-switcher__chevron" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"
+              focusable="false">
+              <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+            </svg>
+          </button>
+          <ul class="lang-switcher__menu" id="lang-switcher-menu" role="listbox" aria-labelledby="lang-switcher-toggle"
+            hidden>
+            <li role="presentation">
+              <button type="button" class="lang-switcher__option" role="option" data-lang="en" lang="en"
+                aria-selected="true">English</button>
+            </li>
+            <li role="presentation">
+              <button type="button" class="lang-switcher__option" role="option" data-lang="ar" lang="ar"
+                aria-selected="false">العربية</button>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="theme-toggle theme-toggle--day-night" id="theme-toggle" aria-pressed="false">
+          <span class="visually-hidden">Toggle dark mode</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Site header ───────────────────────────────── -->
+  <header class="site-header">
+    <div class="main-header">
+      <div class="main-header__inner">
+        <button type="button" class="main-header__menu-btn" id="main-header-menu-btn" aria-expanded="false"
+          aria-controls="main-header-nav-panel" aria-label="Open navigation menu">
+          <svg class="main-header__menu-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"
+            focusable="false">
+            <path fill="currentColor" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" />
+          </svg>
+        </button>
+        <a class="brand" href="index.html">
+          <img src="assets/logo.png" width="200" height="56" alt="Readers Bookshop" class="brand__logo" />
+        </a>
+        <div class="main-header__nav-panel" id="main-header-nav-panel">
+          <nav class="primary-nav" aria-label="Primary">
+            <a href="index.html">Home</a>
+            <a href="category.html#all">Books</a>
+            <a href="category.html#arabic-books">Arabic Books</a>
+            <a href="category.html#gadgets-accessories">Gadgets &amp; Accessories</a>
+            <a href="category.html#all">Special Offers</a>
+          </nav>
+        </div>
+        <label class="search-field">
+          <span class="visually-hidden">Search</span>
+          <input type="search" name="search" placeholder="Search readers.jo products…" autocomplete="off" />
+        </label>
+        <div class="header-actions__cluster">
+          <a class="btn-cart" href="cart.html"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>Cart</a>
+          <div class="account-menu">
+            <button type="button" class="btn-account account-menu__toggle" id="account-menu-toggle"
+              aria-expanded="false" aria-haspopup="menu" aria-controls="account-menu-dropdown">
+              <svg class="btn-account__icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"
+                focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+              <span class="btn-account__label">Account</span>
+              <svg class="account-menu__chevron" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"
+                focusable="false">
+                <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+              </svg>
+            </button>
+            <ul class="account-menu__dropdown" id="account-menu-dropdown" role="menu" hidden>
+              <li role="none"><a role="menuitem" href="login.html" class="account-menu__link">Login</a></li>
+              <li role="none"><a role="menuitem" href="register.html" class="account-menu__link">Register</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Main ──────────────────────────────────────── -->
+  <main id="main-content">
+
+    <!-- Hero -->
+    <div class="orders-hero">
+      <div class="orders-hero__inner">
+
+        <div class="orders-hero__row">
+          <div class="orders-hero__title-wrap">
+            <div class="orders-hero__icon" aria-hidden="true">
+              <i class="fa-solid fa-box"></i>
+            </div>
+            <div>
+              <h1 class="orders-hero__title">My Orders</h1>
+              <p class="orders-hero__sub">Track, review and re-order your purchases</p>
+            </div>
+          </div>
+          <div class="orders-hero__stats" id="orders-stats" aria-label="Order statistics">
+            <div class="orders-hero__stat">
+              <span class="orders-hero__stat-val" id="stat-total">4</span>
+              <span class="orders-hero__stat-lbl">Total Orders</span>
+            </div>
+            <div class="orders-hero__stat">
+              <span class="orders-hero__stat-val" id="stat-delivered">2</span>
+              <span class="orders-hero__stat-lbl">Delivered</span>
+            </div>
+            <div class="orders-hero__stat">
+              <span class="orders-hero__stat-val" id="stat-active">1</span>
+              <span class="orders-hero__stat-lbl">Active</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layout -->
+    <div class="orders-layout">
+
+      <!-- Sidebar nav -->
+      <nav class="orders-nav" aria-label="Account navigation">
+        <p class="orders-nav__heading">My Account</p>
+        <ul class="orders-nav__list">
+          <li><a href="profile.html" class="orders-nav__link"><i class="fa-solid fa-user" aria-hidden="true"></i>My
+              Profile</a></li>
+          <li><a href="orders.html" class="orders-nav__link is-active" aria-current="page"><i class="fa-solid fa-box"
+                aria-hidden="true"></i>Orders</a></li>
+          <li><a href="wishlist.html" class="orders-nav__link"><i class="fa-solid fa-heart" aria-hidden="true"></i>Wish
+              Lists</a></li>
+          <li><a href="giftcard.html" class="orders-nav__link"><i class="fa-solid fa-gift" aria-hidden="true"></i>Gift
+              Cards</a></li>
+          <li><a href="loyalty.html" class="orders-nav__link"><i class="fa-solid fa-star" aria-hidden="true"></i>Loyalty
+              Card</a></li>
+          <li><a href="payment.html" class="orders-nav__link"><i class="fa-solid fa-credit-card"
+                aria-hidden="true"></i>Payment</a></li>
+          <li><a href="addressbook.html" class="orders-nav__link"><i class="fa-solid fa-location-dot"
+                aria-hidden="true"></i>Address Book</a></li>
+        </ul>
+      </nav>
+
+      <!-- Orders list -->
+      <div class="orders-main" id="orders-main">
+
+        <!-- Toolbar -->
+        <div class="orders-toolbar">
+          <div class="orders-search">
+            <i class="orders-search__icon fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <input type="search" class="orders-search__input" id="orders-search"
+              placeholder="Search by order ID or book title…" aria-label="Search orders" />
+          </div>
+          <select class="orders-filter-select" id="orders-filter" aria-label="Filter by status">
+            <option value="all">All Orders</option>
+            <option value="processing">Processing</option>
+            <option value="shipped">Shipped</option>
+            <option value="delivered">Delivered</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+          <span class="orders-count" id="orders-count" aria-live="polite">4 orders</span>
+        </div>
+
+        <!-- Cards injected by JS -->
+        <div id="orders-list" aria-label="Orders"></div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ── Footer ────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__deco" aria-hidden="true">
+      <div class="site-footer__day-stars" aria-hidden="true"></div>
+    </div>
+    <div class="site-footer__inner">
+      <div class="site-footer__grid">
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">Information</h2>
+          <ul class="site-footer__list">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#">Security and Privacy</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+            <li><a href="giftcard.html">Gift Card</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">Customer service</h2>
+          <ul class="site-footer__list">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Site Map</a></li>
+            <li><a href="#">Order History</a></li>
+            <li><a href="wishlist.html">Wish List</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">Store information</h2>
+          <p class="site-footer__text">Building 5, Issa An-Nouri St., 7th Circle,<br />Amman-Jordan</p>
+          <p class="site-footer__text">
+            <strong>Call us now:</strong>
+            <a href="tel:+96265828488">(+962) 6 582 8488</a>
+          </p>
+          <p class="site-footer__text">Email: <a href="mailto:support@readers.jo">support@readers.jo</a></p>
+        </div>
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">Newsletter</h2>
+          <form class="site-footer__newsletter" action="#" method="post">
+            <label class="visually-hidden" for="footer-newsletter-email">Email</label>
+            <input class="site-footer__newsletter-input" id="footer-newsletter-email" type="email" name="email"
+              placeholder="Enter your email" autocomplete="email" />
+            <button class="site-footer__newsletter-btn" type="submit">Join us</button>
+          </form>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p class="site-footer__copyright">Copyright © 2026 Readers Bookshop. All Right Reserved.</p>
+        <p class="site-footer__credit">
+          Designed &amp; developed by
+          <a href="https://josequal.com/" target="_blank" rel="noopener noreferrer">JoSequal</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/cart-store.js" defer></script>
+  <script src="js/cart-header.js" defer></script>
+  <script src="js/site-header.js" defer></script>
+  <script src="js/account-session.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/footer-stars.js" defer></script>
+  <script src="js/orders-page.js" defer></script>
+</body>
+
+</html>

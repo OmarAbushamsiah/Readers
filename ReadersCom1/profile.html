@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>My Profile — Readers Bookshop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/profile-page.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("readers_theme");
+        if (t === "dark") document.documentElement.dataset.theme = "dark";
+      } catch (e) {}
+    })();
+  </script>
+</head>
+
+<body class="profile-page">
+
+  <!-- ── Utility bar ───────────────────────────────── -->
+  <div class="utility-bar">
+    <div class="utility-bar__inner">
+      <nav class="utility-nav" aria-label="Utility">
+        <a href="giftcard.html">Gift Card</a>
+        <a href="wishlist.html">Wish List</a>
+        <a href="login.html">Sign In / Register</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+      <div class="utility-controls">
+        <div class="lang-switcher">
+          <button type="button" class="lang-switcher__toggle" id="lang-switcher-toggle" aria-expanded="false"
+            aria-haspopup="listbox" aria-controls="lang-switcher-menu">
+            <span class="lang-switcher__value" id="lang-switcher-label" lang="en">English</span>
+            <svg class="lang-switcher__chevron" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"
+              focusable="false">
+              <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+            </svg>
+          </button>
+          <ul class="lang-switcher__menu" id="lang-switcher-menu" role="listbox" aria-labelledby="lang-switcher-toggle"
+            hidden>
+            <li role="presentation">
+              <button type="button" class="lang-switcher__option" role="option" data-lang="en" lang="en"
+                aria-selected="true">English</button>
+            </li>
+            <li role="presentation">
+              <button type="button" class="lang-switcher__option" role="option" data-lang="ar" lang="ar"
+                aria-selected="false">العربية</button>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="theme-toggle theme-toggle--day-night" id="theme-toggle" aria-pressed="false">
+          <span class="visually-hidden">Toggle dark mode</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Site header ───────────────────────────────── -->
+  <header class="site-header">
+    <div class="main-header">
+      <div class="main-header__inner">
+        <button type="button" class="main-header__menu-btn" id="main-header-menu-btn" aria-expanded="false"
+          aria-controls="main-header-nav-panel" aria-label="Open navigation menu">
+          <svg class="main-header__menu-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"
+            focusable="false">
+            <path fill="currentColor" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" />
+          </svg>
+        </button>
+        <a class="brand" href="index.html">
+          <img src="assets/logo.png" width="200" height="56" alt="Readers Bookshop" class="brand__logo" />
+        </a>
+        <div class="main-header__nav-panel" id="main-header-nav-panel">
+          <nav class="primary-nav" aria-label="Primary">
+            <a href="index.html">Home</a>
+            <a href="category.html#all">Books</a>
+            <a href="category.html#arabic-books">Arabic Books</a>
+            <a href="category.html#gadgets-accessories">Gadgets &amp; Accessories</a>
+            <a href="category.html#all">Special Offers</a>
+          </nav>
+        </div>
+        <label class="search-field">
+          <span class="visually-hidden">Search</span>
+          <input type="search" name="search" placeholder="Search readers.jo products…" autocomplete="off" />
+        </label>
+        <div class="header-actions__cluster">
+          <a class="btn-cart" href="cart.html"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>Cart</a>
+          <div class="account-menu">
+            <button type="button" class="btn-account account-menu__toggle" id="account-menu-toggle"
+              aria-expanded="false" aria-haspopup="menu" aria-controls="account-menu-dropdown">
+              <svg class="btn-account__icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"
+                focusable="false" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+              <span class="btn-account__label">Account</span>
+              <svg class="account-menu__chevron" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"
+                focusable="false">
+                <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+              </svg>
+            </button>
+            <ul class="account-menu__dropdown" id="account-menu-dropdown" role="menu" hidden>
+              <li role="none"><a role="menuitem" href="login.html" class="account-menu__link">Login</a></li>
+              <li role="none"><a role="menuitem" href="register.html" class="account-menu__link">Register</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Main ──────────────────────────────────────── -->
+  <main id="main-content">
+
+    <!-- Profile hero -->
+    <div class="profile-hero">
+      <div class="profile-hero__inner">
+        <div>
+
+          <div style="display:flex;align-items:center;gap:clamp(1rem,3vw,1.75rem);flex-wrap:wrap;">
+            <div class="profile-hero__avatar" id="profile-avatar" aria-hidden="true">RD</div>
+            <div class="profile-hero__info">
+              <h1 class="profile-hero__name" id="profile-hero-name">My Profile</h1>
+              <div class="profile-hero__meta">
+                <span class="profile-hero__tag"><i class="fa-solid fa-bookmark" aria-hidden="true"></i>Member</span>
+                <span class="profile-hero__member">Readers Bookshop account</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layout -->
+    <div class="profile-layout">
+
+      <!-- Sidebar nav -->
+      <nav class="profile-nav" aria-label="Account navigation">
+        <p class="profile-nav__heading">My Account</p>
+        <ul class="profile-nav__list">
+          <li class="profile-nav__item">
+            <a href="profile.html" class="profile-nav__link is-active" aria-current="page">
+              <i class="fa-solid fa-user" aria-hidden="true"></i>
+              My Profile
+            </a>
+          </li>
+          <li class="profile-nav__item">
+            <a href="orders.html" class="profile-nav__link">
+              <i class="fa-solid fa-box" aria-hidden="true"></i>
+              Orders
+            </a>
+          </li>
+          <li class="profile-nav__item">
+            <a href="wishlist.html" class="profile-nav__link">
+              <i class="fa-solid fa-heart" aria-hidden="true"></i>
+              Wish Lists
+            </a>
+          </li>
+          <li class="profile-nav__item">
+            <a href="giftcard.html" class="profile-nav__link">
+              <i class="fa-solid fa-gift" aria-hidden="true"></i>
+              Gift Cards
+            </a>
+          </li>
+          <li class="profile-nav__item">
+            <a href="loyalty.html" class="profile-nav__link">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              Loyalty Card
+            </a>
+          </li>
+          <li class="profile-nav__item">
+            <a href="payment.html" class="profile-nav__link">
+              <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+              Payment
+            </a>
+          </li>
+          <li class="profile-nav__item">
+            <a href="addressbook.html" class="profile-nav__link">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              Address Book
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main content -->
+      <div class="profile-main">
+
+        <!-- ── Personal Information ──────────────────── -->
+        <div class="profile-card">
+          <div class="profile-card__header">
+            <div class="profile-card__title-wrap">
+              <span class="profile-card__icon" aria-hidden="true">
+                <i class="fa-solid fa-id-card"></i>
+              </span>
+              <div>
+                <h2 class="profile-card__title">Personal Information</h2>
+                <p class="profile-card__subtitle">Update your name, gender, and contact details</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-card__body">
+            <form id="profile-info-form" novalidate>
+              <div class="pf-grid">
+
+                <!-- First name -->
+                <div class="pf-field" id="field-firstname">
+                  <label for="firstname">First Name <span class="pf-required" aria-hidden="true">*</span></label>
+                  <div class="pf-input-wrap">
+                    <i class="pf-input-icon fa-solid fa-user" aria-hidden="true"></i>
+                    <input type="text" id="firstname" name="firstname" class="has-icon" placeholder="e.g. Ahmad"
+                      autocomplete="given-name" value="" />
+                  </div>
+                  <span class="pf-error-msg" id="firstname-error">Please enter your first name.</span>
+                </div>
+
+                <!-- Last name -->
+                <div class="pf-field" id="field-lastname">
+                  <label for="lastname">Last Name <span class="pf-required" aria-hidden="true">*</span></label>
+                  <div class="pf-input-wrap">
+                    <i class="pf-input-icon fa-solid fa-user" aria-hidden="true"></i>
+                    <input type="text" id="lastname" name="lastname" class="has-icon" placeholder="e.g. Al-Rashid"
+                      autocomplete="family-name" value="" />
+                  </div>
+                  <span class="pf-error-msg" id="lastname-error">Please enter your last name.</span>
+                </div>
+
+                <!-- Gender -->
+                <div class="pf-field pf-col-full">
+                  <label>Gender</label>
+                  <div class="pf-radio-group" role="radiogroup" aria-label="Gender">
+                    <label class="pf-radio-opt">
+                      <input type="radio" name="gender" value="male" id="gender-male" />
+                      <span class="pf-radio-opt__label">
+                        <i class="fa-solid fa-mars" aria-hidden="true"></i> Male
+                      </span>
+                    </label>
+                    <label class="pf-radio-opt">
+                      <input type="radio" name="gender" value="female" id="gender-female" />
+                      <span class="pf-radio-opt__label">
+                        <i class="fa-solid fa-venus" aria-hidden="true"></i> Female
+                      </span>
+                    </label>
+                    <label class="pf-radio-opt">
+                      <input type="radio" name="gender" value="other" id="gender-other" />
+                      <span class="pf-radio-opt__label">
+                        <i class="fa-solid fa-circle-dot" aria-hidden="true"></i> Prefer not to say
+                      </span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Date of birth -->
+                <div class="pf-field">
+                  <label for="birthday">Date of Birth</label>
+                  <div class="pf-input-wrap">
+                    <i class="pf-input-icon fa-solid fa-cake-candles" aria-hidden="true"></i>
+                    <input type="date" id="birthday" name="birthday" class="has-icon" autocomplete="bday" />
+                  </div>
+                  <span class="pf-hint">Used to personalise your experience.</span>
+                </div>
+
+                <!-- Phone number -->
+                <div class="pf-field" id="field-phone">
+                  <label for="phone">Phone Number</label>
+                  <div class="pf-input-wrap">
+                    <i class="pf-input-icon fa-solid fa-phone" aria-hidden="true"></i>
+                    <input type="tel" id="phone" name="phone" class="has-icon" placeholder="+962 7X XXX XXXX"
+                      autocomplete="tel" />
+                  </div>
+                </div>
+
+                <!-- Email -->
+                <div class="pf-field pf-col-full" id="field-email">
+                  <label for="email">Email Address <span class="pf-required" aria-hidden="true">*</span></label>
+                  <div class="pf-input-wrap">
+                    <i class="pf-input-icon fa-solid fa-envelope" aria-hidden="true"></i>
+                    <input type="email" id="email" name="email" class="has-icon" placeholder="you@example.com"
+                      autocomplete="email" value="" />
+                  </div>
+                  <span class="pf-error-msg" id="email-error">Please enter a valid email address.</span>
+                </div>
+
+              </div>
+
+              <div class="pf-divider" style="margin: 1.5rem 0 1.25rem;"></div>
+
+              <div class="pf-save-bar">
+                <span class="pf-unsaved-tag" id="info-unsaved-tag" aria-live="polite">
+                  <i class="fa-solid fa-circle-dot" aria-hidden="true"></i> Unsaved changes
+                </span>
+                <div class="pf-save-actions">
+                  <button type="button" class="pf-btn pf-btn--ghost" id="info-reset-btn">
+                    <i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Discard
+                  </button>
+                  <button type="submit" class="pf-btn pf-btn--primary" id="info-save-btn">
+                    <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> Save Changes
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- ── Change Password ───────────────────────── -->
+        <div class="profile-card">
+          <div class="profile-card__header">
+            <div class="profile-card__title-wrap">
+              <span class="profile-card__icon" aria-hidden="true">
+                <i class="fa-solid fa-lock"></i>
+              </span>
+              <div>
+                <h2 class="profile-card__title">Password &amp; Security</h2>
+                <p class="profile-card__subtitle">Change your password to keep your account secure</p>
+              </div>
+            </div>
+            <button type="button" class="pf-accordion-trigger" id="pwd-accordion-trigger" aria-expanded="false"
+              aria-controls="pwd-accordion-body">
+              <span class="pf-accordion-chevron" aria-hidden="true">
+                <i class="fa-solid fa-chevron-down"></i>
+              </span>
+            </button>
+          </div>
+
+          <div class="profile-card__body" style="padding-top: 0;">
+            <div class="pf-accordion-body" id="pwd-accordion-body" role="region">
+              <form id="profile-pwd-form" novalidate>
+                <div class="pf-grid">
+
+                  <!-- Current password -->
+                  <div class="pf-field pf-col-full" id="field-current-pwd">
+                    <label for="current-pwd">Current Password <span class="pf-required"
+                        aria-hidden="true">*</span></label>
+                    <div class="pf-input-wrap pf-password-wrap">
+                      <i class="pf-input-icon fa-solid fa-lock" aria-hidden="true"></i>
+                      <input type="password" id="current-pwd" name="current-pwd" class="has-icon"
+                        placeholder="Enter your current password" autocomplete="current-password" />
+                      <button type="button" class="pf-password-toggle" aria-label="Show password"
+                        data-target="current-pwd">
+                        <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                    <span class="pf-error-msg" id="current-pwd-error">Please enter your current password.</span>
+                  </div>
+
+                  <!-- New password -->
+                  <div class="pf-field" id="field-new-pwd">
+                    <label for="new-pwd">New Password <span class="pf-required" aria-hidden="true">*</span></label>
+                    <div class="pf-input-wrap pf-password-wrap">
+                      <i class="pf-input-icon fa-solid fa-key" aria-hidden="true"></i>
+                      <input type="password" id="new-pwd" name="new-pwd" class="has-icon"
+                        placeholder="Min. 8 characters" autocomplete="new-password" />
+                      <button type="button" class="pf-password-toggle" aria-label="Show new password"
+                        data-target="new-pwd">
+                        <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                    <!-- Strength meter -->
+                    <div class="pf-strength" id="pwd-strength" aria-live="polite" aria-label="Password strength">
+                      <div class="pf-strength__bars" aria-hidden="true">
+                        <span class="pf-strength__bar" id="str-bar-1"></span>
+                        <span class="pf-strength__bar" id="str-bar-2"></span>
+                        <span class="pf-strength__bar" id="str-bar-3"></span>
+                        <span class="pf-strength__bar" id="str-bar-4"></span>
+                      </div>
+                      <span class="pf-strength__label" id="str-label"></span>
+                    </div>
+                    <span class="pf-error-msg" id="new-pwd-error">Password must be at least 8 characters.</span>
+                  </div>
+
+                  <!-- Confirm password -->
+                  <div class="pf-field" id="field-confirm-pwd">
+                    <label for="confirm-pwd">Confirm New Password <span class="pf-required"
+                        aria-hidden="true">*</span></label>
+                    <div class="pf-input-wrap pf-password-wrap">
+                      <i class="pf-input-icon fa-solid fa-shield-halved" aria-hidden="true"></i>
+                      <input type="password" id="confirm-pwd" name="confirm-pwd" class="has-icon"
+                        placeholder="Repeat your new password" autocomplete="new-password" />
+                      <button type="button" class="pf-password-toggle" aria-label="Show confirm password"
+                        data-target="confirm-pwd">
+                        <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                    <span class="pf-error-msg" id="confirm-pwd-error">Passwords do not match.</span>
+                  </div>
+
+                </div>
+
+                <div class="pf-divider" style="margin: 1.5rem 0 1.25rem;"></div>
+
+                <div class="pf-save-actions" style="justify-content: flex-end;">
+                  <button type="button" class="pf-btn pf-btn--ghost" id="pwd-reset-btn">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i> Cancel
+                  </button>
+                  <button type="submit" class="pf-btn pf-btn--primary" id="pwd-save-btn">
+                    <i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Update Password
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.profile-main -->
+    </div><!-- /.profile-layout -->
+  </main>
+
+  <!-- ── Toast ─────────────────────────────────────── -->
+  <div class="pf-toast" id="pf-toast" role="status" aria-live="polite">
+    <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+    <span id="pf-toast-msg">Changes saved successfully!</span>
+  </div>
+
+  <!-- ── Footer ────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__deco" aria-hidden="true">
+      <div class="site-footer__day-stars" aria-hidden="true"></div>
+    </div>
+    <div class="site-footer__inner">
+      <div class="site-footer__grid">
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">Information</h2>
+          <ul class="site-footer__list">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#">Security and Privacy</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+            <li><a href="giftcard.html">Gift Card</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">Customer service</h2>
+          <ul class="site-footer__list">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Site Map</a></li>
+            <li><a href="#">Order History</a></li>
+            <li><a href="wishlist.html">Wish List</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">Store information</h2>
+          <p class="site-footer__text">Building 5, Issa An-Nouri St., 7th Circle,<br />Amman-Jordan</p>
+          <p class="site-footer__text">
+            <strong>Call us now:</strong>
+            <a href="tel:+96265828488">(+962) 6 582 8488</a>
+          </p>
+          <p class="site-footer__text">Email: <a href="mailto:support@readers.jo">support@readers.jo</a></p>
+        </div>
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">Newsletter</h2>
+          <form class="site-footer__newsletter" action="#" method="post">
+            <label class="visually-hidden" for="footer-newsletter-email">Email</label>
+            <input class="site-footer__newsletter-input" id="footer-newsletter-email" type="email" name="email"
+              placeholder="Enter your email" autocomplete="email" />
+            <button class="site-footer__newsletter-btn" type="submit">Join us</button>
+          </form>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p class="site-footer__copyright">Copyright © 2026 Readers Bookshop. All Right Reserved.</p>
+        <p class="site-footer__credit">
+          Designed &amp; developed by
+          <a href="https://josequal.com/" target="_blank" rel="noopener noreferrer">JoSequal</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/cart-store.js" defer></script>
+  <script src="js/cart-header.js" defer></script>
+  <script src="js/site-header.js" defer></script>
+  <script src="js/account-session.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/footer-stars.js" defer></script>
+  <script src="js/profile-page.js" defer></script>
+</body>
+
+</html>

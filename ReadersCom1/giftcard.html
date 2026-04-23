@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Gift Cards — Readers Bookshop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/profile-page.css" />
+  <link rel="stylesheet" href="css/giftcard-page.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("readers_theme");
+        if (t === "dark") document.documentElement.dataset.theme = "dark";
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body class="giftcard-page profile-page">
+
+  <!-- ── Utility bar ───────────────────────────────── -->
+  <div class="utility-bar">
+    <div class="utility-bar__inner">
+      <nav class="utility-nav" aria-label="Utility">
+        <a href="giftcard.html" aria-current="page">Gift Card</a>
+        <a href="wishlist.html">Wish List</a>
+        <a href="login.html">Sign In / Register</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+      <div class="utility-controls">
+        <div class="lang-switcher">
+          <button type="button" class="lang-switcher__toggle" id="lang-switcher-toggle"
+            aria-expanded="false" aria-haspopup="listbox" aria-controls="lang-switcher-menu">
+            <span class="lang-switcher__value" id="lang-switcher-label" lang="en">English</span>
+            <svg class="lang-switcher__chevron" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+            </svg>
+          </button>
+          <ul class="lang-switcher__menu" id="lang-switcher-menu" role="listbox" aria-labelledby="lang-switcher-toggle" hidden>
+            <li role="presentation">
+              <button type="button" class="lang-switcher__option" role="option" data-lang="en" lang="en" aria-selected="true">English</button>
+            </li>
+            <li role="presentation">
+              <button type="button" class="lang-switcher__option" role="option" data-lang="ar" lang="ar" aria-selected="false">العربية</button>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="theme-toggle theme-toggle--day-night" id="theme-toggle" aria-pressed="false">
+          <span class="visually-hidden">Toggle dark mode</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Site header ───────────────────────────────── -->
+  <header class="site-header">
+    <div class="main-header">
+      <div class="main-header__inner">
+        <button type="button" class="main-header__menu-btn" id="main-header-menu-btn"
+          aria-expanded="false" aria-controls="main-header-nav-panel" aria-label="Open navigation menu">
+          <svg class="main-header__menu-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" />
+          </svg>
+        </button>
+        <a class="brand" href="index.html">
+          <img src="assets/logo.png" width="200" height="56" alt="Readers Bookshop" class="brand__logo" />
+        </a>
+        <div class="main-header__nav-panel" id="main-header-nav-panel">
+          <nav class="primary-nav" aria-label="Primary">
+            <a href="index.html">Home</a>
+            <a href="category.html#all">Books</a>
+            <a href="category.html#arabic-books">Arabic Books</a>
+            <a href="category.html#gadgets-accessories">Gadgets &amp; Accessories</a>
+            <a href="category.html#all">Special Offers</a>
+          </nav>
+        </div>
+        <label class="search-field">
+          <span class="visually-hidden">Search</span>
+          <input type="search" name="search" placeholder="Search readers.jo products…" autocomplete="off" />
+        </label>
+        <div class="header-actions__cluster">
+          <a class="btn-cart" href="cart.html"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>Cart</a>
+          <div class="account-menu">
+            <button type="button" class="btn-account account-menu__toggle" id="account-menu-toggle"
+              aria-expanded="false" aria-haspopup="menu" aria-controls="account-menu-dropdown">
+              <svg class="btn-account__icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"
+                fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+              <span class="btn-account__label">Account</span>
+              <svg class="account-menu__chevron" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+              </svg>
+            </button>
+            <ul class="account-menu__dropdown" id="account-menu-dropdown" role="menu" hidden>
+              <li role="none"><a role="menuitem" href="login.html" class="account-menu__link">Login</a></li>
+              <li role="none"><a role="menuitem" href="register.html" class="account-menu__link">Register</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Main ──────────────────────────────────────── -->
+  <main id="main-content">
+
+    <!-- Hero -->
+    <div class="gc-hero">
+      <div class="gc-hero__inner">
+        <p class="gc-hero__eyebrow"><i class="fa-solid fa-gift" aria-hidden="true"></i>Give the gift of reading</p>
+        <h1 class="gc-hero__title">Readers <em>Gift Cards</em></h1>
+        <p class="gc-hero__sub">Choose a beautiful design, personalise your message, and let someone discover their next favourite book.</p>
+      </div>
+    </div>
+
+    <!-- Step progress -->
+    <div class="gc-progress" aria-label="Purchase steps">
+      <div class="gc-progress__step is-active" id="gc-prog-1">
+        <span class="gc-progress__num" aria-hidden="true">1</span>
+        Choose Design
+      </div>
+      <div class="gc-progress__connector" id="gc-prog-connector">
+        <div class="gc-progress__connector-fill"></div>
+      </div>
+      <div class="gc-progress__step" id="gc-prog-2">
+        <span class="gc-progress__num" aria-hidden="true">2</span>
+        Enter Details
+      </div>
+    </div>
+
+    <!-- Profile layout with sidebar -->
+    <div class="profile-layout">
+
+      <!-- Sidebar nav -->
+      <nav class="profile-nav" aria-label="Account navigation">
+        <p class="profile-nav__heading">My Account</p>
+        <ul class="profile-nav__list">
+          <li class="profile-nav__item">
+            <a href="profile.html" class="profile-nav__link">
+              <i class="fa-solid fa-user" aria-hidden="true"></i>
+              My Profile
+            </a>
+          </li>
+          <li class="profile-nav__item">
+            <a href="orders.html" class="profile-nav__link">
+              <i class="fa-solid fa-box" aria-hidden="true"></i>
+              Orders
+            </a>
+          </li>
+          <li class="profile-nav__item">
+            <a href="wishlist.html" class="profile-nav__link">
+              <i class="fa-solid fa-heart" aria-hidden="true"></i>
+              Wish Lists
+            </a>
+          </li>
+          <li class="profile-nav__item">
+            <a href="giftcard.html" class="profile-nav__link is-active" aria-current="page">
+              <i class="fa-solid fa-gift" aria-hidden="true"></i>
+              Gift Cards
+            </a>
+          </li>
+          <li class="profile-nav__item">
+            <a href="loyalty.html" class="profile-nav__link">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              Loyalty Card
+            </a>
+          </li>
+          <li class="profile-nav__item">
+            <a href="payment.html" class="profile-nav__link">
+              <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+              Payment
+            </a>
+          </li>
+          <li class="profile-nav__item">
+            <a href="addressbook.html" class="profile-nav__link">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              Address Book
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main content -->
+      <div class="profile-main">
+
+    <!-- Body -->
+    <div class="gc-body">
+
+      <!-- Alert (shown on validation failure) -->
+      <div class="gc-alert gc-alert--error" id="gc-alert" role="alert" hidden>
+        <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+        <span id="gc-alert-msg">Please select a gift card design to continue.</span>
+      </div>
+
+      <!-- ── Step 1: Choose design ─────────────────── -->
+      <section class="gc-step" id="gc-step-1" aria-label="Step 1: Choose a design">
+        <h2 class="gc-step1__heading">Choose your design</h2>
+        <p class="gc-step1__sub">Pick a card that suits the occasion — each design is unique.</p>
+
+        <div class="gc-designs-grid" role="radiogroup" aria-label="Gift card designs" id="gc-designs-grid">
+
+          <button type="button" class="gc-design-card" data-design="1" aria-pressed="false" aria-label="Little Readers design">
+            <div class="gc-design-card__visual">
+              <span class="gc-design-card__brand">Readers</span>
+              <span class="gc-design-card__icon"><i class="fa-solid fa-book-open" aria-hidden="true"></i></span>
+              <span class="gc-design-card__chip"></span>
+            </div>
+            <div class="gc-design-card__label">Little Readers</div>
+            <span class="gc-design-card__check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          </button>
+
+          <button type="button" class="gc-design-card" data-design="2" aria-pressed="false" aria-label="Readers in Red design">
+            <div class="gc-design-card__visual">
+              <span class="gc-design-card__brand">Readers</span>
+              <span class="gc-design-card__icon"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></span>
+              <span class="gc-design-card__chip"></span>
+            </div>
+            <div class="gc-design-card__label">Readers in Red</div>
+            <span class="gc-design-card__check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          </button>
+
+          <button type="button" class="gc-design-card" data-design="3" aria-pressed="false" aria-label="Readers in Black design">
+            <div class="gc-design-card__visual">
+              <span class="gc-design-card__brand">Readers</span>
+              <span class="gc-design-card__icon"><i class="fa-solid fa-feather-pointed" aria-hidden="true"></i></span>
+              <span class="gc-design-card__chip"></span>
+            </div>
+            <div class="gc-design-card__label">Readers in Black</div>
+            <span class="gc-design-card__check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          </button>
+
+          <button type="button" class="gc-design-card" data-design="4" aria-pressed="false" aria-label="Little Readers in Purple design">
+            <div class="gc-design-card__visual">
+              <span class="gc-design-card__brand">Readers</span>
+              <span class="gc-design-card__icon"><i class="fa-solid fa-star" aria-hidden="true"></i></span>
+              <span class="gc-design-card__chip"></span>
+            </div>
+            <div class="gc-design-card__label">Little Readers in Purple</div>
+            <span class="gc-design-card__check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          </button>
+
+          <button type="button" class="gc-design-card" data-design="5" aria-pressed="false" aria-label="Little Readers in Blue design">
+            <div class="gc-design-card__visual">
+              <span class="gc-design-card__brand">Readers</span>
+              <span class="gc-design-card__icon"><i class="fa-solid fa-book" aria-hidden="true"></i></span>
+              <span class="gc-design-card__chip"></span>
+            </div>
+            <div class="gc-design-card__label">Little Readers in Blue</div>
+            <span class="gc-design-card__check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          </button>
+
+          <button type="button" class="gc-design-card" data-design="6" aria-pressed="false" aria-label="Little Readers in Royal Blue design">
+            <div class="gc-design-card__visual">
+              <span class="gc-design-card__brand">Readers</span>
+              <span class="gc-design-card__icon"><i class="fa-solid fa-crown" aria-hidden="true"></i></span>
+              <span class="gc-design-card__chip"></span>
+            </div>
+            <div class="gc-design-card__label">Little Readers in Royal Blue</div>
+            <span class="gc-design-card__check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          </button>
+
+          <button type="button" class="gc-design-card" data-design="7" aria-pressed="false" aria-label="Little Readers in Pink design">
+            <div class="gc-design-card__visual">
+              <span class="gc-design-card__brand">Readers</span>
+              <span class="gc-design-card__icon"><i class="fa-solid fa-heart" aria-hidden="true"></i></span>
+              <span class="gc-design-card__chip"></span>
+            </div>
+            <div class="gc-design-card__label">Little Readers in Pink</div>
+            <span class="gc-design-card__check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          </button>
+
+          <button type="button" class="gc-design-card" data-design="8" aria-pressed="false" aria-label="Little Readers in Green design">
+            <div class="gc-design-card__visual">
+              <span class="gc-design-card__brand">Readers</span>
+              <span class="gc-design-card__icon"><i class="fa-solid fa-leaf" aria-hidden="true"></i></span>
+              <span class="gc-design-card__chip"></span>
+            </div>
+            <div class="gc-design-card__label">Little Readers in Green</div>
+            <span class="gc-design-card__check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          </button>
+
+        </div>
+
+        <div class="gc-step1__footer">
+          <button type="button" class="gc-btn gc-btn--primary" id="gc-next-btn">
+            Continue <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- ── Step 2: Enter details ──────────────────── -->
+      <section class="gc-step" id="gc-step-2" hidden aria-label="Step 2: Enter details">
+        <div class="gc-step2__layout">
+
+          <!-- Left: preview -->
+          <div class="gc-preview-col">
+            <p class="gc-preview-label">Your card preview</p>
+            <div class="gc-preview-card" id="gc-preview-card">
+              <div class="gc-preview-card__top">
+                <span class="gc-preview-card__brand">Readers Bookshop</span>
+                <span class="gc-preview-card__icon-wrap" id="gc-preview-icon">
+                  <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+                </span>
+              </div>
+              <div class="gc-preview-card__middle">
+                <p class="gc-preview-card__name" id="gc-preview-to">For Someone Special</p>
+                <p class="gc-preview-card__amount" id="gc-preview-amount">— JOD</p>
+              </div>
+              <div class="gc-preview-card__bottom">
+                <div class="gc-preview-card__to">
+                  <span>From</span>
+                  <strong id="gc-preview-from">Your Name</strong>
+                </div>
+                <div class="gc-preview-card__chip"></div>
+              </div>
+            </div>
+            <button type="button" class="gc-preview-change" id="gc-back-btn">
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Change design
+            </button>
+          </div>
+
+          <!-- Right: form -->
+          <div class="gc-form-col">
+            <form id="gc-form" novalidate>
+
+              <!-- Delivery mode -->
+              <div class="gc-form-section">
+                <h2 class="gc-section-title"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Delivery method</h2>
+                <div class="gc-delivery-options" role="radiogroup" aria-label="Delivery method">
+
+                  <label class="gc-delivery-opt">
+                    <input type="radio" name="gc-delivery" value="email" id="gc-delivery-email" checked />
+                    <span class="gc-delivery-opt__label">
+                      <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                      Send by Email
+                    </span>
+                  </label>
+
+                  <label class="gc-delivery-opt">
+                    <input type="radio" name="gc-delivery" value="physical" id="gc-delivery-physical" />
+                    <span class="gc-delivery-opt__label">
+                      <i class="fa-solid fa-box" aria-hidden="true"></i>
+                      Physical Card
+                    </span>
+                  </label>
+
+                </div>
+
+                <!-- Email-specific fields (shown only when "Send by Email" is selected) -->
+                <div class="gc-email-fields is-hidden" id="gc-email-fields">
+                  <div class="gc-field" id="gc-field-email">
+                    <label for="gc-email">Recipient's email <span aria-hidden="true">*</span></label>
+                    <input type="email" id="gc-email" name="gc-email" placeholder="email@example.com" autocomplete="email" />
+                    <span class="gc-field__error" id="gc-email-error">Please enter a valid email address.</span>
+                  </div>
+                  <div class="gc-field">
+                    <label for="gc-send-date">Sending date <span aria-hidden="true">*</span></label>
+                    <input type="date" id="gc-send-date" name="gc-send-date" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="gc-form-divider"></div>
+
+              <!-- Personalisation -->
+              <div class="gc-form-section">
+                <h2 class="gc-section-title"><i class="fa-solid fa-pen-fancy" aria-hidden="true"></i> Personalise</h2>
+                <div class="gc-field-row">
+                  <div class="gc-field" id="gc-field-from">
+                    <label for="gc-from">Your name <span aria-hidden="true">*</span></label>
+                    <input type="text" id="gc-from" name="gc-from" placeholder="e.g. Sara" autocomplete="name" />
+                    <span class="gc-field__error">Please enter your name.</span>
+                  </div>
+                  <div class="gc-field" id="gc-field-to">
+                    <label for="gc-to">Recipient's name <span aria-hidden="true">*</span></label>
+                    <input type="text" id="gc-to" name="gc-to" placeholder="e.g. Ahmad" />
+                    <span class="gc-field__error">Please enter the recipient's name.</span>
+                  </div>
+                  <div class="gc-field gc-field--full">
+                    <label for="gc-message">Personal message <span style="font-weight:400;color:#aaa;">(optional)</span></label>
+                    <textarea id="gc-message" name="gc-message" placeholder="Write a short message to go with your gift…"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class="gc-form-divider"></div>
+
+              <!-- Amount -->
+              <div class="gc-form-section">
+                <h2 class="gc-section-title"><i class="fa-solid fa-coins" aria-hidden="true"></i> Choose amount</h2>
+                <div class="gc-amounts" role="radiogroup" aria-label="Gift card amount" id="gc-amounts">
+                  <label class="gc-amount-btn">
+                    <input type="radio" name="gc-amount" value="10" id="gc-amt-10" />
+                    <span class="gc-amount-btn__pill">JOD 10</span>
+                  </label>
+                  <label class="gc-amount-btn">
+                    <input type="radio" name="gc-amount" value="20" id="gc-amt-20" />
+                    <span class="gc-amount-btn__pill">JOD 20</span>
+                  </label>
+                  <label class="gc-amount-btn">
+                    <input type="radio" name="gc-amount" value="50" id="gc-amt-50" />
+                    <span class="gc-amount-btn__pill">JOD 50</span>
+                  </label>
+                  <label class="gc-amount-btn">
+                    <input type="radio" name="gc-amount" value="100" id="gc-amt-100" />
+                    <span class="gc-amount-btn__pill">JOD 100</span>
+                  </label>
+                  <label class="gc-amount-btn">
+                    <input type="radio" name="gc-amount" value="200" id="gc-amt-200" />
+                    <span class="gc-amount-btn__pill">JOD 200</span>
+                  </label>
+                </div>
+                <div class="gc-field" id="gc-field-amount" style="margin-top:0;max-height:0;overflow:hidden;opacity:0;transition:max-height 0.25s,opacity 0.25s,margin-top 0.25s;">
+                  <span class="gc-field__error" style="display:block;">Please select an amount.</span>
+                </div>
+              </div>
+
+              <div class="gc-form-divider"></div>
+
+              <!-- Submit -->
+              <button type="submit" class="gc-btn gc-btn--primary gc-btn--full gc-btn--lg">
+                <i class="fa-solid fa-cart-plus" aria-hidden="true"></i>
+                Add to Cart
+              </button>
+
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.gc-body -->
+
+      </div><!-- /.profile-main -->
+    </div><!-- /.profile-layout -->
+  </main>
+
+  <!-- ── Footer ────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__deco" aria-hidden="true">
+      <div class="site-footer__day-stars" aria-hidden="true"></div>
+    </div>
+    <div class="site-footer__inner">
+      <div class="site-footer__grid">
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">Information</h2>
+          <ul class="site-footer__list">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#">Security and Privacy</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+            <li><a href="giftcard.html">Gift Card</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">Customer service</h2>
+          <ul class="site-footer__list">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Site Map</a></li>
+            <li><a href="#">Order History</a></li>
+            <li><a href="wishlist.html">Wish List</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">Store information</h2>
+          <p class="site-footer__text">Building 5, Issa An-Nouri St., 7th Circle,<br />Amman-Jordan</p>
+          <p class="site-footer__text">
+            <strong>Call us now:</strong>
+            <a href="tel:+96265828488">(+962) 6 582 8488</a>
+          </p>
+          <p class="site-footer__text">Email: <a href="mailto:support@readers.jo">support@readers.jo</a></p>
+        </div>
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">Newsletter</h2>
+          <form class="site-footer__newsletter" action="#" method="post">
+            <label class="visually-hidden" for="footer-newsletter-email">Email</label>
+            <input class="site-footer__newsletter-input" id="footer-newsletter-email" type="email" name="email" placeholder="Enter your email" autocomplete="email" />
+            <button class="site-footer__newsletter-btn" type="submit">Join us</button>
+          </form>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p class="site-footer__copyright">Copyright © 2026 Readers Bookshop. All Right Reserved.</p>
+        <p class="site-footer__credit">
+          Designed &amp; developed by
+          <a href="https://josequal.com/" target="_blank" rel="noopener noreferrer">JoSequal</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/cart-store.js" defer></script>
+  <script src="js/cart-header.js" defer></script>
+  <script src="js/site-header.js" defer></script>
+  <script src="js/account-session.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/footer-stars.js" defer></script>
+  <script src="js/giftcard-page.js" defer></script>
+</body>
+</html>
