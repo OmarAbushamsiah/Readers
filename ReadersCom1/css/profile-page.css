@@ -332,6 +332,8 @@
 .pf-input-wrap .pf-input-icon {
   position: absolute;
   left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
   color: #bbb;
   font-size: 0.85rem;
   pointer-events: none;
@@ -426,13 +428,13 @@
 .pf-radio-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.1rem;
 }
 
 .pf-radio-opt {
   position: relative;
-  flex: 1;
-  min-width: 80px;
+  flex: 0 0 auto;
+  min-width: 0;
 }
 
 .pf-radio-opt input[type="radio"] {

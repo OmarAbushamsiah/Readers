@@ -335,6 +335,41 @@
     return html;
   }
 
+  var GC_GRADIENTS = {
+    "1": "linear-gradient(140deg,#d4a44c 0%,#8b6012 100%)",
+    "2": "linear-gradient(140deg,#c41e3a 0%,#7b0d1e 100%)",
+    "3": "linear-gradient(140deg,#3d4046 0%,#111317 100%)",
+    "4": "linear-gradient(140deg,#7b2d8b 0%,#3d0a50 100%)",
+    "5": "linear-gradient(140deg,#1e88e5 0%,#0d47a1 100%)",
+    "6": "linear-gradient(140deg,#1a237e 0%,#050d3a 100%)",
+    "7": "linear-gradient(140deg,#e91e8c 0%,#880e4f 100%)",
+    "8": "linear-gradient(140deg,#2e7d32 0%,#0a3d0d 100%)",
+  };
+  var GC_ICONS = {
+    "1": "fa-book-open", "2": "fa-bookmark",      "3": "fa-feather-pointed",
+    "4": "fa-star",      "5": "fa-book",           "6": "fa-crown",
+    "7": "fa-heart",     "8": "fa-leaf",
+  };
+
+  function lineMediaHtml(line) {
+    if (line.img && line.img.indexOf("gc-design:") === 0) {
+      var id = line.img.split(":")[1] || "1";
+      var bg = GC_GRADIENTS[id] || GC_GRADIENTS["1"];
+      var icon = GC_ICONS[id] || "fa-gift";
+      return (
+        '<div class="cart-line__gc-visual" style="background:' + bg + '" aria-hidden="true">' +
+          '<span class="cart-line__gc-brand">Readers</span>' +
+          '<i class="fa-solid ' + icon + ' cart-line__gc-icon"></i>' +
+        '</div>'
+      );
+    }
+    return (
+      '<img class="cart-line__img" src="' +
+      escapeHtml(line.img) +
+      '" alt="" width="72" height="92" loading="lazy" decoding="async" />'
+    );
+  }
+
   function lineRow(line) {
     var unit = parseFloat(line.price, 10);
     if (isNaN(unit)) unit = 0;
@@ -345,9 +380,7 @@
       escapeHtml(line.isbn) +
       '">' +
       '<div class="cart-line__media">' +
-      '<img class="cart-line__img" src="' +
-      escapeHtml(line.img) +
-      '" alt="" width="72" height="92" loading="lazy" decoding="async" />' +
+      lineMediaHtml(line) +
       "</div>" +
       '<div class="cart-line__main">' +
       '<h2 class="cart-line__title">' +
@@ -453,36 +486,19 @@
       escapeHtml(autocomplete || "on") +
       '" />';
     if (type === "tel") {
+      var prefixHtml = typeof window._phonePrefixHtml === "function" ? window._phonePrefixHtml() : "";
+      var telPlaceholder = (window._phoneCountries && window._phoneCountries[0])
+        ? window._phoneCountries[0].placeholder : "7X XXX XXXX";
       inputHtml =
         '<div class="phone-field">' +
-          '<div class="phone-prefix">' +
-            '<button type="button" class="phone-prefix__btn" aria-expanded="false" aria-haspopup="listbox">' +
-              '<span class="phone-prefix__flag fi fi-jo" aria-hidden="true"></span>' +
-              '<span class="phone-prefix__code">+962</span>' +
-              '<svg class="phone-prefix__chevron" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false">' +
-                '<path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>' +
-              '</svg>' +
-            '</button>' +
-            '<ul class="phone-prefix__menu" role="listbox" hidden>' +
-              '<li role="presentation">' +
-                '<button type="button" class="phone-prefix__option" role="option" aria-selected="true" data-idx="0">' +
-                  '<span class="fi fi-jo" aria-hidden="true"></span> Jordan +962' +
-                '</button>' +
-              '</li>' +
-              '<li role="presentation">' +
-                '<button type="button" class="phone-prefix__option" role="option" aria-selected="false" data-idx="1">' +
-                  '<span class="fi fi-sa" aria-hidden="true"></span> Saudi Arabia +966' +
-                '</button>' +
-              '</li>' +
-            '</ul>' +
-          '</div>' +
+          prefixHtml +
           '<input class="cart-field-line__input" type="tel" id="' +
           id +
           '" name="' +
           escapeHtml(name) +
           '" value="' +
           escapeHtml(value) +
-          '" placeholder="7X XXX XXXX" autocomplete="tel" />' +
+          '" placeholder="' + telPlaceholder + '" autocomplete="tel" />' +
         '</div>';
     }
     return (

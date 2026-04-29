@@ -20,7 +20,7 @@
     {
       id: "RD-2026-00389",
       date: "April 8, 2026",
-      status: "shipped",
+      status: "processing",
       items: [
         { title: "Sapiens", author: "Yuval Noah Harari", qty: 1, price: 16.00, format: "Paperback" },
         { title: "Educated", author: "Tara Westover", qty: 1, price: 14.50, format: "Paperback" }
@@ -57,7 +57,9 @@
     }
   ];
 
-  // ── Saved ratings ──────────────────────────────────
+  // ── Saved ratings & reviews ────────────────────────
+  var REVIEWS_KEY = "readers_order_reviews";
+
   function loadRatings() {
     try { return JSON.parse(localStorage.getItem(RATINGS_KEY) || "{}"); } catch (e) { return {}; }
   }
@@ -68,17 +70,25 @@
     try { localStorage.setItem(RATINGS_KEY, JSON.stringify(r)); } catch (e) {}
   }
 
+  function loadReviews() {
+    try { return JSON.parse(localStorage.getItem(REVIEWS_KEY) || "{}"); } catch (e) { return {}; }
+  }
+
+  function saveReview(orderId, text) {
+    var r = loadReviews();
+    r[orderId] = text;
+    try { localStorage.setItem(REVIEWS_KEY, JSON.stringify(r)); } catch (e) {}
+  }
+
   // ── Status helpers ─────────────────────────────────
   var STATUS_LABELS = {
     delivered:  "Delivered",
-    shipped:    "Shipped",
     processing: "Processing",
     cancelled:  "Cancelled"
   };
 
   var STATUS_ICONS = {
     delivered:  "fa-circle-check",
-    shipped:    "fa-truck",
     processing: "fa-clock",
     cancelled:  "fa-ban"
   };
@@ -129,14 +139,17 @@
         '<button type="button" class="order-rating__star' + activeClass + '"' +
           ' data-order="' + order.id + '" data-star="' + s + '"' +
           ' aria-label="Rate ' + s + ' out of 5"' +
-          (rated > 0 || !canRate ? ' disabled style="cursor:default;"' : '') +
+          (!canRate ? ' disabled style="cursor:default;"' : '') +
         '>' +
           '<i class="' + icon + '" aria-hidden="true"></i>' +
         '</button>';
     }
 
+    var reviews = loadReviews();
+    var existingReview = reviews[order.id] || "";
+
     var ratingLabel = rated > 0
-      ? "Your rating: " + rated + "/5"
+      ? "Your rating: " + rated + "/5" + (existingReview ? " · Reviewed" : "")
       : (canRate ? "Rate this order" : "");
 
     // Breakdown rows
@@ -149,13 +162,13 @@
     if (order.shipping > 0) {
       breakdownHtml +=
         '<div class="order-breakdown__row">' +
-          '<span class="order-breakdown__label">Shipping</span>' +
+          '<span class="order-breakdown__label">Delivery</span>' +
           '<span class="order-breakdown__amount">JOD ' + order.shipping.toFixed(2) + '</span>' +
         '</div>';
     } else {
       breakdownHtml +=
         '<div class="order-breakdown__row">' +
-          '<span class="order-breakdown__label">Shipping</span>' +
+          '<span class="order-breakdown__label">Delivery</span>' +
           '<span class="order-breakdown__amount" style="color:#2e7d32;">Free</span>' +
         '</div>';
     }
@@ -194,14 +207,11 @@
       );
     }).join("");
 
-    var detailsBtnId = "details-btn-" + order.id;
+    var detailsBtnId   = "details-btn-" + order.id;
     var detailsPanelId = "details-panel-" + order.id;
+    var reviewPanelId  = "review-panel-" + order.id;
+    var ratingLabelId  = "rating-label-" + order.id;
 
-    var reorderBtn = order.status !== "cancelled"
-      ? '<button type="button" class="order-card__btn order-card__btn--ghost">' +
-          '<i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Reorder' +
-        '</button>'
-      : "";
 
     return (
       '<article class="order-card" data-status="' + order.status + '" data-id="' + esc(order.id) + '">' +
@@ -232,8 +242,8 @@
         '<div class="order-card__footer">' +
           '<div class="order-card__left">' +
             (canRate || rated > 0
-              ? '<div class="order-rating' + (rated > 0 ? ' order-rating--rated' : '') + '" aria-label="Order rating">' +
-                  '<span class="order-rating__label">' + ratingLabel + '</span>' +
+              ? '<div class="order-rating" aria-label="Order rating">' +
+                  '<span class="order-rating__label" id="' + ratingLabelId + '">' + ratingLabel + '</span>' +
                   '<div class="order-rating__stars">' + starsHtml + '</div>' +
                 '</div>'
               : '') +
@@ -247,9 +257,22 @@
               ' id="' + detailsBtnId + '" aria-expanded="false" aria-controls="' + detailsPanelId + '">' +
               'View Details <i class="fa-solid fa-chevron-down btn-chevron" aria-hidden="true"></i>' +
             '</button>' +
-            reorderBtn +
           '</div>' +
         '</div>' +
+
+        (canRate
+          ? '<div class="order-review-panel" id="' + reviewPanelId + '">' +
+              '<textarea class="order-review__textarea" placeholder="Share your thoughts about this order...">' + esc(existingReview) + '</textarea>' +
+              '<div class="order-review__actions">' +
+                '<button type="button" class="order-review__cancel" data-order="' + order.id + '">' +
+                  'Cancel' +
+                '</button>' +
+                '<button type="button" class="order-review__submit" data-order="' + order.id + '">' +
+                  '<i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Submit Review' +
+                '</button>' +
+              '</div>' +
+            '</div>'
+          : '') +
 
         '<div class="order-details" id="' + detailsPanelId + '" role="region" aria-label="Order details">' +
           '<div class="order-details__inner">' +
@@ -330,8 +353,28 @@
       star.addEventListener("click", function () {
         var orderId = star.dataset.order;
         var stars   = parseInt(star.dataset.star, 10);
-        saveRating(orderId, stars);
-        renderAll();
+
+        // Update star visuals without re-rendering
+        var group = star.closest(".order-rating__stars");
+        if (group) {
+          group.querySelectorAll(".order-rating__star").forEach(function (s) {
+            var n = parseInt(s.dataset.star, 10);
+            s.classList.toggle("is-active", n <= stars);
+            var icon = s.querySelector("i");
+            if (icon) icon.className = n <= stars ? "fa-solid fa-star" : "fa-regular fa-star";
+          });
+        }
+
+        // Store pending rating and reveal the review panel
+        var panel = document.getElementById("review-panel-" + orderId);
+        if (panel) {
+          panel.dataset.pendingStars = stars;
+          panel.classList.add("is-open");
+        }
+
+        // Update label
+        var label = document.getElementById("rating-label-" + orderId);
+        if (label) label.textContent = stars + " / 5 — Add your review";
       });
 
       star.addEventListener("mouseenter", function () {
@@ -347,32 +390,87 @@
 
       star.addEventListener("mouseleave", function () {
         var orderId = star.dataset.order;
-        var saved   = loadRatings()[orderId] || 0;
-        var group   = star.closest(".order-rating__stars");
+        var panel   = document.getElementById("review-panel-" + orderId);
+        var current = (panel && panel.dataset.pendingStars)
+          ? parseInt(panel.dataset.pendingStars, 10)
+          : (loadRatings()[orderId] || 0);
+        var group = star.closest(".order-rating__stars");
         if (!group) return;
         group.querySelectorAll(".order-rating__star").forEach(function (s) {
           var n = parseInt(s.dataset.star, 10);
           var icon = s.querySelector("i");
-          if (icon) icon.className = n <= saved ? "fa-solid fa-star" : "fa-regular fa-star";
+          if (icon) icon.className = n <= current ? "fa-solid fa-star" : "fa-regular fa-star";
         });
       });
     });
 
-    // Reorder button
-    document.querySelectorAll(".order-card__btn--ghost").forEach(function (btn) {
-      if (btn.textContent.trim().startsWith("Reorder")) {
-        btn.addEventListener("click", function () {
-          window.location.href = "index.html";
-        });
-      }
+    // Review submit
+    document.querySelectorAll(".order-review__submit").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var orderId = btn.dataset.order;
+        var panel   = document.getElementById("review-panel-" + orderId);
+        if (!panel) return;
+        var stars      = parseInt(panel.dataset.pendingStars || "0", 10);
+        var textarea   = panel.querySelector(".order-review__textarea");
+        var reviewText = textarea ? textarea.value.trim() : "";
+
+        if (stars > 0) {
+          saveRating(orderId, stars);
+          saveReview(orderId, reviewText);
+        }
+
+        if (textarea) textarea.value = "";
+        panel.classList.remove("is-open");
+        delete panel.dataset.pendingStars;
+
+        var label = document.getElementById("rating-label-" + orderId);
+        if (label) {
+          label.textContent = stars > 0
+            ? "Your rating: " + stars + "/5" + (reviewText ? " · Reviewed" : "")
+            : "Rate this order";
+        }
+      });
     });
+
+    // Review cancel
+    document.querySelectorAll(".order-review__cancel").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var orderId = btn.dataset.order;
+        var panel   = document.getElementById("review-panel-" + orderId);
+        if (!panel) return;
+
+        // Restore stars to last saved rating
+        var saved = loadRatings()[orderId] || 0;
+        var card  = panel.closest(".order-card");
+        if (card) {
+          card.querySelectorAll(".order-rating__star").forEach(function (s) {
+            var n = parseInt(s.dataset.star, 10);
+            s.classList.toggle("is-active", n <= saved);
+            var icon = s.querySelector("i");
+            if (icon) icon.className = n <= saved ? "fa-solid fa-star" : "fa-regular fa-star";
+          });
+        }
+
+        delete panel.dataset.pendingStars;
+        panel.classList.remove("is-open");
+
+        var label = document.getElementById("rating-label-" + orderId);
+        if (label) {
+          var reviews = loadReviews();
+          label.textContent = saved > 0
+            ? "Your rating: " + saved + "/5" + (reviews[orderId] ? " · Reviewed" : "")
+            : "Rate this order";
+        }
+      });
+    });
+
   }
 
   // ── Stats counters ─────────────────────────────────
   function updateStats() {
     var total     = ORDERS.length;
     var delivered = ORDERS.filter(function (o) { return o.status === "delivered"; }).length;
-    var active    = ORDERS.filter(function (o) { return o.status === "processing" || o.status === "shipped"; }).length;
+    var active    = ORDERS.filter(function (o) { return o.status === "processing"; }).length;
 
     var totalEl     = document.getElementById("stat-total");
     var deliveredEl = document.getElementById("stat-delivered");

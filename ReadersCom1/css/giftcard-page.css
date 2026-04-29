@@ -286,17 +286,6 @@
   text-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-.gc-design-card__chip {
-  position: relative;
-  z-index: 1;
-  align-self: flex-end;
-  width: clamp(1.2rem, 2.5vw, 1.6rem);
-  height: clamp(0.9rem, 1.8vw, 1.2rem);
-  background: rgba(255,255,255,0.3);
-  border-radius: 3px;
-  border: 1px solid rgba(255,255,255,0.5);
-}
-
 /* Per-design gradients */
 .gc-design-card[data-design="1"] .gc-design-card__visual { background: linear-gradient(140deg, #d4a44c 0%, #8b6012 100%); }
 .gc-design-card[data-design="2"] .gc-design-card__visual { background: linear-gradient(140deg, #c41e3a 0%, #7b0d1e 100%); }
@@ -502,21 +491,25 @@
 .gc-preview-change {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  margin-top: 0.85rem;
+  gap: 0.45rem;
+  margin-top: 1rem;
   font-family: "DM Sans", system-ui, sans-serif;
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
   color: #c41e3a;
   text-decoration: none;
   cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
+  background: rgba(196, 30, 58, 0.08);
+  border: 1.5px solid rgba(196, 30, 58, 0.35);
+  border-radius: 8px;
+  padding: 0.45rem 0.9rem;
+  transition: background 0.18s, border-color 0.18s, transform 0.15s;
 }
 
 .gc-preview-change:hover {
-  text-decoration: underline;
+  background: rgba(196, 30, 58, 0.15);
+  border-color: #c41e3a;
+  transform: translateY(-1px);
 }
 
 /* ── Form column ─────────────────────────────────────── */

@@ -46,7 +46,8 @@
 #bestsellers-heading,
 #new-arrivals-heading,
 #mind-books-heading,
-#stationery-heading {
+#stationery-heading,
+#special-offers-heading {
   font-style: italic;
 }
 
@@ -468,6 +469,63 @@
   font-size: 0.75rem;
   color: #6b6b6b;
   margin-right: 0.2rem;
+}
+
+/* Sale / special-offer price layout */
+.book-card__price--sale {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.5rem;
+}
+
+.book-card__was {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.book-card__was .book-card__currency {
+  color: #bbb;
+}
+
+.book-card__now {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #c41e3a;
+}
+
+.book-card__now .book-card__currency {
+  color: #c41e3a;
+  opacity: 0.8;
+}
+
+/* Discount badge on cover */
+.book-card__sale-badge {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 3;
+  padding: 0.2rem 0.45rem;
+  border-radius: 2px;
+  background: #c41e3a;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* Dark mode */
+[data-theme="dark"] .book-card__was {
+  color: #6b6b6b;
+}
+
+[data-theme="dark"] .book-card__was .book-card__currency {
+  color: #555;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -122,12 +122,33 @@
     });
   }
 
-  // Live preview: amount
+  // Live preview: amount + "Other" custom input toggle
+  var customAmountWrap = document.getElementById("gc-custom-amount-wrap");
+  var customAmountInput = document.getElementById("gc-custom-amount");
+
   document.querySelectorAll("input[name='gc-amount']").forEach(function (radio) {
     radio.addEventListener("change", function () {
-      previewAmount.textContent = radio.checked ? "JOD " + radio.value + ".00" : "— JOD";
+      var isOther = radio.value === "other";
+      if (customAmountWrap) {
+        customAmountWrap.style.maxHeight = isOther ? "120px" : "0";
+        customAmountWrap.style.opacity = isOther ? "1" : "0";
+        customAmountWrap.style.marginTop = isOther ? "0" : "0";
+        if (isOther && customAmountInput) customAmountInput.focus();
+      }
+      if (!isOther) {
+        previewAmount.textContent = "JOD " + radio.value + ".00";
+      } else {
+        previewAmount.textContent = "— JOD";
+      }
     });
   });
+
+  if (customAmountInput) {
+    customAmountInput.addEventListener("input", function () {
+      var val = parseFloat(customAmountInput.value);
+      previewAmount.textContent = val > 0 ? "JOD " + val.toFixed(2) : "— JOD";
+    });
+  }
 
   // Form validation & submit
   form.addEventListener("submit", function (e) {
@@ -160,6 +181,18 @@
         amtField.style.opacity = "0";
         amtField.style.marginTop = "0";
       }
+      if (amountChecked.value === "other") {
+        var customVal = customAmountInput ? parseFloat(customAmountInput.value) : 0;
+        var customErrEl = document.getElementById("gc-custom-amount-error");
+        if (!customVal || customVal < 1) {
+          valid = false;
+          if (customAmountInput) customAmountInput.classList.add("gc-field--error");
+          if (customErrEl) customErrEl.style.display = "block";
+        } else {
+          if (customAmountInput) customAmountInput.classList.remove("gc-field--error");
+          if (customErrEl) customErrEl.style.display = "none";
+        }
+      }
     }
 
     if (deliveryVal && deliveryVal.value === "email" && emailVal) {
@@ -174,7 +207,29 @@
     }
 
     hideAlert();
-    // Simulate add to cart success
+
+    var finalAmount = amountChecked.value === "other"
+      ? (customAmountInput ? parseFloat(customAmountInput.value) || 0 : 0)
+      : parseFloat(amountChecked.value);
+
+    if (window.ReadersCart) {
+      var designLabels = {
+        "1": "Little Readers", "2": "Readers in Red", "3": "Readers in Black",
+        "4": "Little Readers in Purple", "5": "Little Readers in Blue",
+        "6": "Little Readers in Royal Blue", "7": "Little Readers in Pink",
+        "8": "Little Readers in Green"
+      };
+      ReadersCart.add({
+        isbn: "READERS-GIFTCARD-" + Date.now(),
+        title: "Gift Card – JOD " + finalAmount.toFixed(2),
+        author: "From: " + fromVal + " · To: " + toVal,
+        price: finalAmount.toFixed(2),
+        format: "Gift Card" + (selectedDesign ? " · " + (designLabels[selectedDesign] || "Design " + selectedDesign) : ""),
+        img: "gc-design:" + selectedDesign,
+        dispatch: "Physical Card"
+      }, 1);
+    }
+
     var btn = form.querySelector("button[type='submit']");
     btn.disabled = true;
     btn.innerHTML = '<i class="fa-solid fa-check" aria-hidden="true"></i> Added to Cart!';

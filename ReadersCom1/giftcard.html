@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -77,9 +77,9 @@
           <nav class="primary-nav" aria-label="Primary">
             <a href="index.html">Home</a>
             <a href="category.html#all">Books</a>
-            <a href="category.html#arabic-books">Arabic Books</a>
             <a href="category.html#gadgets-accessories">Gadgets &amp; Accessories</a>
-            <a href="category.html#all">Special Offers</a>
+            <a href="category.html#toys">Games &amp; Puzzles</a>
+            <a href="category.html#special-offers">Special Offers</a>
           </nav>
         </div>
         <label class="search-field">
@@ -213,7 +213,6 @@
             <div class="gc-design-card__visual">
               <span class="gc-design-card__brand">Readers</span>
               <span class="gc-design-card__icon"><i class="fa-solid fa-book-open" aria-hidden="true"></i></span>
-              <span class="gc-design-card__chip"></span>
             </div>
             <div class="gc-design-card__label">Little Readers</div>
             <span class="gc-design-card__check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
@@ -223,7 +222,7 @@
             <div class="gc-design-card__visual">
               <span class="gc-design-card__brand">Readers</span>
               <span class="gc-design-card__icon"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></span>
-              <span class="gc-design-card__chip"></span>
+
             </div>
             <div class="gc-design-card__label">Readers in Red</div>
             <span class="gc-design-card__check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
@@ -233,7 +232,7 @@
             <div class="gc-design-card__visual">
               <span class="gc-design-card__brand">Readers</span>
               <span class="gc-design-card__icon"><i class="fa-solid fa-feather-pointed" aria-hidden="true"></i></span>
-              <span class="gc-design-card__chip"></span>
+
             </div>
             <div class="gc-design-card__label">Readers in Black</div>
             <span class="gc-design-card__check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
@@ -243,7 +242,7 @@
             <div class="gc-design-card__visual">
               <span class="gc-design-card__brand">Readers</span>
               <span class="gc-design-card__icon"><i class="fa-solid fa-star" aria-hidden="true"></i></span>
-              <span class="gc-design-card__chip"></span>
+
             </div>
             <div class="gc-design-card__label">Little Readers in Purple</div>
             <span class="gc-design-card__check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
@@ -253,7 +252,7 @@
             <div class="gc-design-card__visual">
               <span class="gc-design-card__brand">Readers</span>
               <span class="gc-design-card__icon"><i class="fa-solid fa-book" aria-hidden="true"></i></span>
-              <span class="gc-design-card__chip"></span>
+
             </div>
             <div class="gc-design-card__label">Little Readers in Blue</div>
             <span class="gc-design-card__check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
@@ -263,7 +262,7 @@
             <div class="gc-design-card__visual">
               <span class="gc-design-card__brand">Readers</span>
               <span class="gc-design-card__icon"><i class="fa-solid fa-crown" aria-hidden="true"></i></span>
-              <span class="gc-design-card__chip"></span>
+
             </div>
             <div class="gc-design-card__label">Little Readers in Royal Blue</div>
             <span class="gc-design-card__check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
@@ -273,7 +272,7 @@
             <div class="gc-design-card__visual">
               <span class="gc-design-card__brand">Readers</span>
               <span class="gc-design-card__icon"><i class="fa-solid fa-heart" aria-hidden="true"></i></span>
-              <span class="gc-design-card__chip"></span>
+
             </div>
             <div class="gc-design-card__label">Little Readers in Pink</div>
             <span class="gc-design-card__check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
@@ -283,7 +282,7 @@
             <div class="gc-design-card__visual">
               <span class="gc-design-card__brand">Readers</span>
               <span class="gc-design-card__icon"><i class="fa-solid fa-leaf" aria-hidden="true"></i></span>
-              <span class="gc-design-card__chip"></span>
+
             </div>
             <div class="gc-design-card__label">Little Readers in Green</div>
             <span class="gc-design-card__check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
@@ -339,15 +338,7 @@
                 <div class="gc-delivery-options" role="radiogroup" aria-label="Delivery method">
 
                   <label class="gc-delivery-opt">
-                    <input type="radio" name="gc-delivery" value="email" id="gc-delivery-email" checked />
-                    <span class="gc-delivery-opt__label">
-                      <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-                      Send by Email
-                    </span>
-                  </label>
-
-                  <label class="gc-delivery-opt">
-                    <input type="radio" name="gc-delivery" value="physical" id="gc-delivery-physical" />
+                    <input type="radio" name="gc-delivery" value="physical" id="gc-delivery-physical" checked />
                     <span class="gc-delivery-opt__label">
                       <i class="fa-solid fa-box" aria-hidden="true"></i>
                       Physical Card
@@ -374,10 +365,10 @@
 
               <!-- Personalisation -->
               <div class="gc-form-section">
-                <h2 class="gc-section-title"><i class="fa-solid fa-pen-fancy" aria-hidden="true"></i> Personalise</h2>
+                <h2 class="gc-section-title"><i class="fa-solid fa-pen-fancy" aria-hidden="true"></i> Who is this for</h2>
                 <div class="gc-field-row">
                   <div class="gc-field" id="gc-field-from">
-                    <label for="gc-from">Your name <span aria-hidden="true">*</span></label>
+                    <label for="gc-from">Sender name <span aria-hidden="true">*</span></label>
                     <input type="text" id="gc-from" name="gc-from" placeholder="e.g. Sara" autocomplete="name" />
                     <span class="gc-field__error">Please enter your name.</span>
                   </div>
@@ -419,9 +410,20 @@
                     <input type="radio" name="gc-amount" value="200" id="gc-amt-200" />
                     <span class="gc-amount-btn__pill">JOD 200</span>
                   </label>
+                  <label class="gc-amount-btn">
+                    <input type="radio" name="gc-amount" value="other" id="gc-amt-other" />
+                    <span class="gc-amount-btn__pill">Other</span>
+                  </label>
                 </div>
                 <div class="gc-field" id="gc-field-amount" style="margin-top:0;max-height:0;overflow:hidden;opacity:0;transition:max-height 0.25s,opacity 0.25s,margin-top 0.25s;">
                   <span class="gc-field__error" style="display:block;">Please select an amount.</span>
+                </div>
+                <div id="gc-custom-amount-wrap" style="max-height:0;overflow:hidden;opacity:0;transition:max-height 0.25s,opacity 0.25s,margin-top 0.25s;margin-top:0;">
+                  <div class="gc-field" style="margin-top:0.75rem;">
+                    <label for="gc-custom-amount">Enter amount (JOD) <span aria-hidden="true">*</span></label>
+                    <input type="number" id="gc-custom-amount" name="gc-custom-amount" placeholder="e.g. 75" min="1" step="1" />
+                    <span class="gc-field__error" id="gc-custom-amount-error">Please enter a valid amount.</span>
+                  </div>
                 </div>
               </div>
 

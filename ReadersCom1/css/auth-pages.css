@@ -69,6 +69,7 @@
   --auth-card-glass-border: rgba(255, 255, 255, 0.75);
   --auth-card-clay-inset: rgba(55, 48, 42, 0.09);
   position: relative;
+  z-index: 1;
   isolation: isolate;
   border-radius: 24px;
   background: linear-gradient(

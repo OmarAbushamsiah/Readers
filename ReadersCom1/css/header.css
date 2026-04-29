@@ -849,15 +849,66 @@ button.btn-account {
   position: absolute;
   top: calc(100% + 4px);
   left: 0;
-  min-width: 13rem;
-  margin: 0;
-  padding: 0.3rem 0;
-  list-style: none;
+  min-width: 15rem;
   background: #fff;
   border: 1px solid #e5e2dc;
   border-radius: 8px;
   box-shadow: 0 8px 24px rgba(26, 26, 26, 0.12);
   z-index: 130;
+  overflow: hidden;
+}
+
+.phone-prefix__search-wrap {
+  position: relative;
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid #ece9e4;
+}
+
+.phone-prefix__search-icon {
+  position: absolute;
+  left: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  color: #aaa;
+  pointer-events: none;
+}
+
+.phone-prefix__search {
+  width: 100%;
+  padding: 0.38rem 0.6rem 0.38rem 2rem;
+  border: 1px solid #e0ddd6;
+  border-radius: 5px;
+  background: #fafaf8;
+  font: inherit;
+  font-size: 0.8rem;
+  color: #333;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.phone-prefix__search:focus {
+  border-color: #c41e3a;
+  background: #fff;
+}
+
+.phone-prefix__list {
+  max-height: 14rem;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0.25rem 0;
+  list-style: none;
+  scrollbar-width: thin;
+  scrollbar-color: #d5d2cc transparent;
+}
+
+.phone-prefix__list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.phone-prefix__list::-webkit-scrollbar-thumb {
+  background: #d5d2cc;
+  border-radius: 3px;
 }
 
 .phone-prefix__option {
@@ -865,7 +916,7 @@ button.btn-account {
   align-items: center;
   gap: 0.5rem;
   width: 100%;
-  padding: 0.5rem 0.9rem;
+  padding: 0.45rem 0.9rem;
   border: none;
   background: transparent;
   font: inherit;
@@ -877,9 +928,26 @@ button.btn-account {
   text-align: left;
 }
 
+.phone-prefix__option-name {
+  flex: 1;
+  min-width: 0;
+}
+
+.phone-prefix__option-dial {
+  font-size: 0.75rem;
+  color: #888;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  flex-shrink: 0;
+}
+
 .phone-prefix__option:hover {
   background: #f4f2ef;
   color: #1a1a1a;
+}
+
+.phone-prefix__option:hover .phone-prefix__option-dial {
+  color: #555;
 }
 
 .phone-prefix__option[aria-selected="true"] {
@@ -887,9 +955,60 @@ button.btn-account {
   font-weight: 700;
 }
 
+.phone-prefix__option[aria-selected="true"] .phone-prefix__option-dial {
+  color: #c41e3a;
+}
+
 .phone-prefix__option:focus-visible {
   outline: none;
   background: #fff5f5;
+}
+
+/* Dark mode */
+[data-theme="dark"] .phone-prefix__menu {
+  background: #1e1e1e;
+  border-color: #3a3a3a;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .phone-prefix__search-wrap {
+  border-bottom-color: #3a3a3a;
+}
+
+[data-theme="dark"] .phone-prefix__search {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .phone-prefix__search:focus {
+  border-color: #c41e3a;
+  background: #333;
+}
+
+[data-theme="dark"] .phone-prefix__search-icon {
+  color: #666;
+}
+
+[data-theme="dark"] .phone-prefix__list {
+  scrollbar-color: #444 transparent;
+}
+
+[data-theme="dark"] .phone-prefix__option {
+  color: #c8c8c8;
+}
+
+[data-theme="dark"] .phone-prefix__option-dial {
+  color: #666;
+}
+
+[data-theme="dark"] .phone-prefix__option:hover {
+  background: #2a2a2a;
+  color: #fff;
+}
+
+[data-theme="dark"] .phone-prefix__option:hover .phone-prefix__option-dial {
+  color: #999;
 }
 
 .phone-field input[type="tel"] {

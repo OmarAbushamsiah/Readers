@@ -198,8 +198,8 @@
     "notebooks-journals":     "Notebooks & Journals",
     "calendars-diaries":      "Calendars & Diaries",
     "gift-wrap":              "Gift Wrap & Accessories",
-    "toys":                   "Toys",
-    "toys-general":           "Toys",
+    "toys":                   "Games & Puzzles",
+    "toys-general":           "Games & Puzzles",
     "board-games":            "Board Games",
     "puzzles":                "Puzzles",
     "educational-toys":       "Educational Toys",
@@ -307,8 +307,8 @@
     ]},
 
     /* ── Toys ───────────────────────────────────────── */
-    { type: "split",  label: "Toys", href: L + "toys", icon: "fa-solid fa-puzzle-piece", open: false, children: [
-      { type: "link", label: "Toys",             href: L + "toys-general" },
+    { type: "split",  label: "Games & Puzzles", href: L + "toys", icon: "fa-solid fa-puzzle-piece", open: false, children: [
+      { type: "link", label: "Games & Puzzles",  href: L + "toys-general" },
       { type: "link", label: "Board Games",      href: L + "board-games" },
       { type: "link", label: "Puzzles",          href: L + "puzzles" },
       { type: "link", label: "Educational Toys", href: L + "educational-toys" },
